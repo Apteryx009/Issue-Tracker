@@ -1,3 +1,4 @@
+//Used to greet user
 let userAction = document.querySelector('#DashHome')
 console.log(userAction);
 
