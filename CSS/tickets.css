@@ -1,0 +1,28 @@
+
+ @media only screen and (min-width: 750px) {
+   
+    .grid-container {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        grid-template-rows: 50px 1fr 50px;
+        grid-template-areas:
+          'aside header'
+          'aside main'
+          'aside footer';
+        height: 100vh;
+      }
+
+    .main_cards {
+        margin: 10px;
+        display: grid;
+         grid-template-columns: 1fr;
+         grid-template-rows: 600px;
+        grid-template-areas:
+     'card1'
+     'card1';
+        grid-gap: 10px;
+      }
+
+      
+    
+  }

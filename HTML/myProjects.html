@@ -1,3 +1,5 @@
+<!-- NOTE: I need to pick back up at this file and try to make
+it look like planned layout from prevoius idea -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +8,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bug Tracker: home</title>
+  <!-- These two css links are required in every file -->
   <link rel="stylesheet" href="../CSS/style.css">
   <link rel="stylesheet" href="../CSS/aside.css">
+
+  <link rel="stylesheet" href="../CSS/myProjects.css">
+
 </head>
 
 <body>
-    
+    <!-- So the general idea is that we can have 
+    how many many projects: 1,2, 20, whatever
+    but for each of these projects, there will be bugs
+    and issues, so there will be a "details" button 
+    which will lanuch user into all tickets for said project
+    and user will not see all projects, but just the ones they
+    have access to.  -->
+
   <div class="grid-container">
     <div class="menu-icon">
       <strong> &#9776;</strong>
@@ -36,10 +49,8 @@
     </aside>
   
     <main class="main">
+        <button class="btn btn-success" id="loadProjectTickets">Tickets for project X</button>
       <div class="main_cards">
-        <div class="card">Card</div>
-        <div class="card">Card</div>
-        <div class="card">Card</div>
         <div class="card">Card</div>
       </div>
     </main>
@@ -51,6 +62,7 @@
 
   <script defer src="../JS/userHome.js"></script>
   <script defer src="../JS/aside.js"></script>
+  <script defer src="../JS/myProjects.js"></script>
 </body>
 
 </html>
