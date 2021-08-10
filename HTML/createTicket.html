@@ -2,116 +2,147 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create New Ticket</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Ticket</title>
 
-  <!-- These two css links are required in every file -->
-  <link rel="stylesheet" href="../CSS/style.css">
-  <link rel="stylesheet" href="../CSS/aside.css">
+    <!-- These two css links are required in every file -->
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/aside.css">
+    <link rel="stylesheet" href="../External/css/all.css">
 
-  <link rel="stylesheet" href="../CSS/createTicket.css">
+    <link rel="stylesheet" href="../CSS/createTicket.css">
 
 </head>
 
 <body>
-      <!-- So the general idea is that we can have 
+    <!-- So the general idea is that we can have 
     how many many projects: 1,2, 20, whatever
     but for each of these projects, there will be bugs
     and issues, so there will be a "details" button 
     which will lanuch user into all tickets for said project
     and user will not see all projects, but just the ones they
     have access to.  -->
-  <div class="grid-container">
-    <div class="menu-icon">
-      <strong> &#9776;</strong>
-    </div>
-    <header class="header">
-      <div class="header_search">Search...</div>
-      <div class="header_avatar">Logout</div>
-    </header>
-    <aside class="aside">
-      <div class="aside_close-icon">
-        <strong>&times;</strong>
-      </div>
-      <ul class="aside_list">
-        <li class="aside_list-item">User Login</li>
-        <li class="aside_list-item">Dashboard Home</li>
-        <li class="aside_list-item">Manage Role</li>
-        <li class="aside_list-item">My Projects</li>
-        <li class="aside_list-item">Manage Users</li>
-        <li class="aside_list-item">My Tickets</li>
-        <li class="aside_list-item">User Profile</li>
-      </ul>
-    </aside>
-  
-     
-
+    <div class="grid-container">
+        <div class="menu-icon">
+            <strong> &#9776;</strong>
+        </div>
+        <header class="header">
+            <div class="header_search">Search...</div>
+            <div class="header_avatar">Logout</div>
+        </header>
+        <aside class="aside">
+            <div class="aside_close-icon">
+                <strong>&times;</strong>
+            </div>
+            <ul class="aside_list">
+                <li class="aside_list-item">User Login</li>
+                <li class="aside_list-item">Dashboard Home</li>
+                <li class="aside_list-item">Manage Role</li>
+                <li class="aside_list-item">My Projects</li>
+                <li class="aside_list-item">Manage Users</li>
+                <li class="aside_list-item">My Tickets</li>
+                <li class="aside_list-item">User Profile</li>
+            </ul>
+        </aside>
         <main class="main">
+
+
+            
             <div class="main_overview">
                 <div class="overview_card">
-                  <div class="overview_card-info">Create Tickets</div>
-                  <div class="overview_card-icon"></div>
+                    <div class="overview_card-info">Create Tickets</div>
+                    <div class="overview_card-icon"></div>
+                </div>
+            </div>
+            <div class="main_cards">
+
+                <div class="card" id="card1">
+
+                    <div class="dropdown">
+                        <button class="dropbtn">--Select Role/None--</button>
+                        <div class="dropdown-content">
+                          <a href="#">Link 1</a>
+                          <a href="#">Link 2</a>
+                          <a href="#">Link 3</a>
+                        </div>
+                      </div>
+
+
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                      
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">With textarea</span>
+                        </div>
+                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+                </div>
+                <div class="card" id="card2">
+                    <div class="subcard">
+                        <div class="leftItem">Status</div> <div class="rightItem">Open</div>
+                    </div>
+
+                    <div class="subcard">
+                        <div class="leftItem">Due Date</div> <div class="rightItem">Open</div>
+                    </div>
+
+                    <div class="subcard">
+                        <div class="leftItem">Status</div> <div class="rightItem">Open</div> 
+                        <i class="fas fa-plus"></i>
+                    </div>
+            
+                    <!-- TODO: Add a date picker -->
+                    
+                </div>
+
+
+                <div class="card" id="card3">
+                    <div class="subcard">
+                        <div class="leftItem">Priority</div> <div class="rightItem">Open</div>
+                    </div>
+
+                    <div class="subcard">
+                        <!-- TODO ADD TO MYSELF BUTTON -->
+                        <div class="leftItem">Assignee</div> <div class="rightItem">Open</div>
+                    </div>
+
+                    <div class="subcard">
+                        <div class="leftItem">Version</div> <div class="rightItem">Open</div> 
+                        <i class="fas fa-plus"></i>
+                    </div>
+
                 </div>
             </div>
 
-
-        <!-- <div class="main_cards" id="mainCardLeft">
-            <div class="card">
-
-             
-               
-                  <div class="dropdown">
-                    <button class="dropbtn">--Select Role/None--</button>
-                    <div class="dropdown-content">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a>
-                    </div>
-                  </div>
-                     -->
-                  <!-- TODO ADD PADDING -->
-                  <!-- <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                  </div>
-                  
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">With textarea</span>
-                    </div>
-                    <textarea class="form-control" aria-label="With textarea"></textarea>
-                  </div>
-
-                 
-                
-            </div> -->
-
-
-            <div class="main_cards">
-                <div class="card" id="card1">Card1</div>
-                <div class="card" id="card2">Card2</div>
-                <div class="card" id="card3">Card3</div>
-                
-              </div>
-
-
+            <button class="btn btn-success" id="add">Add Ticket</button>
             <!-- <div class="card" id="mainCardRight">Card</div> -->
-            
-          </div>
-    
+
+    </div>
+
     </main>
     <footer class="footer">
-      <div class="footer_copyright">&copy;2021</div>
-      <div class="footer_byline">Made with &hearts;</div>
+        <div class="footer_copyright">&copy;2021</div>
+        <div class="footer_byline">Made with &hearts;</div>
     </footer>
-  </div>
+    </div>
 
-  <script defer src="../JS/userHome.js"></script>
-  <script defer src="../JS/aside.js"></script>
+
+    
+    <script defer src="../JS/userHome.js"></script>
+    <script defer src="../JS/aside.js"></script>
+    <script defer src="../JS/createTicket.js"></script>
+
+    
 </body>
 
 </html>
