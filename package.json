@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/JMccalip95/Bug-Tracker#readme",
   "dependencies": {
-    "firebase": "^8.9.1"
+    "firebase": "^8.9.1",
+    "firebase-admin": "^9.11.0"
   }
 }
