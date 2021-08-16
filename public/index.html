@@ -1,86 +1,97 @@
+<!-- Remember that each time you add a HTML page, it must be updated in aside array list in aside.js -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firebase Basics</title>
-
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyBNRFfYg12CG-c5NJlTN0uTwp31NGe3P08",
-
-    authDomain: "bug-tracker-e4401.firebaseapp.com",
-
-    databaseURL: "https://bug-tracker-e4401-default-rtdb.firebaseio.com",
-
-    projectId: "bug-tracker-e4401",
-
-    storageBucket: "bug-tracker-e4401.appspot.com",
-
-    messagingSenderId: "180501724640",
-
-    appId: "1:180501724640:web:86dd3220fff7fd8a837f85",
-
-    measurementId: "G-XHC9FRL0M8"
-
-    };
-    firebase.initializeApp(firebaseConfig);
-  </script>
-
-  <script src="../JS/indexScript.js" defer></script>
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
-    integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
-    crossorigin="anonymous"></script>
-
-
+  <title>Bug Tracker: Login</title>
 </head>
-
 <body>
 
-  <h1>My Awesome App 🔥</h1>
-
-  <section id="whenSignedOut">
-
-    <button id="signInBtn" class="btn btn-primary">Sign in with Google</button>
-
-  </section>
-
-  <section id="whenSignedIn" hidden="true">
-
-    <div id="userDetails"></div>
-
-    <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
-
-  </section>
-
-  <hr>
-
-  <section>
-
-    <h2>My Firestore Things</h2>
-
-    <ul id="thingsList">
-
-    </ul>
-
-    <button id="createThing" class="btn btn-success">Create Random Thing</button>
-
-  </section>
+  <h2>Login TODO 22</h2>
+<button class="btn btn-success" id="DashHome">DashHome</button>
+<script defer src="../public/JS/indexScript.js"></script>
 
 
 
+<div class="grid-container">
+    <div class="menu-icon">
+      <strong> &#9776;</strong>
+    </div>
+    <header class="header">
+      <div class="header_search">Search...</div>
+      <div class="header_avatar">Logout</div>
+    </header>
+    <aside class="aside">
+      <div class="aside_close-icon">
+        <strong>&times;</strong>
+      </div>
+      <ul class="aside_list">
+        <li class="aside_list-item">User Login</li>
+        <li class="aside_list-item">Dashboard Home</li>
+        <li class="aside_list-item">Manage Role</li>
+        <li class="aside_list-item">My Projects</li>
+        <li class="aside_list-item">Manage Users</li>
+        <li class="aside_list-item">My Tickets</li>
+        <li class="aside_list-item">User Profile</li>
+      </ul>
+    </aside>
+  
+    <main class="main">
+        <button class="btn btn-success" id="loadProjectTickets">Tickets for project X</button>
+        <button class="btn btn-success" id="createNewTicket">Create New Ticket</button>
+      <div class="main_cards">
+        <div class="card">Card</div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer_copyright">&copy;2021</div>
+      <div class="footer_byline">Made with &hearts;</div>
+    </footer>
+  </div>
+
+  
+
+  <script defer src="../JS/userHome.js"></script>
+  <script defer src="../public/JS/aside.js"></script>
+  <script defer src="../public/JS/myProjects.js"></script>
+
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  // var firebaseConfig = {
+  //   apiKey: "AIzaSyC_WJaKKVWuUfx-LFw4Y5EZaHXDUe74XEc",
+  //   authDomain: "bug-tracker-e6006.firebaseapp.com",
+  //   projectId: "bug-tracker-e6006",
+  //   storageBucket: "bug-tracker-e6006.appspot.com",
+  //   messagingSenderId: "551171540691",
+  //   appId: "1:551171540691:web:f2ed9dd6fe17be16087626",
+  //   measurementId: "G-CHWE3GTHH7"
+  // };
+  // // Initialize Firebase
+  // firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
+</script>
+
+<script data-main='JS/main.js' defer src="../public/JS/require.js"></script>
+
+<script>
+  require(['main'], function(){
+
+  });
+  </script>
 </body>
-
 </html>

@@ -1,0 +1,4 @@
+requirejs.main({
+    baseUrl: 'JS'
+    
+})
