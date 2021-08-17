@@ -4,7 +4,8 @@ it look like planned layout from prevoius idea -->
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bug Tracker: home</title>
@@ -17,7 +18,7 @@ it look like planned layout from prevoius idea -->
 </head>
 
 <body>
-    <!-- So the general idea is that we can have 
+  <!-- So the general idea is that we can have 
     how many many projects: 1,2, 20, whatever
     but for each of these projects, there will be bugs
     and issues, so there will be a "details" button 
@@ -47,12 +48,26 @@ it look like planned layout from prevoius idea -->
         <li class="aside_list-item">User Profile</li>
       </ul>
     </aside>
-  
+
     <main class="main">
-        <button class="btn btn-success" id="loadProjectTickets">Tickets for project X</button>
-        <button class="btn btn-success" id="createNewTicket">Create New Ticket</button>
+      <button class="btn btn-success" id="loadProjectTickets">Tickets for project X</button>
+      <button class="btn btn-success" id="createNewTicket">Create New Ticket</button>
       <div class="main_cards">
-        <div class="card">Card</div>
+        <div class="card">
+
+          <div class="card" id="topCard">
+            <h2>Your Projects:</h2>
+            <hr>
+
+            <h5>Project Name</h3>
+              <h5>Description</h5>
+          </div>
+
+        </div>
+
+
+
+
       </div>
     </main>
     <footer class="footer">

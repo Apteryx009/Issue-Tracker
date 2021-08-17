@@ -1,11 +1,22 @@
+
+
+
+
+
+
+
+
+
+
+
 //Used to greet user
 let userAction = document.querySelector('#DashHome')
-console.log(userAction);
+//console.log(userAction);
 
 userAction.addEventListener('click', loadPage)
 
 function loadPage(e){
-    window.location.href = "../HTML/userHome.html";
+    window.location.href = "Bug-Tracker/HTML/userHome.html";
 }
 
 
@@ -14,7 +25,7 @@ function loadPage(e){
 
 const auth = firebase.auth();
 
-console.log(firebase);
+//console.log(firebase);
 
 const whenSignedIn = document.getElementById('whenSignedIn');
 const whenSignedOut = document.getElementById('whenSignedOut');
@@ -26,6 +37,7 @@ const signOutBtn = document.getElementById('signOutBtn');
 
 const userDetails = document.getElementById('userDetails');
 
+const errorDetails = document.getElementById('error_output')
 
 //
 const txtEmail = document.getElementById('email');
@@ -34,24 +46,38 @@ const txtPass = document.getElementById('password');
 
 
 
-//Should be correct
 const provider = new firebase.auth.EmailAuthProvider();
 
 //Might not work:
 //signInBtn.onclick = () => auth.signInWithPopup(provider);
 
 signInBtn.addEventListener('click', e=> {
+
+    //Clear Error field:
+    errorDetails.innerText = "";
+
     const email = txtEmail.value;
     const pass = txtPass.value;
 
     //console.log(email);
     //console.log(pass);
 
+    console.log('hola');
+
     const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
+    promise.catch(e => errorDetails.innerText = e.message);
+
+    // promise.catch(e => console.log(e.message));
+
+   
+    
+    
+  
 });
 
 signUpBtn.addEventListener('click', e=> {
+
+    errorDetails.innerText = "";
     const email = txtEmail.value;
     const pass = txtPass.value;
 
@@ -66,7 +92,7 @@ signOutBtn.addEventListener('click', e => {
     auth.signOut();
 });
 
-//signOutBtn.onclick = () => auth.signOut();
+
 
 
 
