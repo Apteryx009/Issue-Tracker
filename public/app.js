@@ -8,7 +8,6 @@
 
 
 
-
 //Used to greet user
 let userAction = document.querySelector('#DashHome')
 //console.log(userAction);
@@ -24,6 +23,7 @@ function loadPage(e){
 ///// User Authentication /////
 
 const auth = firebase.auth();
+const db = firebase.firestore();
 
 //console.log(firebase);
 
@@ -84,9 +84,25 @@ signUpBtn.addEventListener('click', e=> {
     //console.log(email);
     //console.log(pass);
 
-    const promise = auth.createUserWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
+    const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred =>{
+        return db.collection('users').doc(cred.user.uid).set({
+            bio: 'a'
+            
+        }).then(() => {
+        //This will be called AFTER the catach below
+        alert('test');
+        });
+        
+          
+    })
+    promise.catch(e => errorDetails.innerText = e.message); 
+    alert('Good');
 });
+
+
+
+
+
 
 signOutBtn.addEventListener('click', e => {
     auth.signOut();
