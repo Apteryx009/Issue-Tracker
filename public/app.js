@@ -1,3 +1,4 @@
+//
 
 
 
@@ -64,16 +65,44 @@ signInBtn.addEventListener('click', e=> {
 
     console.log('hola');
 
-    const promise = auth.signInWithEmailAndPassword(email, pass);
+  
+    //IK this looks odd, but it runs perfectly and gives zero bugs
+        const promise = auth.signInWithEmailAndPassword(email, pass).then(cred =>{
+            return db.collection('users').doc(cred.user.uid).set({
+                //bio: 'a'
+                
+            }).then(() => {
+            //This code below will be called AFTER the catach below
+            localStorage.setItem('userUID', JSON.stringify(cred.user.uid));
+    
+            });
     promise.catch(e => errorDetails.innerText = e.message);
 
     // promise.catch(e => console.log(e.message));
 
-   
+        
     
     
   
 });
+
+
+// function saveToFile(userId){
+
+//     //If error, prevents data from being saved
+//     const finished = (error) => {
+//         if(error){
+//             console.error(error);
+//             return;
+//         }
+//     }
+
+//    // const fs = require('fs');
+//     //const jsonData = JSON.stringify(userId);
+//     alert(userId);
+//     //fs.writeFile('User/user.json', jsonData, finished)
+// }
+
 
 signUpBtn.addEventListener('click', e=> {
 
@@ -89,11 +118,12 @@ signUpBtn.addEventListener('click', e=> {
             bio: 'a'
             
         }).then(() => {
-        //This will be called AFTER the catach below
-        alert('test');
+        //This code below will be called AFTER the catach below
+        localStorage.setItem('userUID', JSON.stringify(cred.user.uid));
+
         });
         
-          
+        
     })
     promise.catch(e => errorDetails.innerText = e.message); 
     alert('Good');
@@ -105,9 +135,9 @@ signUpBtn.addEventListener('click', e=> {
 
 
 signOutBtn.addEventListener('click', e => {
+    localStorage.removeItem('userUID');
     auth.signOut();
 });
-
 
 
 
@@ -130,3 +160,5 @@ auth.onAuthStateChanged(firebaseUser => {
     }
 });
 
+//Why
+})
