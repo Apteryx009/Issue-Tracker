@@ -4,7 +4,7 @@ let userCreateTicket = document.querySelector('#createNewTicket')
 
 
 let testData = document.querySelector('#testData')
-let list_sub2 = document.querySelector('list-sub2')
+
 
 
 userAction.addEventListener('click', loadPage)
@@ -46,13 +46,3 @@ db.collection("users")
 //     testData.innerHTML = html;
 // })
 
-function cssHide(){
-    //Get size of user screen
-    var h = parseInt(window.innerHeight);
-    var w = parseInt(window.innerWidth);
-
-    //If mobile
-    if (w < 750){
-        list_sub2.setAttribute("hidden","");
-    }
-}

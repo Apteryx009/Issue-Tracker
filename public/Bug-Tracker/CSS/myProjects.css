@@ -69,13 +69,13 @@
 .UserProjectsContainer{
   
   display: flex;
-  justify-content:flex-start;
+  justify-content:center;
   
   
 }
 
   .list-sub1{
-    width: 30%;
+    width: 50%;
     padding-top: 0rem;
     padding-left: 3rem;
    
@@ -86,18 +86,38 @@
     padding-top: 0rem;
     padding-left: 3rem;
   }
+
+  .list-sub3{
+    width: 30%;
+    padding-top: 0rem;
+    padding-left: 3rem;
+  }
+
+.list-group-item{
+  height: 7rem;
+  padding-left: 7rem;
+  padding-right: 7rem;
+  margin-top: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 }
 
 
 @media only screen and (max-width: 749px){
 
 
-.list-sub1, .list-sub2{
+.listSub1, .list-sub2{
   padding: 2rem;
 }
 
-.list-sub2{
+.listSub2{
   visibility:hidden;
 }
+
+.listSub3{
+  visibility:hidden;
+ }
 
 }
