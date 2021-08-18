@@ -34,7 +34,70 @@
     
   }
 
-  #topCard{
-    display: inline-block;
-    background-color: blueviolet;
+  body{
+    font-size: small;
   }
+
+  .topCard{
+    
+    display: flex;
+    background-color: blueviolet;
+    width: 7rem;
+  }
+
+
+  #ProjectHeader{
+    border: none;
+  }
+
+
+
+
+
+ .d-flex {
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  p {
+    background-color: red;
+  }
+
+
+  @media only screen and (min-width: 750px) {
+.UserProjectsContainer{
+  
+  display: flex;
+  justify-content:flex-start;
+  
+  
+}
+
+  .list-sub1{
+    width: 30%;
+    padding-top: 0rem;
+    padding-left: 3rem;
+   
+  }
+
+  .list-sub2{
+    width: 30%;
+    padding-top: 0rem;
+    padding-left: 3rem;
+  }
+}
+
+
+@media only screen and (max-width: 749px){
+
+
+.list-sub1, .list-sub2{
+  padding: 2rem;
+}
+
+.list-sub2{
+  visibility:hidden;
+}
+
+}

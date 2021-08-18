@@ -4,6 +4,7 @@ let userCreateTicket = document.querySelector('#createNewTicket')
 
 
 let testData = document.querySelector('#testData')
+let list_sub2 = document.querySelector('list-sub2')
 
 
 userAction.addEventListener('click', loadPage)
@@ -21,14 +22,37 @@ function loadPage2(e){
 
 
 const db = firebase.firestore();
-const setup = (user) => {
-    db.collection('users').document(user.uid).get().then(doc => {
-        const html = `
-            <div>Logged in as ${user.email}</div>
-            <div>${doc.data().bio}
+const userUID = localStorage.getItem('userUID');
 
-        `;
+db.collection("users")
+    .onSnapshot(function(querySnapshot) {
+        let users = [];
+        querySnapshot.forEach(function(doc) {
+            users.push(doc.data());
+        }); 
+        console.log(users[1].bio);     
+    });
 
-        testData.innerHTML = html;
-    })
+
+
+
+// db.collection('users').doc(userUID).get().then((doc) =>{
+//     const html =
+//     `
+//         <div>Your data is: ${doc.data().bio} </div>
+//     `;
+
+//     alert(doc.data().bio);
+//     testData.innerHTML = html;
+// })
+
+function cssHide(){
+    //Get size of user screen
+    var h = parseInt(window.innerHeight);
+    var w = parseInt(window.innerWidth);
+
+    //If mobile
+    if (w < 750){
+        list_sub2.setAttribute("hidden","");
+    }
 }
