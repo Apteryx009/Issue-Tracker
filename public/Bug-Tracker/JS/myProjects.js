@@ -30,9 +30,22 @@ db.collection("users")
         querySnapshot.forEach(function(doc) {
             users.push(doc.data());
         }); 
-        console.log(users[1].bio);     
+       // console.log(users);     
     });
 
+    var data = db.doc('/users/rk8B6Z18JghZWybTt13Ubm0cbn82/projects/projectDetails');
+
+    data.get().then((doc) => {
+        if (doc.exists) {
+            var certainField = doc.data();
+            console.log("Document data:", certainField.name);
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
 
 
 
