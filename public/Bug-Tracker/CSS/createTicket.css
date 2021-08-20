@@ -1,3 +1,5 @@
+
+
 .overview_card-info {
    
     margin-left: 25%;
@@ -122,6 +124,10 @@
     display: block;
   }
   
+  .dropdown-content{
+    grid-row-end: 1;
+   }
+
   .dropdown-content a:hover {background-color: #ddd;}
   
   .dropdown:hover .dropdown-content {display: block;}
