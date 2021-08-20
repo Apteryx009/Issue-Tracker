@@ -106,28 +106,7 @@ signInBtn.addEventListener('click', e => {
 
 
     signUpBtn.addEventListener('click', e => {
-
-        errorDetails.innerText = "";
-        const email = txtEmail.value;
-        const pass = txtPass.value;
-
-        //console.log(email);
-        //console.log(pass);
-
-        const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
-            return db.collection('users').doc(cred.user.uid).set({
-                bio: 'a'
-
-            }).then(() => {
-                //This code below will be called AFTER the catach below
-                localStorage.setItem('userUID', JSON.stringify(cred.user.uid));
-
-            });
-
-
-        })
-        promise.catch(e => errorDetails.innerText = e.message);
-        //alert('Good');
+        window.location.href = "Bug-Tracker/HTML/signUp.html";
     });
 
 

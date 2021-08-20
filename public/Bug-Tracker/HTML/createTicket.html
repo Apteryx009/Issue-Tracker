@@ -128,9 +128,20 @@
                     <hr>
 
                     <div class="subcard">
-                        <div class="leftItem">Status</div>
-                        <div class="rightItem">Open</div>
-                        <i class="fas fa-plus"></i>
+                        <div class="leftItem">Category</div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Select</button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                              <li><a class="dropdown-item" href="#">Front End</a></li>
+                              <li><a class="dropdown-item" href="#">Back End</a></li>
+                              <li><a class="dropdown-item" href="#">Design</a></li>
+                            
+                            
+                            </ul>
+                          </div>
+                          
+                       
                     </div>
 
                     <hr>
@@ -142,7 +153,18 @@
                 <div class="card" id="card3">
                     <div class="subcard">
                         <div class="leftItem">Priority</div>
-                        <div class="rightItem">Open</div>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                --Low--
+                            </a>
+    
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Low</a></li>
+                                <li><a class="dropdown-item" href="#">Medium</a></li>
+                                <li><a class="dropdown-item" href="#">High</a></li>
+                            </ul>
+                        </div>
                     </div>
 
                     <hr>
