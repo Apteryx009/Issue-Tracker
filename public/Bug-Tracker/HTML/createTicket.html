@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create New Ticket</title>
@@ -18,15 +18,19 @@
 
     <link rel="stylesheet" href="../CSS/createTicket.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
 
 
 </head>
 
 <body>
 
-   
-    
+
+
 
     <!-- So the general idea is that we can have 
     how many many projects: 1,2, 20, whatever
@@ -60,7 +64,7 @@
         <main class="main">
 
 
-            
+
             <div class="main_overview">
                 <div class="overview_card">
                     <div class="overview_card-info">Create Tickets</div>
@@ -72,68 +76,94 @@
                 <div class="card" id="card1">
 
                     <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                          --Task--
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            --Task--
                         </a>
-                      
+
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <li><a class="dropdown-item" href="#">Task</a></li>
-                          <li><a class="dropdown-item" href="#">Bug</a></li>
-                          <li><a class="dropdown-item" href="#">Other</a></li>
+                            <li><a class="dropdown-item" href="#">Task</a></li>
+                            <li><a class="dropdown-item" href="#">Bug</a></li>
+                            <li><a class="dropdown-item" href="#">Other</a></li>
                         </ul>
-                      </div>
+                    </div>
 
 
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Subject</span>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Subject</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                      </div>
-                      
+                        <input type="text" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
 
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Description</span>
                         </div>
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                        <textarea class="form-control" id="Description" aria-label="With textarea"></textarea>
                     </div>
                 </div>
+
+
                 <div class="card" id="card2">
                     <div class="subcard">
-                        <div class="leftItem">Status</div> <div class="rightItem">Open</div>
+                        <div class="leftItem">Status</div>
+                        <div class="rightItem">Open</div>
                     </div>
+                    <hr>
 
                     <div class="subcard">
-                        <div class="leftItem">Due Date</div> <div class="rightItem">Open</div>
+                        <div class="leftItem">Due Date</div>
+                        <div class="row">
+                            <div class="col">
+                                <input data-date-format="dd/mm/yyyy" id="datepicker">
+                            </div>
+                        </div>
                     </div>
 
+                  
+
+                    <hr>
+
                     <div class="subcard">
-                        <div class="leftItem">Status</div> <div class="rightItem">Open</div> 
+                        <div class="leftItem">Status</div>
+                        <div class="rightItem">Open</div>
                         <i class="fas fa-plus"></i>
                     </div>
-            
+
+                    <hr>
                     <!-- TODO: Add a date picker -->
-                    
+
                 </div>
 
 
                 <div class="card" id="card3">
                     <div class="subcard">
-                        <div class="leftItem">Priority</div> <div class="rightItem">Open</div>
+                        <div class="leftItem">Priority</div>
+                        <div class="rightItem">Open</div>
                     </div>
+
+                    <hr>
 
                     <div class="subcard">
                         <!-- TODO ADD TO MYSELF BUTTON -->
-                        <div class="leftItem">Assignee</div> <div class="rightItem">Open</div>
+                        <div class="leftItem">Assignee</div>
+                        <div class="rightItem">Open</div>
                     </div>
 
+                    <hr>
+
                     <div class="subcard">
-                        <div class="leftItem">Version</div> <div class="rightItem">Open</div> 
+                        <div class="leftItem">Version</div>
+                        <div class="rightItem">Open</div>
                         <i class="fas fa-plus"></i>
                     </div>
 
+                    <hr>
                 </div>
+
             </div>
 
             <button class="btn btn-success" id="add">Add Ticket</button>
@@ -149,12 +179,36 @@
     </div>
 
 
+    <style type="text/css">
+        /* // solution 1: */
+        .datepicker {
+            font-size: 0.875em;
+        }
+
+        /* solution 2: the original datepicker use 20px so replace with the following:*/
+
+        .datepicker td,
+        .datepicker th {
+            width: 1.5em;
+            height: 1.5em;
+        }
+    </style>
+    <script type="text/javascript">
+        $('#datepicker').datepicker({
+            weekStart: 1,
+            daysOfWeekHighlighted: "6,0",
+            autoclose: true,
+            todayHighlight: true,
+        });
+        $('#datepicker').datepicker("setDate", new Date());
+    </script>
+
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer src="../JS/userHome.js"></script>
     <script defer src="../JS/aside.js"></script>
     <script defer src="../JS/createTicket.js"></script>
 
-    
+
 </body>
 
 </html>
