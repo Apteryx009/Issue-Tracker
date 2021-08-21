@@ -69,7 +69,7 @@ signInBtn.addEventListener('click', e => {
     //IK this looks odd, but it runs perfectly and gives zero bugs
     const promise = auth.signInWithEmailAndPassword(email, pass).then(cred => {
         return db.collection('users').doc(cred.user.uid).set({
-            bio: 'c'
+            // name: ''
 
         }).then(() => {
             //This code below will be called AFTER the catach below

@@ -5,6 +5,9 @@ const userDetails = document.getElementById('userDetails');
 const signOutBtn = document.getElementById('signOutBtn');
 const errorDetails = document.getElementById('error_output')
 
+//Get name of user
+const name01 = document.getElementById('name')
+
 //
 const txtEmail = document.getElementById('email');
 const txtPass = document.getElementById('password');
@@ -25,7 +28,7 @@ signUpBtn.addEventListener('click', e => {
 
     const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
         return db.collection('users').doc(cred.user.uid).set({
-            bio: 'a'
+            name: name01.value
 
         }).then(() => {
             //This code below will be called AFTER the catach below
