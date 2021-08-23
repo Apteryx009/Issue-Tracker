@@ -49,6 +49,7 @@
     integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
     crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="../CSS/signUp.css">
 
 </head>
 
@@ -85,7 +86,7 @@
 
 <div class="mb-3">
     <label for="nameInput" class="form-label">Name</label>
-    <input type="name" class="form-control" id="name" placeholder="name">
+    <input type="name" class="form-control" id="name" placeholder="name" required id="userName">
   </div>
 <div class="mb-3">
   <label for="emailInput" class="form-label">Email address</label>
@@ -106,7 +107,13 @@
 
 <hr>
 
+ <!-- Use a button to open the snackbar -->
+ <button onclick="showAlert()">Show Snackbar</button>
 
+ <!-- The actual snackbar -->
+ <!-- If user sumbitted all details correctly, say logged in
+      If user didn't submit say the nanme, prmot them for name. -->
+ <div id="snackbar"></div> 
 
 
 </body>

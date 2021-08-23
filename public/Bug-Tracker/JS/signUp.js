@@ -5,19 +5,23 @@ const userDetails = document.getElementById('userDetails');
 const signOutBtn = document.getElementById('signOutBtn');
 const errorDetails = document.getElementById('error_output')
 
+
 //Get name of user
 const name01 = document.getElementById('name')
+
+//Popup
+const snackbar = document.getElementById('snackbar')
 
 //
 const txtEmail = document.getElementById('email');
 const txtPass = document.getElementById('password');
 
-alert('sd')
+//alert('sd')
 const auth = firebase.auth();
 const db = firebase.firestore();
 
 signUpBtn.addEventListener('click', e => {
-
+    const userName = document.getElementById('name');
     errorDetails.innerText = "";
     const email = txtEmail.value;
     console.log(txtEmail.value) //EMPTY string?
@@ -26,20 +30,40 @@ signUpBtn.addEventListener('click', e => {
     //console.log(email);
     //console.log(pass);
 
-    const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
-        return db.collection('users').doc(cred.user.uid).set({
-            name: name01.value
+    //To check if user entered name
+    userName.addEventListener('input', () => {
+        userName.setCustomValidity('');
+        userName.checkValidity();
+        console.log(userName.checkValidity());
 
-        }).then(() => {
-            //This code below will be called AFTER the catach below
-            localStorage.setItem('userUID', JSON.stringify(cred.user.uid));
+    });
 
-        });
-
-
+    userName.addEventListener('invalid', () => {
+        userName.setCustomValidity('Please fill in your Name.');
     })
-    promise.catch(e => errorDetails.innerText = e.message);
-    //alert('Good');
+
+
+    //If user did actully enter a name
+    if (userName.checkValidity() == true) {
+        const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
+            return db.collection('users').doc(cred.user.uid).set({
+                name: name01.value
+
+            }).then(() => {
+                //This code below will be called AFTER the catach below
+                localStorage.setItem('userUID', JSON.stringify(cred.user.uid));
+
+            });
+
+
+        })
+        promise.catch(e => errorDetails.innerText = e.message);
+    } else{
+        snackbar.innerText = "Please enter a name";
+        showAlert()
+    }
+
+    
 });
 
 
@@ -57,12 +81,17 @@ signOutBtn.addEventListener('click', e => {
 
 
 auth.onAuthStateChanged(firebaseUser => {
+    //This if might not be nessary
+
+
     if (firebaseUser) {
         // signed in
         console.log(firebaseUser);
         whenSignedIn.hidden = false;
         whenSignedOut.hidden = true;
-        whenSignedIn2.hidden = false; whenSignedIn2.innerHTML = "Sucess!";
+        // whenSignedIn2.hidden = false; whenSignedIn2.innerHTML = "Sucess!";
+        snackbar.innerText = "Sucess! You are logged in!";
+        showAlert()
         // userDetails.innerHTML = `<h3>Hello ${user.displayName}!</h3> <p>User ID: ${user.uid}</p>`;
     } else {
         // not signed in
@@ -71,8 +100,21 @@ auth.onAuthStateChanged(firebaseUser => {
         whenSignedIn.hidden = true;
         whenSignedOut.hidden = false;
         userDetails.innerHTML = '';
+
     }
+
+
 });
 
 
 //For the alert
+function showAlert() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
