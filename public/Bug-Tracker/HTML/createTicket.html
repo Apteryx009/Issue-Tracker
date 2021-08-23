@@ -16,6 +16,32 @@
     <link rel="stylesheet" href="../CSS/aside.css">
     <link rel="stylesheet" href="../External/css/all.css">
 
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js" ></script>
+
+
+
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBNRFfYg12CG-c5NJlTN0uTwp31NGe3P08",
+
+    authDomain: "bug-tracker-e4401.firebaseapp.com",
+
+    databaseURL: "https://bug-tracker-e4401-default-rtdb.firebaseio.com",
+
+    projectId: "bug-tracker-e4401",
+
+    storageBucket: "bug-tracker-e4401.appspot.com",
+
+    messagingSenderId: "180501724640",
+
+    appId: "1:180501724640:web:86dd3220fff7fd8a837f85",
+
+    measurementId: "G-XHC9FRL0M8"
+
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  
     <link rel="stylesheet" href="../CSS/createTicket.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
@@ -171,16 +197,25 @@
 
                     <div class="subcard">
                         <!-- TODO ADD TO MYSELF BUTTON -->
-                        <div class="leftItem">Assignee</div>
-                        <div class="rightItem">Open</div>
+                        <div class="dropdown">
+                            <button onclick="assignee()" class="dropbtn">Dropdown</button>
+                            <div id="myDropdown" class="dropdown-content">
+                              <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                              <!-- TODO add some time of while loop such that name of all users are displayed -->
+                              <a href="#about">About</a>
+                         
+                            </div>
+                            <ul id="user-list"></ul>
+                          </div> 
+                          
                     </div>
 
                     <hr>
 
                     <div class="subcard">
-                        <div class="leftItem">Version</div>
-                        <div class="rightItem">Open</div>
-                        <i class="fas fa-plus"></i>
+                        <div class="leftItem">Date   <div id="date"></div></div>
+                        
+                    
                     </div>
 
                     <hr>
@@ -229,7 +264,7 @@
     <script defer src="../JS/userHome.js"></script>
     <script defer src="../JS/aside.js"></script>
     <script defer src="../JS/createTicket.js"></script>
-
+    
 
 </body>
 
