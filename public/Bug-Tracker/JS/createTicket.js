@@ -37,6 +37,7 @@ db.collection('users').get().then(function (querySnapshot) {
     });
 });
 
+//Displays name of all users
 function renderDoc(doc) {
     let a = document.createElement('a');
     //In case we need to ref it later  

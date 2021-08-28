@@ -43,7 +43,8 @@ signUpBtn.addEventListener('click', e => {
     })
 
 
-    //If user did actully enter a name
+    //If user did actully enter a name, this 
+    //wil set a new field in our firebase database assioated with user
     if (userName.checkValidity() == true) {
         const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
             return db.collection('users').doc(cred.user.uid).set({
