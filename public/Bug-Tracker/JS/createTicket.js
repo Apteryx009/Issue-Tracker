@@ -28,7 +28,7 @@ const db = firebase.firestore();
 //Get names of all uses and append (create new <a> tags) into the dropdown we created 
 // retrieve a collection
 
-const userList = document.querySelector('#user-list');
+//const userList = document.querySelector('#user-list');
 
 //Filter through all user docs
 db.collection('users').get().then(function (querySnapshot) {
@@ -54,6 +54,31 @@ function renderDoc(doc) {
 }
 
 
+//Update drop down with name of all projects
+db.collection('projects').get().then(function (querySnapshot) {
+    querySnapshot.docs.forEach(function (doc) {
+        renderDoc2(doc)
+    });
+});
+
+//Displays name of all projects
+function renderDoc2(doc) {
+    let option = document.createElement('option');
+    //In case we need to ref it later  
+    option.setAttribute('data-id', doc.id);
+
+    //Fill values with names of users
+    option.setAttribute('value', doc.id); 
+    //Fill drop down menu with name of users
+    option.textContent = doc.id;
+
+    //Update UI
+    const dropDownList = document.querySelector('#projectNames');
+    dropDownList.appendChild(option);
+}
+
+
+
 //Update UI and store data of 'Priority' of ticket
 function showData() {
    // var theSelect = demoForm.demoSelect;
@@ -74,6 +99,7 @@ var priority
 var userDate
 var description
 var subject 
+var ProjectName
 
 //This function gathers all data user has selected 
 //or entered and send it to firebase database
@@ -86,7 +112,7 @@ function collectDataTicket(){
     userDate = document.getElementById("datepicker");
     description = document.getElementById("description"); 
     subject = document.getElementById("subject"); 
-    
+    ProjectName = document.getElementById("projectNames"); 
 
     //Checking if user inputted all data needed
     if(nameUserSubmitted.value != null && priority.value != "zilch" && ticketType.value != "zilch" 
@@ -112,7 +138,7 @@ function collectDataTicket(){
 const auth = firebase.auth();
 
 function addUserInputToDatabase(){
-            return db.collection('projects').doc('test').set({
+            return db.collection('projects').doc('projectName').set({
                 value: 'b value'
 
             }).then(() => {

@@ -93,6 +93,12 @@
     /* padding-left: 3rem; */
   }
 
+  .listSub4{
+    width: 30%;
+    padding-top: 0rem;
+    /* padding-left: 3rem; */
+  }
+
 .list-group-item{
   height: 7rem;
   /* padding-left: 7rem;
@@ -114,7 +120,7 @@
   overflow: hidden;  /* prevents extra lines from being visible */
 }
 
-.listSub2 a, .listSub3 a {
+.listSub2 a, .listSub3 a, .listSub4 a {
   line-height: 3em;
   height: 6em;   
   width: 25rem;    /* height is 2x line-height, so two lines will display */
@@ -123,11 +129,18 @@
 
 }
 
+.listSub4 button {
+  line-height: 3em;
+  height: 3em;   
+  width: 25rem;    /* height is 2x line-height, so two lines will display */
+  overflow: hidden;  /* prevents extra lines from being visible */
+}
+
 
 @media only screen and (max-width: 749px){
 
 
-.listSub1, .list-sub2, .list-sub3{
+.listSub1, .list-sub2, .list-sub3, .list-sub4{
   padding: 2rem;
 }
 
@@ -140,6 +153,10 @@
 }
 
 .listSub3{
+  visibility:hidden;
+ }
+
+ .listSub4{
   visibility:hidden;
  }
 
