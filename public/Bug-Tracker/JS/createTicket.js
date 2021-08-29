@@ -114,12 +114,15 @@ function collectDataTicket(){
     subject = document.getElementById("subject"); 
     ProjectName = document.getElementById("projectNames"); 
 
+    console.log(ProjectName.value)
+
     //Checking if user inputted all data needed
     if(nameUserSubmitted.value != null && priority.value != "zilch" && ticketType.value != "zilch" 
       && Category.value != "zilch" && userDate.value != "" 
          && description.value != "" && description.value != null && subject.value != ""){
             snackbar.innerText = 'Ticket successfully added!';
             showAlert();
+            saveToDb();
             setTimeout(function() {location.reload();}, 3000);
             
     }
@@ -132,6 +135,31 @@ function collectDataTicket(){
     
     addUserInputToDatabase();
     //TODO Add banner that tells user that ticket was succesuflly addded and refresh page
+}
+
+//Holds size of how many tickets there are
+let size01;
+
+//Sizes user inputs to a Ticket document inside firebase
+function saveToDb(){
+    db.collection('projects').doc('projectName').collection('projectTickets').get().then(snap => {
+        size01 = snap.size // will return the collection size
+        localStorage.setItem('numOfTickets', size01);
+      });
+
+
+//Gets number of Tickets storaged in local storage
+let numOfProjectTickets = localStorage.getItem('numOfTickets');
+ let x = numOfProjectTickets.toString();
+
+
+    //   Creates new document with Ticket index as doc name
+    return db.collection('projects').doc('projectName').collection('projectTickets').doc(x).set({
+        value: 'hi'
+
+    }).then(() => {
+
+})
 }
 
 
