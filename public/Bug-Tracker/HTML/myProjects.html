@@ -38,6 +38,13 @@ it look like planned layout from prevoius idea -->
   <link rel="stylesheet" href="../CSS/style.css">
   <link rel="stylesheet" href="../CSS/aside.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"></script>
+  
   <link rel="stylesheet" href="../CSS/myProjects.css">
 
 </head>
@@ -79,9 +86,52 @@ it look like planned layout from prevoius idea -->
     <main class="main">
       <button class="btn btn-success btn-sm" id="loadProjectTickets">Tickets for project X</button>
       <button class="btn btn-success btn-sm" id="createNewTicket">Create New Ticket</button>
+
       <div class="main_cards">
         <div class="card">
 
+
+          <!-- Section where user may create a new project -->
+          <h4>Create new project:</h2>
+
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Project Name</span>
+              </div>
+              <input type="text" class="form-control" id="subject" aria-label="Small"
+                  aria-describedby="inputGroup-sizing-sm">
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Description</span>
+            </div>
+            <textarea class="form-control" id="description" aria-label="With textarea"></textarea>
+        </div>
+
+
+       <div id="askUserIfDueDate">
+        <p>Does this Project have a due date?</p>
+        <div class="dropdown">
+          <form name="userForm">
+              <select name="userForm" id="userFormDueDate" >
+                  <option  onclick="userDueDate()" value="zilch">Select:</option>
+                  <option onclick="userDueDate()" value="Yes">Yes</option>
+                  <option  onclick="userDueDate()" value="No">No</option>
+              </select>
+          </form>
+      </div>
+       
+     
+        
+        <div class="row" id="dueDatePicker" hidden=true>
+            <div class="col">
+                <input data-date-format="dd/mm/yyyy" id="datepicker">
+            </div>
+        </div>
+   
+
+          <hr>
           <h2>Your Projects:</h2>
           <div class="d-flex">
             <p>Project Name</p>
@@ -139,6 +189,31 @@ it look like planned layout from prevoius idea -->
     <div class="footer_byline">Made with &hearts;</div>
   </footer>
   </div>
+
+
+  <style type="text/css">
+    /* // solution 1: */
+    .datepicker {
+        font-size: 0.875em;
+    }
+
+    /* solution 2: the original datepicker use 20px so replace with the following:*/
+
+    .datepicker td,
+    .datepicker th {
+        width: 1.5em;
+        height: 1.5em;
+    }
+</style>
+<script type="text/javascript">
+    $('#datepicker').datepicker({
+        weekStart: 1,
+        daysOfWeekHighlighted: "6,0",
+        autoclose: true,
+        todayHighlight: true,
+    });
+    $('#datepicker').datepicker("setDate", new Date());
+</script>
 
   <script defer src="../JS/userHome.js"></script>
   <script defer src="../JS/aside.js"></script>

@@ -54,6 +54,29 @@ const userUID = localStorage.getItem('userUID');
 
 
 
+function userDueDate(){
+   
+    setTimeout(1000);
+    let dueDate = document.querySelector('#userFormDueDate')
+    let datePicker = document.querySelector('#dueDatePicker')
+    console.log(dueDate.value)
+
+    if(dueDate.value == 'Yes')
+    {
+        datePicker.hidden = false;
+    }
+
+    else{
+        datePicker.hidden = true;
+    }
+      
+    
+}
+
+
+
+
+
 // //dynamically Create and list projects that user has access to
 // var listSub1 = document.querySelector('.listSub1');
 // var projectName = document.createElement('a');
