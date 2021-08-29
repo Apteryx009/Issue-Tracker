@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/aside.css">
     <link rel="stylesheet" href="../External/css/all.css">
+    <link rel="stylesheet" href="../CSS/snackBar.css">
 
     <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js" ></script>
 
@@ -102,16 +103,14 @@
                 <div class="card" id="card1">
 
                     <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            --Task--
-                        </a>
-
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Task</a></li>
-                            <li><a class="dropdown-item" href="#">Bug</a></li>
-                            <li><a class="dropdown-item" href="#">Other</a></li>
-                        </ul>
+                        <form name="userForm">
+                            <select name="userForm" id="userForm" onchange="showData()">
+                                <option value="zilch">Select:</option>
+                                <option value="Task">Task</option>
+                                <option value="Request">Request</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </form>
                     </div>
 
 
@@ -119,7 +118,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Subject</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Small"
+                        <input type="text" class="form-control" id="subject" aria-label="Small"
                             aria-describedby="inputGroup-sizing-sm">
                     </div>
 
@@ -128,7 +127,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Description</span>
                         </div>
-                        <textarea class="form-control" id="Description" aria-label="With textarea"></textarea>
+                        <textarea class="form-control" id="description" aria-label="With textarea"></textarea>
                     </div>
                 </div>
 
@@ -155,17 +154,15 @@
 
                     <div class="subcard">
                         <div class="leftItem">Category</div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Select</button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                              <li><a class="dropdown-item" href="#">Front End</a></li>
-                              <li><a class="dropdown-item" href="#">Back End</a></li>
-                              <li><a class="dropdown-item" href="#">Design</a></li>
-                            
-                            
-                            </ul>
-                          </div>
+                        <form name="userForm">
+                            <select name="userForm" id="userForm2" onchange="showData()">
+                                <option value="zilch">Select:</option>
+                                <option value="Front End">Front End</option>
+                                <option value="Back End">Back End</option>
+                                <option value="Design">Design</option>
+                            </select>
+                        </form>
+                          
                           
                        
                     </div>
@@ -179,18 +176,15 @@
                 <div class="card" id="card3">
                     <div class="subcard">
                         <div class="leftItem">Priority</div>
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                --Low--
-                            </a>
-    
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                               <optoin value="Low"><li><a class="dropdown-item" href="#">Low</a></li></optoin> 
-                                <li><a class="dropdown-item" href="#">Medium</a></li>
-                                <li><a class="dropdown-item" href="#">High</a></li>
-                            </ul>
-                        </div>
+                        
+                        <form name="userForm">
+                            <select name="userForm" id="userForm3" onchange="showData()">
+                                <option value="zilch">Select:</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </form>
                     </div>
 
                     <hr>
@@ -198,22 +192,19 @@
                     <div class="subcard">
                         <!-- TODO ADD TO MYSELF BUTTON -->
                         <div class="dropdown">
-                            <button onclick="assignee()" class="dropbtn">Dropdown</button>
-                            <div id="myDropdown" class="dropdown-content">
-                              <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                              <!-- TODO add some time of while loop such that name of all users are displayed -->
-                              <a href="#about">About</a>
                          
-                            </div>
-                            <ul id="user-list"></ul>
                           </div> 
-                          
+                          <form name="userListNames">
+                            <select name="userForm" id="userFormNames" onchange="showData()">
+                            
+                            </select>
+                            </form>
                           
                     </div>
 
                     <hr>
                     
-                    <div class="subcard">
+                    <div class="subcard a">
                         <div class="leftItem">Date   <div id="date"></div></div>
                         
                     
@@ -224,10 +215,13 @@
 
             </div>
 
-            <button class="btn btn-success" id="add">Add Ticket</button>
+            <button onclick="collectDataTicket()" class="btn btn-success" id="add">Add Ticket</button>
             <!-- <div class="card" id="mainCardRight">Card</div> -->
 
     </div>
+
+    <!-- Show popup banner to user for new ticket creation -->
+
 
     </main>
     <footer class="footer">
@@ -261,12 +255,15 @@
         $('#datepicker').datepicker("setDate", new Date());
     </script>
 
+
+<div id="snackbar"></div> 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer src="../JS/userHome.js"></script>
     <script defer src="../JS/aside.js"></script>
     <script defer src="../JS/createTicket.js"></script>
     
 
+  
 </body>
 
 </html>
