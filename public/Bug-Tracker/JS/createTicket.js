@@ -155,8 +155,14 @@ let numOfProjectTickets = localStorage.getItem('numOfTickets');
 
     //   Creates new document with Ticket index as doc name
     return db.collection('projects').doc('projectName').collection('projectTickets').doc(x).set({
-        value: 'hi'
-
+        assignee: nameUserSubmitted.value,
+        ticketType: ticketType.value,
+        Category: Category.value,
+        priority: priority.value,
+        userDate: userDate.value,
+        description: description.value,
+        subject: subject.value,
+        ProjectName: ProjectName.value
     }).then(() => {
 
 })
