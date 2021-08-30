@@ -63,6 +63,7 @@ db.collection('projects').get().then(function (querySnapshot) {
 
 //Displays name of all projects
 function renderDoc2(doc) {
+   console.log(doc)
     let option = document.createElement('option');
     //In case we need to ref it later  
     option.setAttribute('data-id', doc.id);

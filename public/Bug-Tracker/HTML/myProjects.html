@@ -46,6 +46,7 @@ it look like planned layout from prevoius idea -->
       crossorigin="anonymous"></script>
   
   <link rel="stylesheet" href="../CSS/myProjects.css">
+  <link rel="stylesheet" href="../CSS/snackBar.css">
 
 </head>
 
@@ -98,7 +99,7 @@ it look like planned layout from prevoius idea -->
               <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-sm">Project Name</span>
               </div>
-              <input type="text" class="form-control" id="subject" aria-label="Small"
+              <input type="text" class="form-control" id="projectName01" aria-label="Small"
                   aria-describedby="inputGroup-sizing-sm">
           </div>
 
@@ -130,6 +131,7 @@ it look like planned layout from prevoius idea -->
             </div>
         </div>
    
+        <button onclick="submitNewProject()" class="btn btn-success btn-sm" id="addProject">Add Project</button>
 
           <hr>
           <h2>Your Projects:</h2>
@@ -190,6 +192,7 @@ it look like planned layout from prevoius idea -->
   </footer>
   </div>
 
+  <div id="snackbar"></div> 
 
   <style type="text/css">
     /* // solution 1: */

@@ -1,6 +1,7 @@
 //A test button which will load projectTickets.html at user request
 let userAction = document.querySelector('#loadProjectTickets')
 let userCreateTicket = document.querySelector('#createNewTicket')
+let addProject = document.querySelector('#addProject')
 
 
 let testData = document.querySelector('#testData')
@@ -10,12 +11,14 @@ let testData = document.querySelector('#testData')
 userAction.addEventListener('click', loadPage)
 userCreateTicket.addEventListener('click', loadPage2)
 
-function loadPage(e){
+addProject.addEventListener('click', submitNewProject)
+
+function loadPage(e) {
     console.log('ello chap');
     window.location.href = "../HTML/projectTickets.html";
 }
 
-function loadPage2(e){
+function loadPage2(e) {
     console.log('ello chap2');
     window.location.href = "../HTML/createTicket.html";
 }
@@ -33,48 +36,116 @@ const userUID = localStorage.getItem('userUID');
 //        // console.log(users);     
 //     });
 
-    var data = db.doc('/users/rk8B6Z18JghZWybTt13Ubm0cbn82/projects/projectDetails');
+var data = db.doc('/users/rk8B6Z18JghZWybTt13Ubm0cbn82/projects/projectDetails');
 
 
-    let ourData = document.getElementById('testData')
-    
+let ourData = document.getElementById('testData')
+
 //testing
-    data.get().then((doc) => {
+data.get().then((doc) => {
+    if (doc.exists) {
+        var certainField = doc.data();
+        console.log("Document data:", certainField.name);
+        ourData.innerText = certainField.name;
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch((error) => {
+    console.log("Error getting document:", error);
+});
+
+
+
+function userDueDate() {
+
+    setTimeout(1000);
+    let dueDate = document.querySelector('#userFormDueDate')
+    let datePicker = document.querySelector('#dueDatePicker')
+    //console.log(dueDate.value)
+
+    if (dueDate.value == 'Yes') {
+        datePicker.hidden = false;
+    }
+
+    else {
+        datePicker.hidden = true;
+    }
+}
+
+function submitNewProject() {
+    //console.log('test')
+    //Collect info about new project
+    let projectName01 = document.querySelector('#projectName01').value;
+    let description = document.querySelector('#description')
+    let userFormDueDate = document.querySelector('#datepicker')
+
+    //TODO Add function to make sure user is not overwritting data of already exicting project
+
+    let ifProjectExists;
+
+    var docRef = db.collection("projects").doc(projectName01);
+
+
+
+    docRef.get().then((doc) => {
         if (doc.exists) {
-            var certainField = doc.data();
-            console.log("Document data:", certainField.name);
-            ourData.innerText = certainField.name;
+            snackbar.innerText = "Project Already Exists! Please select a different name.";
+         showAlert()
+            // console.log("Document data:", doc.data());
+            // ifProjectExists = true;
+            // console.log(ifProjectExists)
         } else {
             // doc.data() will be undefined in this case
-            console.log("No such document!");
+            return db.collection('projects').doc(projectName01).collection('projectTickets').doc('discard').set({
+                value: 'discard'
+    
+            }).then(() =>{
+                snackbar.innerText = "New Project Created!";
+                showAlert()
+            });
+
+           
+           
         }
     }).catch((error) => {
         console.log("Error getting document:", error);
     });
 
 
+    //If Document already exists
+    // if (ifProjectExists) {
+    //     //Display banner to user saying they cannot overwrite already existing project
+    //     snackbar.innerText = "Project Already Exists! Please select a different name.";
+    //     showAlert()
+    // }
 
-function userDueDate(){
-   
-    setTimeout(1000);
-    let dueDate = document.querySelector('#userFormDueDate')
-    let datePicker = document.querySelector('#dueDatePicker')
-    console.log(dueDate.value)
+    // else {
+    //     return db.collection('projects').doc(projectName01).collection('projectTickets').doc('discard').set({
+    //         value: 'discard'
 
-    if(dueDate.value == 'Yes')
-    {
-        datePicker.hidden = false;
-    }
+    //     }).then(() => {
+    //         // snackbar.innerText = "New Project Created!";
+    //         // showAlert()
+    //     })
+    // }
 
-    else{
-        datePicker.hidden = true;
-    }
-      
-    
 }
 
 
 
+
+
+function showAlert() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
 
 
 // //dynamically Create and list projects that user has access to
