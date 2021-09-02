@@ -96,6 +96,12 @@ function submitNewProject() {
             // ifProjectExists = true;
             // console.log(ifProjectExists)
         } else {
+
+            //This will fix the project names not showing up in dropdown.
+            db.collection('projects').doc(projectName01).set({
+                state: 'initialized'
+            });
+
             // doc.data() will be undefined in this case
             return db.collection('projects').doc(projectName01).collection('projectTickets').doc('discard').set({
                 value: 'discard'
@@ -111,6 +117,8 @@ function submitNewProject() {
     }).catch((error) => {
         console.log("Error getting document:", error);
     });
+
+   
 
 
     //If Document already exists
