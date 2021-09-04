@@ -44,7 +44,7 @@ function renderDoc(doc) {
     option.setAttribute('data-id', doc.id);
 
     //Fill values with names of users
-    option.setAttribute('value', doc.data().name); 
+    option.setAttribute('value', doc.data().name);
     //Fill drop down menu with name of users
     option.textContent = doc.data().name;
 
@@ -63,18 +63,19 @@ db.collection('projects').get().then(function (querySnapshot) {
 
 //Displays name of all projects
 function renderDoc2(doc) {
-   console.log(doc)
+    console.log(doc)
     let option = document.createElement('option');
     //In case we need to ref it later  
     option.setAttribute('data-id', doc.id);
 
     //Fill values with names of users
-    option.setAttribute('value', doc.id); 
+    option.setAttribute('value', doc.id);
     //Fill drop down menu with name of users
     option.textContent = doc.id;
 
     //Update UI
     const dropDownList = document.querySelector('#projectNames');
+    dropDownList.setAttribute('value', option)
     dropDownList.appendChild(option);
 }
 
@@ -82,9 +83,9 @@ function renderDoc2(doc) {
 
 //Update UI and store data of 'Priority' of ticket
 function showData() {
-   // var theSelect = demoForm.demoSelect;
-   var priority = document.getElementById("userFormNames");
-   var priorityUser = priority.value; 
+    // var theSelect = demoForm.demoSelect;
+    var priority = document.getElementById("userFormNames");
+    var priorityUser = priority.value;
     console.log(priorityUser)
 }
 
@@ -99,41 +100,42 @@ var Category
 var priority
 var userDate
 var description
-var subject 
+var subject
 var ProjectName
+
 
 //This function gathers all data user has selected 
 //or entered and send it to firebase database
-function collectDataTicket(){
+function collectDataTicket() {
     //Just call .value on these to retrieve value user has entered
-    nameUserSubmitted = document.getElementById("userFormNames"); 
-    ticketType= document.getElementById("userForm");
+    nameUserSubmitted = document.getElementById("userFormNames");
+    ticketType = document.getElementById("userForm");
     Category = document.getElementById("userForm2");
     priority = document.getElementById("userForm3");
     userDate = document.getElementById("datepicker");
-    description = document.getElementById("description"); 
-    subject = document.getElementById("subject"); 
-    ProjectName = document.getElementById("projectNames"); 
+    description = document.getElementById("description");
+    subject = document.getElementById("subject");
+    ProjectName = document.getElementById("projectNames");
 
-    console.log(ProjectName.value)
+    console.log(ProjectName.value + '  ayy')
 
     //Checking if user inputted all data needed
-    if(nameUserSubmitted.value != null && priority.value != "zilch" && ticketType.value != "zilch" 
-      && Category.value != "zilch" && userDate.value != "" 
-         && description.value != "" && description.value != null && subject.value != ""){
-            snackbar.innerText = 'Ticket successfully added!';
-            showAlert();
-            saveToDb();
-            setTimeout(function() {location.reload();}, 3000);
-            
+    if (nameUserSubmitted.value != null && priority.value != "zilch" && ticketType.value != "zilch"
+        && Category.value != "zilch" && userDate.value != ""
+        && description.value != "" && description.value != null && subject.value != "") {
+        snackbar.innerText = 'Ticket successfully added!';
+        showAlert();
+        saveToDb();
+        setTimeout(function () { location.reload(); }, 3000);
+
     }
 
-    else{
+    else {
         snackbar.innerText = 'Please fill in all fields';
         showAlert();
     }
 
-    
+
     addUserInputToDatabase();
     //TODO Add banner that tells user that ticket was succesuflly addded and refresh page
 }
@@ -142,20 +144,23 @@ function collectDataTicket(){
 let size01;
 
 //Sizes user inputs to a Ticket document inside firebase
-function saveToDb(){
-    db.collection('projects').doc('projectName').collection('projectTickets').get().then(snap => {
+function saveToDb() {
+    // console.log(ProjectName.value +'  ayDFGDFGy')
+    // let theProjectName = projectName.value;
+    console.log(ProjectName.value);
+    db.collection('projects').doc(ProjectName.value).collection('projectTickets').get().then(snap => {
         size01 = snap.size // will return the collection size
         localStorage.setItem('numOfTickets', size01);
-      });
+    });
 
 
-//Gets number of Tickets storaged in local storage
-let numOfProjectTickets = localStorage.getItem('numOfTickets');
- let x = numOfProjectTickets.toString();
+    //Gets number of Tickets storaged in local storage
+    let numOfProjectTickets = localStorage.getItem('numOfTickets');
+    let x = numOfProjectTickets.toString();
 
-
+   // console.log(projectName.value, ticketType.value)
     //   Creates new document with Ticket index as doc name
-    return db.collection('projects').doc('projectName').collection('projectTickets').doc(x).set({
+    return db.collection('projects').doc(ProjectName.value).collection('projectTickets').doc().set({
         assignee: nameUserSubmitted.value,
         ticketType: ticketType.value,
         Category: Category.value,
@@ -166,19 +171,21 @@ let numOfProjectTickets = localStorage.getItem('numOfTickets');
         ProjectName: ProjectName.value
     }).then(() => {
 
-})
+    })
 }
 
 
 const auth = firebase.auth();
 
-function addUserInputToDatabase(){
-            return db.collection('projects').doc('projectName').set({
-                value: 'b value'
+function addUserInputToDatabase() {
+    let theProjectName = ProjectName.value;
+    console.log(theProjectName);
+    return db.collection('projects').doc(ProjectName.value).set({
+        value: 'b value'
 
-            }).then(() => {
-    
-        })
+    }).then(() => {
+
+    })
 }
 
 
