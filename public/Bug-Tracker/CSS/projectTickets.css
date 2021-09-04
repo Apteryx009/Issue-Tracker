@@ -11,11 +11,7 @@
   height: 200px;
 }
 
-/* TODO: Make it such that right card take up like 2/3rds of the space FIXED*/
-/* TODO on mobie screens, for this page only, make sure cards wrap FIXED*/
-#mainCardRight{
 
-}
 
 .datepicker td, .datepicker th {
 width: 1.5em;
@@ -26,14 +22,38 @@ height: 1.5em;
 .main_cards {
   margin: 10px;
   display: grid;
-  /* grid-template-columns:  1fr;
-  grid-template-rows:  250px 250px ; */
-  
+
+
   grid-gap: 10px;
 }
 
+#comments{
+  overflow:scroll;
+}
+
+#main{
+  background-color: aqua;
+  
+}
+
+/* .card {
+  grid-template-areas:
+    'card1''card2'
+    
+} */
+
+
+/* Desktop css */
 @media only screen and (min-width: 750px) {
  
+
+
+  .d-flex {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
   .main_cards {
    
     /* grid-template-areas:
@@ -43,7 +63,7 @@ height: 1.5em;
   } 
 
   /* define organization  */
-  #card1{
+  #main{
       grid-row: 1;
       grid-column: 1 / 4;
       display: grid;
@@ -80,12 +100,8 @@ height: 1.5em;
     
   }
 
- 
-
-
-
 }
-
+/* End of Desktop only css */
 
 .left_card {
   flex-basis: 250px;

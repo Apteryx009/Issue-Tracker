@@ -143,10 +143,36 @@ function collectDataTicket() {
 //Holds size of how many tickets there are
 let size01;
 
+
+let numOfTickets
 //Sizes user inputs to a Ticket document inside firebase
 function saveToDb() {
-    // console.log(ProjectName.value +'  ayDFGDFGy')
-    // let theProjectName = projectName.value;
+    
+    //Gets size before remember 
+     getSize()
+   //Create new doc for the new ticket
+    return db.collection('projects').doc(ProjectName.value).collection('projectTickets').doc().set({
+        assignee: nameUserSubmitted.value,
+        ticketType: ticketType.value,
+        Category: Category.value,
+        priority: priority.value,
+        userDate: userDate.value,
+        description: description.value,
+        subject: subject.value,
+        ProjectName: ProjectName.value,
+         NumTickets: numOfTickets
+       
+    }).then(() => {
+
+    })
+
+
+
+}
+
+//Gets and stores (in numOfTickets var) how many ticket documents there are in a given collection.
+function getSize(){
+    //Consider making this less resource intesnive. 
     console.log(ProjectName.value);
     db.collection('projects').doc(ProjectName.value).collection('projectTickets').get().then(snap => {
         size01 = snap.size // will return the collection size
@@ -156,24 +182,9 @@ function saveToDb() {
 
     //Gets number of Tickets storaged in local storage
     let numOfProjectTickets = localStorage.getItem('numOfTickets');
-    let x = numOfProjectTickets.toString();
-
-   // console.log(projectName.value, ticketType.value)
-    //   Creates new document with Ticket index as doc name
-    return db.collection('projects').doc(ProjectName.value).collection('projectTickets').doc().set({
-        assignee: nameUserSubmitted.value,
-        ticketType: ticketType.value,
-        Category: Category.value,
-        priority: priority.value,
-        userDate: userDate.value,
-        description: description.value,
-        subject: subject.value,
-        ProjectName: ProjectName.value
-    }).then(() => {
-
-    })
+    numOfTickets = numOfProjectTickets.toString();
+    
 }
-
 
 const auth = firebase.auth();
 

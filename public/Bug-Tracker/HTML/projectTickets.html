@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bug Tracker: Project Tickets</title>
@@ -16,7 +17,7 @@
 </head>
 
 <body>
-      <!-- So the general idea is that we can have 
+  <!-- So the general idea is that we can have 
     how many many projects: 1,2, 20, whatever
     but for each of these projects, there will be bugs
     and issues, so there will be a "details" button 
@@ -38,50 +39,64 @@
       <ul class="aside_list">
         <li class="aside_list-item">User Login</li>
         <li class="aside_list-item">Dashboard Home</li>
-        <li class="aside_list-item">Manage Role</li>
+        <li class="aside_list-item">Manage User Access</li>
         <li class="aside_list-item">My Projects</li>
         <li class="aside_list-item">Manage Users</li>
         <li class="aside_list-item">My Tickets</li>
         <li class="aside_list-item">User Profile</li>
       </ul>
     </aside>
-  
-     
-
-        <main class="main">
-            <div class="main_overview">
-                <div class="overview_card">
-                  <div class="overview_card-info">Manage user roles</div>
-                  <div class="overview_card-icon"></div>
-                </div>
-            </div>
-
-
-        <div class="main_cards" id="mainCardLeft">
-            <div class="card">Select one or more users
-
-              
-
-                 Select the Role to assign
-                  <div class="dropdown">
-                    <button class="dropbtn">--Select Role/None--</button>
-                    <div class="dropdown-content">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a>
-                    </div>
-                  </div>
-                    
-               
-                
-            </div>
 
 
 
-            <div class="card" id="mainCardRight">Comments for Ticket [TICKET NUM]</div>
-            
+    <main class="main">
+      <div class="main_overview">
+        <div class="overview_card">
+          <div class="overview_card-info">Manage user roles</div>
+          <div class="overview_card-icon"></div>
+        </div>
+      </div>
+
+
+      <div class="main_cards">
+        <div class="card" >
+
+          <div id="main">
+          <div class="d-flex">
+
+            <p>Ticket Title</p>
+            <p>Ticket Description</p>
           </div>
-    
+
+          <div class="d-flex">
+
+            <p>Assigned Developer</p>
+            <p>Submitter</p>
+          </div>
+
+          <div class="d-flex">
+
+            <p>Project</p>
+            <p>Ticket Priority</p>
+          </div>
+
+          <div class="d-flex">
+
+            <p>Category</p>
+            <p>Front End</p>
+          </div>
+        </div>
+
+
+        </div>
+        <div class="card" id="comments">Comments for Ticket [TICKET NUM]</div>
+        <div class="card" id="history"></div>
+        <div class="card" id="attachments"></div>
+        
+      
+
+      </div>
+
     </main>
     <footer class="footer">
       <div class="footer_copyright">&copy;2021</div>
