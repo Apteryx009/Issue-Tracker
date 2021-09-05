@@ -102,6 +102,7 @@ var userDate
 var description
 var subject
 var ProjectName
+var Submitter
 
 
 //This function gathers all data user has selected 
@@ -118,6 +119,9 @@ function collectDataTicket() {
     ProjectName = document.getElementById("projectNames");
 
     console.log(ProjectName.value + '  ayy')
+
+    //If statement not needed because user will already be logged in
+    Submitter = localStorage.getItem('userUID')
 
     //Checking if user inputted all data needed
     if (nameUserSubmitted.value != null && priority.value != "zilch" && ticketType.value != "zilch"
@@ -160,7 +164,8 @@ function saveToDb() {
         description: description.value,
         subject: subject.value,
         ProjectName: ProjectName.value,
-         NumTickets: numOfTickets
+        NumTickets: numOfTickets,
+        Submitter: Submitter
        
     }).then(() => {
 

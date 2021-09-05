@@ -24,17 +24,21 @@ height: 1.5em;
   display: grid;
 
 
+
+
   grid-gap: 10px;
 }
 
-#comments{
+#card2{
   overflow:scroll;
 }
 
-#main{
-  background-color: aqua;
+#card1{
+ 
   
 }
+
+
 
 /* .card {
   grid-template-areas:
@@ -46,12 +50,32 @@ height: 1.5em;
 /* Desktop css */
 @media only screen and (min-width: 750px) {
  
+/* .card{ */
 
+
+  /* flex-basis: 250px;
+  flex-grow: 1;
+  margin: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: seagreen;
+   height: 100px;
+  border: 1px solid darkblue;
+  border-radius: 4px;
+  color: darkblue; 
+} */
 
   .d-flex {
     width: 50%;
     display: flex;
     justify-content: space-between;
+  }
+
+  #two{
+    padding: 5rem;
+   
   }
   
   .main_cards {
@@ -69,6 +93,9 @@ height: 1.5em;
       display: grid;
   }
 
+  #card1{
+    grid-row: 1 / span 2;
+  }
   #card2{
       grid-row: 2;
       grid-column: 1 / 2;
@@ -82,6 +109,12 @@ height: 1.5em;
       display: grid;
   }
   
+  #card2{
+    grid-row: 2;
+    grid-column: 3 / 2;
+    display: grid;
+    position: relative;
+}
 
 
   .subcard{
@@ -103,7 +136,7 @@ height: 1.5em;
 }
 /* End of Desktop only css */
 
-.left_card {
+/* .left_card {
   flex-basis: 250px;
   flex-grow: 1;
   margin: 10px 10px;
@@ -112,11 +145,14 @@ height: 1.5em;
   justify-content: space-between;
   padding: 20px;
   /* background-color: seagreen; */
-  height: 100px;
+  /* height: 100px;
   border: 1px solid darkblue;
   border-radius: 4px;
   color: darkblue;
-}
+} */ */
+
+
+
 
 
 .dropbtn {
