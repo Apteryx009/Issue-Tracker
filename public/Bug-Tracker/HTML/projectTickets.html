@@ -63,62 +63,106 @@
 
           <div id="main">
 
+
             <div class="d-flex">
 
               <p>Ticket Subject</p>
-              <p class="two">Ticket Description</p>
+              <p class="two">Ticket SubjectTicket SubjectTicket Subject</p>
             </div>
 
-          <div class="d-flex">
+            <!-- It says dropdown divider, but it is from bootstrap.
+            I really like the way it looks, which is why I chose it.  -->
+            <div class="dropdown-divider"></div>
 
-            <!-- TODO Add padding and fix this ui -->
-            <p>Ticket Description</p>
-            <p class="two">Ticket DescriptionTicket DescriptionTicket DescriptionTicket DescriptionTicket DescrTicket DescriptionTicket DescriptionTicket Descriptioniption</p>
-          </div>
+            <div class="d-flex">
+
+              <!-- TODO Add padding and fix this ui -->
+              <p>Ticket Description </p>
+              <p class="two">Ticket Description Ticket Description Ticket Description. Ticket Description Ticket
+                Description Ticket Description
+                Description Ticket
+
+              </p>
+            </div>
+            <div class="dropdown-divider"></div>
+
+            <div class="d-flex">
+
+              <p>Assigner</p>
+              <p>Submitter</p>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <div class="d-flex">
+
+              <p>Assigned Developer</p>
+              <p>blank</p>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <div class="d-flex">
+
+              <p>Project</p>
+              <p>Ticket Priority</p>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <div class="d-flex">
+
+              <p>Category</p>
+              <p>Front End</p>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <div class="d-flex">
+
+              <p>Due Date</p>
+              <p>01/01/01</p>
+            </div>
 
 
-          <div class="d-flex">
 
-            <p>Assigner</p>
-            <p>Submitter</p>
-          </div>
-
-          <div class="d-flex">
-
-            <p>Assigned Developer</p>
-            <p>blank</p>
-          </div>
-
-          <div class="d-flex">
-
-            <p>Project</p>
-            <p>Ticket Priority</p>
-          </div>
-
-          <div class="d-flex">
-
-            <p>Category</p>
-            <p>Front End</p>
-          </div>
-
-          <div class="d-flex">
-
-            <p>Due Date</p>
-            <p>01/01/01</p>
           </div>
 
 
         </div>
 
+        <!-- <div class="card" id="card2">
+          <h2>Comments for Ticket [TICKET NUM]</h2>
+        </div>
+        <div class="card" id="card3">Attachments</div> -->
+
+
+        <div class="card" id="card4">
+          <h2>Add a comment?</h2>
+
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Comment:</span>
+            </div>
+            <input type="text" class="form-control" id="projectName01" aria-label="Small"
+              aria-describedby="inputGroup-sizing-sm">
+          </div>
+
+          <button class="btn btn-success btn-sm">Add</button>
+
+          <div class="dropdown-divider"></div>
+
+          <h4>All Comments for Ticket</h3>
+
+            <p>All Comments for Ticket.All Comments for Ticket.All Comments for TicketAll Comments for Ticket.All Comments for Ticket. -John. [DATE HERE]</p>
+            <div class="dropdown-divider"></div>
+            <p>All comments for Ticket. -John. [DATE HERE]</p>
+            <div class="dropdown-divider"></div>
+            <p>All Comments for Ticket.All Comments for Ticket.All Comments for TicketAll Comments for Ticket.All Comments for Ticket. -John. [DATE HERE]</p>
+
+            <button class="btn btn-success btn" id="seeAll">See all comments</button>
 
         </div>
-        
-        <div class="card" id="card2">Comments for Ticket [TICKET NUM]</div>
-        <div class="card" id="card3"></div>
-        <div class="card" id="card4"></div>
-        
-        
-      
 
       </div>
 
@@ -131,6 +175,8 @@
 
   <script defer src="../JS/userHome.js"></script>
   <script defer src="../JS/aside.js"></script>
+  <script defer src="../JS/projectTickets.js"></script>
+  
 </body>
 
 </html>

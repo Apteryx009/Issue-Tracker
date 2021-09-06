@@ -1,5 +1,10 @@
 
 
+body{
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
 .overview_card-info {
    
   margin-left: 25%;
@@ -22,11 +27,8 @@ height: 1.5em;
 .main_cards {
   margin: 10px;
   display: grid;
-
-
-
-
   grid-gap: 10px;
+  height: auto;
 }
 
 #card2{
@@ -37,6 +39,12 @@ height: 1.5em;
  
   
 }
+
+.btn-sm{
+  width: 15%;
+}
+
+
 
 
 
@@ -50,10 +58,10 @@ height: 1.5em;
 /* Desktop css */
 @media only screen and (min-width: 750px) {
  
-/* .card{ */
+ .card{
 
 
-  /* flex-basis: 250px;
+   /* flex-basis: 250px;
   flex-grow: 1;
   margin: 10px 10px;
   display: flex;
@@ -64,19 +72,29 @@ height: 1.5em;
    height: 100px;
   border: 1px solid darkblue;
   border-radius: 4px;
-  color: darkblue; 
-} */
+  color: darkblue;  */
+  height: auto;
+} 
 
   .d-flex {
-    width: 50%;
+    /* width: 90%; */
     display: flex;
     justify-content: space-between;
+    height: auto;
   }
 
-  #two{
-    padding: 5rem;
-   
+  #card4{
+    height: 500px;
   }
+
+  textarea {
+    resize: vertical;
+  }
+
+   .two{
+    padding-left: 15rem;
+   
+  } 
   
   .main_cards {
    
@@ -89,14 +107,21 @@ height: 1.5em;
   /* define organization  */
   #main{
       grid-row: 1;
-      grid-column: 1 / 4;
+      grid-column: 1 / 6;
       display: grid;
+      height: auto
+  }
+
+  main{
+    height: auto;
   }
 
   #card1{
-    grid-row: 1 / span 2;
+    grid-row: 1 / span 6;
+    height: 30rem;
   }
   #card2{
+     /* height: auto; */
       grid-row: 2;
       grid-column: 1 / 2;
       display: grid;

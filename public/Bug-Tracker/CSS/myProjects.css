@@ -23,6 +23,7 @@
      'card1'
      'card1';
         grid-gap: 10px;
+        height: auto;
       }
 
       /* .card {

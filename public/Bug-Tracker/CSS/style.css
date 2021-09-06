@@ -52,6 +52,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   border-bottom: 1px solid lightgreen;
+  
 }
 .overview_card {
   flex-basis: 250px;
@@ -79,16 +80,19 @@ body {
     'card3'
     'card4';
   grid-gap: 10px;
+  
 }
 .card {
   padding: 20px;
-  border: 1px solid tomato;
+  border: 1px solid pink;
   border-radius: 4px;
   color: tomato;
+  height: auto;
 }
 
 .card:first-child {
   grid-area: card1;
+  height: auto;
 }
 .card:nth-child(2) {
   grid-area: card2;
