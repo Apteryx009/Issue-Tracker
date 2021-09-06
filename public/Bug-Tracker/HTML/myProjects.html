@@ -40,11 +40,12 @@ it look like planned layout from prevoius idea -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-      crossorigin="anonymous"></script>
-  
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="../CSS/projectTicketsMain.css">
   <link rel="stylesheet" href="../CSS/myProjects.css">
   <link rel="stylesheet" href="../CSS/snackBar.css">
 
@@ -81,7 +82,7 @@ it look like planned layout from prevoius idea -->
         <li class="aside_list-item">User Profile</li>
       </ul>
     </aside>
-      <!-- TODO: Add a create project section, does not need to be it's own HTML page
+    <!-- TODO: Add a create project section, does not need to be it's own HTML page
       Just a section on our main projects page -->
 
     <main class="main">
@@ -98,53 +99,53 @@ it look like planned layout from prevoius idea -->
 
             <div class="input-group input-group-sm mb-3">
               <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">Project Name</span>
+                <span class="input-group-text" id="inputGroup-sizing-sm">Project Name</span>
               </div>
               <input type="text" class="form-control" id="projectName01" aria-label="Small"
-                  aria-describedby="inputGroup-sizing-sm">
-          </div>
+                aria-describedby="inputGroup-sizing-sm">
+            </div>
 
-          <div class="input-group">
-            <div class="input-group-prepend">
+            <div class="input-group">
+              <div class="input-group-prepend">
                 <span class="input-group-text">Description</span>
+              </div>
+              <textarea class="form-control" id="description" aria-label="With textarea"></textarea>
             </div>
-            <textarea class="form-control" id="description" aria-label="With textarea"></textarea>
-        </div>
 
 
-       <div id="askUserIfDueDate">
-        <p>Does this Project have a due date?</p>
-        <div class="dropdown" onclick="userDueDate()">
-          <form name="userForm">
-              <select name="userForm" id="userFormDueDate" >
-                  <option  onclick="userDueDate()" value="zilch">Select:</option>
-                  <option onclick="userDueDate()" value="Yes">Yes</option>
-                  <option  onclick="userDueDate()" value="No">No</option>
-              </select>
-          </form>
-      </div>
-       
-     
-        
-        <div class="row" id="dueDatePicker" hidden=true >
-            <div class="col">
-                <input data-date-format="dd/mm/yyyy" id="datepicker">
-            </div>
-        </div>
-   
-        <button onclick="submitNewProject()" class="btn btn-success btn-sm" id="addProject">Add Project</button>
+            <div id="askUserIfDueDate">
+              <p>Does this Project have a due date?</p>
+              <div class="dropdown" onclick="userDueDate()">
+                <form name="userForm">
+                  <select name="userForm" id="userFormDueDate">
+                    <option onclick="userDueDate()" value="zilch">Select:</option>
+                    <option onclick="userDueDate()" value="Yes">Yes</option>
+                    <option onclick="userDueDate()" value="No">No</option>
+                  </select>
+                </form>
+              </div>
 
-          <hr>
-          <h2>Your Projects:</h2>
-          <div class="d-flex">
-            <p>Project Name</p>
-            <p>Description</p>
-            <p></p>
-          </div>
 
-          <div class="UserProjectsContainer" >
 
-            <div class="listSubMobile">
+              <div class="row" id="dueDatePicker" hidden=true>
+                <div class="col">
+                  <input data-date-format="dd/mm/yyyy" id="datepicker">
+                </div>
+              </div>
+
+              <button onclick="submitNewProject()" class="btn btn-success btn-sm" id="addProject">Add Project</button>
+
+              <hr>
+              <h2>Your Projects:</h2>
+              <div class="d-flex">
+                <p>Project Name</p>
+                <p>Description</p>
+                <p></p>
+              </div>
+
+              <div class="UserProjectsContainer">
+
+                <!-- <div class="listSubMobile">
               <a href="#" class="">Prflf</a>
               <a href="#" class="">Project Demo 123Project </a>
               <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Project Demo 123</a>
@@ -152,10 +153,10 @@ it look like planned layout from prevoius idea -->
               <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Project Demo 123</a>
               <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Project Demo 123</a>
               <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Project Demo 123</a>
-            </div>
+            </div> -->
 
 
-            <div class="listSub1">
+                <!-- <div class="listSub1">
               <a href="#" id="testData" class="list-group-item list-group-item-action list-group-item-danger"></a>
              
             </div>
@@ -169,14 +170,39 @@ it look like planned layout from prevoius idea -->
               
               <a href="#" class="list-group-item list-group-item-action list-group-item-danger">3</a>
               
+            </div> -->
+
+                <div class="result__container">
+                  <div class="result__properties">
+                    <div class="type__prop"><span>Name</span></div>
+                    <div class="version__prop"><span>Description</span></div>
+
+                  </div>
+                  <div class="result__entry">
+                    <div class="issue__properties">
+                      <div class="issue__entry"><span style="background-color: #f45e51">Our project name</span></div>
+                      <div class="..." title="this is a bug"><span style="white-space: pre-line">this
+                          is a description</span></div>
+
+                    </div>
+                  </div>
+
+                  <div class="result__entry">
+                    <div class="issue__properties">
+                      <div class="issue__entry"><span style="background-color: #f45e51">Our project name</span></div>
+                      <div class="..." title="this is a bug"><span style="white-space: pre-line">this
+                          is a our description</span></div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- End result section-->
+
+
+
+
             </div>
-
-          
-             
-            </div>
-
-
-          </div>
 
 
         </div>
@@ -193,31 +219,31 @@ it look like planned layout from prevoius idea -->
   </footer>
   </div>
 
-  <div id="snackbar"></div> 
+  <div id="snackbar"></div>
 
   <style type="text/css">
     /* // solution 1: */
     .datepicker {
-        font-size: 0.875em;
+      font-size: 0.875em;
     }
 
     /* solution 2: the original datepicker use 20px so replace with the following:*/
 
     .datepicker td,
     .datepicker th {
-        width: 1.5em;
-        height: 1.5em;
+      width: 1.5em;
+      height: 1.5em;
     }
-</style>
-<script type="text/javascript">
+  </style>
+  <script type="text/javascript">
     $('#datepicker').datepicker({
-        weekStart: 1,
-        daysOfWeekHighlighted: "6,0",
-        autoclose: true,
-        todayHighlight: true,
+      weekStart: 1,
+      daysOfWeekHighlighted: "6,0",
+      autoclose: true,
+      todayHighlight: true,
     });
     $('#datepicker').datepicker("setDate", new Date());
-</script>
+  </script>
 
   <script defer src="../JS/userHome.js"></script>
   <script defer src="../JS/aside.js"></script>
