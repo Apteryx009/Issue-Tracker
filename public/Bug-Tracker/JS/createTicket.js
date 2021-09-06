@@ -123,25 +123,36 @@ function collectDataTicket() {
     //If statement not needed because user will already be logged in
     Submitter = localStorage.getItem('userUID')
 
-    //Checking if user inputted all data needed
-    if (nameUserSubmitted.value != null && priority.value != "zilch" && ticketType.value != "zilch"
-        && Category.value != "zilch" && userDate.value != ""
-        && description.value != "" && description.value != null && subject.value != "") {
-        snackbar.innerText = 'Ticket successfully added!';
-        showAlert();
-        saveToDb();
-        setTimeout(function () { location.reload(); }, 3000);
+    console.log(subject.value.length)
 
+   
+    //Makes sure user doesn't add a super long subject title
+    if (subject.value.length > 51) {
+        snackbar.innerText = 'Subject must be less than 50 charterers long';
+        showAlert();
     }
 
     else {
-        snackbar.innerText = 'Please fill in all fields';
-        showAlert();
+        //Checking if user inputted all data needed
+        if (nameUserSubmitted.value != null && priority.value != "zilch" && ticketType.value != "zilch"
+            && Category.value != "zilch" && userDate.value != ""
+            && description.value != "" && description.value != null && subject.value != "") {
+            snackbar.innerText = 'Ticket successfully added!';
+            showAlert();
+            saveToDb();
+            setTimeout(function () { location.reload(); }, 3000);
+
+        }
+
+        else {
+            snackbar.innerText = 'Please fill in all fields';
+            showAlert();
+        }
+
+
+        addUserInputToDatabase();
+        //TODO Add banner that tells user that ticket was succesuflly addded and refresh page
     }
-
-
-    addUserInputToDatabase();
-    //TODO Add banner that tells user that ticket was succesuflly addded and refresh page
 }
 
 //Holds size of how many tickets there are
@@ -151,10 +162,10 @@ let size01;
 let numOfTickets
 //Sizes user inputs to a Ticket document inside firebase
 function saveToDb() {
-    
+
     //Gets size before remember 
-     getSize()
-   //Create new doc for the new ticket
+    getSize()
+    //Create new doc for the new ticket
     return db.collection('projects').doc(ProjectName.value).collection('projectTickets').doc().set({
         assignee: nameUserSubmitted.value,
         ticketType: ticketType.value,
@@ -166,7 +177,7 @@ function saveToDb() {
         ProjectName: ProjectName.value,
         NumTickets: numOfTickets,
         Submitter: Submitter
-       
+
     }).then(() => {
 
     })
@@ -176,7 +187,7 @@ function saveToDb() {
 }
 
 //Gets and stores (in numOfTickets var) how many ticket documents there are in a given collection.
-function getSize(){
+function getSize() {
     //Consider making this less resource intesnive. 
     console.log(ProjectName.value);
     db.collection('projects').doc(ProjectName.value).collection('projectTickets').get().then(snap => {
@@ -188,7 +199,7 @@ function getSize(){
     //Gets number of Tickets storaged in local storage
     let numOfProjectTickets = localStorage.getItem('numOfTickets');
     numOfTickets = numOfProjectTickets.toString();
-    
+
 }
 
 const auth = firebase.auth();
