@@ -1,0 +1,232 @@
+
+
+
+ 
+body {
+    margin: 0;
+    padding: 0;
+   
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 15px;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 50px;
+  
+    grid-template-areas:
+      'header'
+      'main'
+      'footer';
+    height: 100vh;
+  }
+  
+  .header {
+    grid-area: header;
+    background-color: whitesmoke;
+  }
+  
+  #results{
+   border: none;
+  }
+  
+  
+  .main {
+    grid-area: main;
+    background-color: white;
+  }
+  .footer {
+    grid-area: footer;
+    background-color: whitesmoke;
+  }
+  
+  /* flexing header and footer*/
+  .header,
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: darkblue;
+    padding: 0 15px;
+  }
+  
+  
+  /* Layout for main content overview and its cards */
+  .main_overview {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid lightgreen;
+    
+  }
+  .overview_card {
+    flex-basis: 250px;
+    flex-grow: 1;
+    margin: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    /* background-color: seagreen; */
+    height: 100px;
+    border: 1px solid darkblue;
+    border-radius: 4px;
+    color: darkblue;
+  }
+  /* Layout for main-cards section // below main_overview */
+  .main_cards {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:  250px 250px 250px 250px;
+    grid-template-areas:
+      'card1';
+    grid-gap: 10px;
+    
+  }
+  .card {
+    padding: 20px;
+    /* border: 1px solid pink; */
+    border-radius: 4px;
+    color: tomato;
+    height: auto;
+    width: auto;
+  }
+  
+  .card:first-child {
+    grid-area: card1;
+    height: auto;
+  }
+  .card:nth-child(2) {
+    grid-area: card2;
+  }
+  .card:nth-child(3) {
+    grid-area: card3;
+  }
+  
+  /* responsive layout for desktop*/
+  /* I am considering moving this to aside.css but 
+  am afraid if that is done, we will have duplicate code */
+  @media only screen and (min-width: 750px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      grid-template-rows: 50px 1fr 50px;
+      grid-template-areas:
+        'aside header'
+        'aside main'
+        'aside footer';
+      height: 100vh;
+    }
+  
+    /* The sidebar */
+    .aside {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transform: translateX(0);
+    }
+  
+    .main_cards {
+      margin: 10px;
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      grid-template-rows: 200px 200px;
+      grid-template-areas:
+        'card1 card1'
+        'card1 card1';
+      grid-gap: 10px;
+    }
+  }
+  
+  
+  
+  .menu-icon {
+    position: fixed;
+    display: flex;
+    top: 2px;
+    left: 8px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    cursor: pointer;
+    padding: 12px;
+    color: black;
+  }
+  
+  .header_search {
+    margin-left: 24px;
+  }
+  
+  
+  
+
+
+/*Result Section CSS*/
+.result__container {
+    width: 95%;
+    background-color: #1fa046;
+  
+    border-radius: 5px;
+    border: 1px solid #c2c2c2;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+  .result__properties {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    color: #00836b;
+    border-bottom: 2px solid #c2c2c2;
+    text-transform: capitalize;
+  }
+  .result__properties
+    div:not(.subject__prop):not(.arrow-down-three):not(.arrow-up-three) {
+    padding: 40px 0px 10px 0px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  .subject__prop {
+    padding: 40px 0px 10px 0px;
+    width: 200%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .result__properties div:hover {
+    background-color: #c3e9e291;
+    cursor: pointer;
+  }
+  .issue__properties {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border-top: 1px solid #c2c2c2;
+  }
+  .issue__properties div:not(.subject__entry) {
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    text-align: center;
+  }
+  .subject__entry {
+    padding: 10px 0px 10px 0px;
+    width: 200%;
+    text-align: left;
+  }
+  .issue__properties:hover {
+    background-color: #fcfade;
+    cursor: pointer;
+  }
+  .issue__entry span,
+  .status__entry span {
+    background-color: grey;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 5px 10px 5px 10px;
+  }
+  

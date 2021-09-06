@@ -2,6 +2,7 @@
 let userAction = document.querySelector('#loadProjectTickets')
 let userCreateTicket = document.querySelector('#createNewTicket')
 let addProject = document.querySelector('#addProject')
+let viewAllTickets = document.querySelector('#viewAllTickets')
 
 
 let testData = document.querySelector('#testData')
@@ -10,17 +11,23 @@ let testData = document.querySelector('#testData')
 
 userAction.addEventListener('click', loadPage)
 userCreateTicket.addEventListener('click', loadPage2)
+viewAllTickets.addEventListener('click', loadPage3)
 
 addProject.addEventListener('click', submitNewProject)
 
 function loadPage(e) {
-    console.log('ello chap');
+    
     window.location.href = "../HTML/projectTickets.html";
 }
 
 function loadPage2(e) {
-    console.log('ello chap2');
+    
     window.location.href = "../HTML/createTicket.html";
+}
+
+function loadPage3(e) {
+   
+    window.location.href = "../HTML/projectTicketsMain.html";
 }
 
 

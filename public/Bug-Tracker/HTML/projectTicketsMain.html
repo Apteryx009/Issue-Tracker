@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bug Tracker: home</title>
+    <!-- <link rel="stylesheet" href="../CSS/style.css">  There is conflict here.  -->
+    <!-- <link rel="stylesheet" href="../CSS/aside.css">   -->
+    <link rel="stylesheet" href="../CSS/projectTicketsMain.css">
+    <link rel="stylesheet" href="../CSS/aside.css">
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <div class="menu-icon">
+            <strong> &#9776;</strong>
+        </div>
+        <header class="header">
+            <div class="header_search">Search...</div>
+            <div class="header_avatar">Logout</div>
+        </header>
+        <aside class="aside">
+            <div class="aside_close-icon">
+                <strong>&times;</strong>
+            </div>
+            <ul class="aside_list">
+                <li class="aside_list-item">User Login</li>
+                <li class="aside_list-item">Dashboard Home</li>
+                <li class="aside_list-item">Manage Role</li>
+                <li class="aside_list-item">My Projects</li>
+                <li class="aside_list-item">Manage Users</li>
+                <li class="aside_list-item">My Tickets</li>
+                <li class="aside_list-item">User Profile</li>
+            </ul>
+        </aside>
+
+        <main class="main">
+
+                <h4>List of all tickets for project. Please click on ticket to see further details. </h3>
+
+            <div class="main_cards">
+                <div class="card" id="results">
+                 <!-- Start result section                        -->
+                <div class="result__container">
+                    <div class="result__properties">
+                        <div class="type__prop"><span>type</span></div>
+                        <div class="subject__prop" ><span>subject</span></div>
+                        <div class="asignee__prop" ><span>asignee</span></div>
+                        <div class="status__prop" ><span>status</span></div>
+                        <div class="category__prop" ><span>category</span></div>
+                        <div class="priority__prop"><span>priority</span></div>
+                        <div class="created at__prop" ><span>created at</span></div>
+                        <div class="due date__prop" ><span>due date</span></div>
+                        <div class="registered by__prop"><span>registered by</span></div>
+                        <div class="version__prop" ><span>version</span></div>
+                    </div>
+                    <div class="result__entry">
+                        <div class="issue__properties">
+                            <div class="issue__entry"><span style="background-color: #f45e51">bug</span></div>
+                            <div class="subject__entry" title="this is a bug"><span style="white-space: pre-line">this
+                                    is a bug</span></div>
+                            <div class="asignee__entry"><span>name</span></div>
+                            <div class="status__entry"><span style="background-color: #f45e51">open</span></div>
+                            <div class="category__entry"><span>Back End</span></div>
+                            <div class="priority__entry"><span>medium</span></div>
+                            <div class="created__entry"><span>30-08-2021</span></div>
+                            <div class="due-date__entry"><span>23-08-2021</span></div>
+                            <div class="registered__entry"><span>jbdjsb</span></div>
+                            <div class="version__entry"><span>undefined</span></div>
+                        </div>
+                        <div class="issue__properties" >
+                            <div class="issue__entry"><span style="background-color: #f45e51">bug</span></div>
+                            <div class="subject__entry" title="Kosi Iyiegbu"><span style="white-space: pre-line">Kosi
+                                    Iyiegbu</span></div>
+                            <div class="asignee__entry"><span>Tobe</span></div>
+                            <div class="status__entry"><span style="background-color: #f45e51">open</span></div>
+                            <div class="category__entry"><span>Back End</span></div>
+                            <div class="priority__entry"><span>medium</span></div>
+                            <div class="created__entry"><span>30-08-2021</span></div>
+                            <div class="due-date__entry"><span>28-09-2021</span></div>
+                            <div class="registered__entry"><span>Tobe</span></div>
+                            <div class="version__entry"><span>undefined</span></div>
+                        </div>
+                        <div class="issue__properties"  >
+                            <div class="issue__entry"><span style="background-color: #c5d91d">task</span></div>
+                            <div class="subject__entry" title="Some stuff here"><span style="white-space: pre-line">Some
+                                    stuff here</span></div>
+                            <div class="asignee__entry"><span>User</span></div>
+                            <div class="status__entry"><span style="background-color: #f45e51">open</span></div>
+                            <div class="category__entry"><span>Front End</span></div>
+                            <div class="priority__entry"><span>high</span></div>
+                            <div class="created__entry"><span>28-08-2021</span></div>
+                            <div class="due-date__entry"><span>16-08-2021</span></div>
+                            <div class="registered__entry"><span>User</span></div>
+                            <div class="version__entry"><span>undefined</span></div>
+                        </div>
+                        <div class="issue__properties"  >
+                            <div class="issue__entry"><span style="background-color: #c5d91d">task</span></div>
+                            <div class="subject__entry" title="skjhlkhgb,"><span
+                                    style="white-space: pre-line">skjhlkhgb,</span></div>
+                            <div class="asignee__entry"><span>undefined</span></div>
+                            <div class="status__entry"><span style="background-color: #f45e51">open</span></div>
+                            <div class="category__entry"><span>undefined</span></div>
+                            <div class="priority__entry"><span>low</span></div>
+                            <div class="created__entry"><span>21-08-2021</span></div>
+                            <div class="due-date__entry"><span>20-08-2021</span></div>
+                            <div class="registered__entry"><span>User</span></div>
+                            <div class="version__entry"><span>undefined</span></div>
+                        </div>
+                        <div class="issue__properties"  >
+                            <div class="issue__entry"><span style="background-color: #c5d91d">task</span></div>
+                            <div class="subject__entry" title="Task is not working"><span
+                                    style="white-space: pre-line">Task is not working</span></div>
+                            <div class="asignee__entry"><span>robin</span></div>
+                            <div class="status__entry"><span style="background-color: #f45e51">open</span></div>
+                            <div class="category__entry"><span>Design</span></div>
+                            <div class="priority__entry"><span>medium</span></div>
+                            <div class="created__entry"><span>14-08-2021</span></div>
+                            <div class="due-date__entry"><span>12-08-2021</span></div>
+                            <div class="registered__entry"><span>User</span></div>
+                            <div class="version__entry"><span>undefined</span></div>
+                        </div>
+                        <div class="issue__properties">
+                            <div class="issue__entry"><span style="background-color: #c5d91d">task</span></div>
+                            <div class="subject__entry" title="i jfghhhhhhhhhhhhhhhhhhhh"><span
+                                    style="white-space: pre-line">i jfghhhhhhhhhhhhhhhhhhhh</span></div>
+                            <div class="asignee__entry"><span>name</span></div>
+                            <div class="status__entry"><span style="background-color: #f45e51">open</span></div>
+                            <div class="category__entry"><span>Back End</span></div>
+                            <div class="priority__entry"><span>low</span></div>
+                            <div class="created__entry"><span>10-08-2021</span></div>
+                            <div class="due-date__entry"><span>12-08-2021</span></div>
+                            <div class="registered__entry"><span>User</span></div>
+                            <div class="version__entry"><span>undefined</span></div>
+                        </div>
+                        <div class="issue__properties" >
+                            <div class="issue__entry"><span style="background-color: #5eb5a6">other</span></div>
+                            <div class="subject__entry" title="Welcome to BugTracker Project"><span
+                                    style="white-space: pre-line">Welcome to BugTracker Project</span></div>
+                            <div class="asignee__entry"><span>Guest</span></div>
+                            <div class="status__entry"><span style="background-color: #c5d91d">closed</span></div>
+                            <div class="category__entry"><span>undefined</span></div>
+                            <div class="priority__entry"><span>medium</span></div>
+                            <div class="created__entry"><span>25-08-2020</span></div>
+                            <div class="due-date__entry"><span>25-08-2020</span></div>
+                            <div class="registered__entry"><span>admin</span></div>
+                            <div class="version__entry"><span>undefined</span></div>
+                        </div>
+                        <div class="issue__properties" >
+                            <div class="issue__entry"><span style="background-color: #4488c5">request</span></div>
+                            <div class="subject__entry" title="Issue description"><span
+                                    style="white-space: pre-line">Issue description</span></div>
+                            <div class="asignee__entry"><span>Guest</span></div>
+                            <div class="status__entry"><span style="background-color: #4488c5">in progress</span></div>
+                            <div class="category__entry"><span>Front End</span></div>
+                            <div class="priority__entry"><span>low</span></div>
+                            <div class="created__entry"><span>25-08-2020</span></div>
+                            <div class="due-date__entry"><span>28-08-2020</span></div>
+                            <div class="registered__entry"><span>admin</span></div>
+                            <div class="version__entry"><span>undefined</span></div>
+                        </div>
+                        <div class="issue__properties">
+                            <div class="issue__entry"><span style="background-color: #f45e51">bug</span></div>
+                            <div class="subject__entry" title="Cookies Bug"><span style="white-space: pre-line">Cookies
+                                    Bug</span></div>
+                            <div class="asignee__entry"><span>Guest</span></div>
+                            <div class="status__entry"><span style="background-color: #5eb5a6">resolved</span></div>
+                            <div class="category__entry"><span>Back End</span></div>
+                            <div class="priority__entry"><span>high</span></div>
+                            <div class="created__entry"><span>25-08-2020</span></div>
+                            <div class="due-date__entry"><span>25-08-2020</span></div>
+                            <div class="registered__entry"><span>admin</span></div>
+                            <div class="version__entry"><span>undefined</span></div>
+                        </div>
+                        <div class="issue__properties">
+                            <div class="issue__entry"><span style="background-color: #c5d91d">task</span></div>
+                            <div class="subject__entry" title="Menu redesign"><span style="white-space: pre-line">Menu
+                                    redesign</span></div>
+                            <div class="asignee__entry"><span>name</span></div>
+                            <div class="status__entry"><span style="background-color: #f45e51">open</span></div>
+                            <div class="category__entry"><span>Design</span></div>
+                            <div class="priority__entry"><span>medium</span></div>
+                            <div class="created__entry"><span>25-08-2020</span></div>
+                            <div class="due-date__entry"><span>28-08-2020</span></div>
+                            <div class="registered__entry"><span>admin</span></div>
+                            <div class="version__entry"><span>undefined</span></div>
+                        </div>
+                    </div>
+                </div><!-- End result section-->
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer_copyright">&copy;2021</div>
+            <div class="footer_byline">Made with &hearts;</div>
+        </footer>
+    </div>
+
+
+    <script defer src="../JS/aside.js"></script>
+</body>
+
+</html>
