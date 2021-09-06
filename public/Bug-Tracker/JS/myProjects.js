@@ -1,6 +1,5 @@
 //A test button which will load projectTickets.html at user request
 let userAction = document.querySelector('#loadProjectTickets')
-let userCreateTicket = document.querySelector('#createNewTicket')
 let addProject = document.querySelector('#addProject')
 let viewAllTickets = document.querySelector('#viewAllTickets')
 
@@ -12,7 +11,6 @@ let testData = document.querySelector('#testData')
 
 
 userAction.addEventListener('click', loadPage)
-userCreateTicket.addEventListener('click', loadPage2)
 viewAllTickets.addEventListener('click', loadPage3)
 
 addProject.addEventListener('click', submitNewProject)
@@ -22,10 +20,7 @@ function loadPage(e) {
     window.location.href = "../HTML/projectTickets.html";
 }
 
-function loadPage2(e) {
 
-    window.location.href = "../HTML/createTicket.html";
-}
 
 function loadPage3(e) {
 
@@ -50,11 +45,53 @@ var data = db.doc('/users/rk8B6Z18JghZWybTt13Ubm0cbn82/projects/projectDetails')
 
 let ourData = document.getElementById('testData')
 
+
+//Wait till HTMl is loaded 
+document.addEventListener("DOMContentLoaded", function() {
+    loadProjects();
+  });
+
+// Display all projects
+function loadProjects(){
+    db.collection('projects').get().then(function (querySnapshot) {
+        querySnapshot.docs.forEach(function (doc) {
+            renderDoc(doc)
+        });
+    });
+    
+}
+
+//We update UI to show all projects in db
+function renderDoc(doc) {
+    var certainField01 = doc.data();
+    console.log(certainField01.dueDate + certainField01.Description) 
+    let one = '1';
+   const projectNode = document.createElement('div');
+   const container = document.querySelector('.result__container')
+//    const projectData = document.createElement('')
+
+    projectNode.innerHTML = `
+    <div class="result__entry">
+    <div class="issue__properties">
+      <div class="issue__entry"><span style="background-color: #f45e51">${doc.id}</span></div>
+      <div class="issue__entry" title="this is a bug"><span style="background-color: #f45e51">${certainField01.Description}</span></div>
+
+    </div>
+  </div>
+    `;
+    container.appendChild(projectNode);
+
+    //Refresh page to show new project that has been added
+   
+}
+
+
+
 //testing
 data.get().then((doc) => {
     if (doc.exists) {
         var certainField = doc.data();
-        console.log("Document data:", certainField.name);
+        // console.log("Document data:", certainField.name);
         ourData.innerText = certainField.name;
     } else {
         // doc.data() will be undefined in this case
@@ -188,6 +225,8 @@ function submitNewProject() {
     //         // showAlert()
     //     })
     // }
+
+    window.setTimeout(function(){location.reload()},3000)
 
 }
 
