@@ -4,6 +4,8 @@ let userCreateTicket = document.querySelector('#createNewTicket')
 let addProject = document.querySelector('#addProject')
 let viewAllTickets = document.querySelector('#viewAllTickets')
 
+// let viewAllTickets = document.querySelector('#????')
+// let viewAllTickets = document.querySelector('#????')
 
 let testData = document.querySelector('#testData')
 
@@ -85,6 +87,7 @@ function submitNewProject() {
     //Collect info about new project
     let projectName01 = document.querySelector('#projectName01').value;
     let description = document.querySelector('#description')
+    
     let userFormDueDate = document.querySelector('#datepicker')
 
     //TODO Add function to make sure user is not overwritting data of already exicting project
@@ -93,6 +96,13 @@ function submitNewProject() {
 
     var docRef = db.collection("projects").doc(projectName01);
 
+
+    
+    //Makes sure user doesn't add a super long subject title
+    // if (???.value.length > 51) {
+    //     snackbar.innerText = 'Subject must be less than 50 charterers long';
+    //     showAlert();
+    // }
 
 
     docRef.get().then((doc) => {
@@ -107,6 +117,18 @@ function submitNewProject() {
             //This will fix the project names not showing up in dropdown.
             db.collection('projects').doc(projectName01).set({
                 state: 'initialized'
+            });
+
+            //Firebase will not allow me to use "data".value inside our set function 
+            //I have to only use a var when setting data in db,
+            //this, we call the .value beforehand.
+            let userDescription = description.value
+            let dueDate = userFormDueDate.value;
+
+            //Save Description and due date to db
+            db.collection('projects').doc(projectName01).set({
+                Description: userDescription,
+                dueDate: dueDate
             });
 
             // doc.data() will be undefined in this case
