@@ -18,17 +18,17 @@ viewAllTickets.addEventListener('click', loadPage3)
 addProject.addEventListener('click', submitNewProject)
 
 function loadPage(e) {
-    
+
     window.location.href = "../HTML/projectTickets.html";
 }
 
 function loadPage2(e) {
-    
+
     window.location.href = "../HTML/createTicket.html";
 }
 
 function loadPage3(e) {
-   
+
     window.location.href = "../HTML/projectTicketsMain.html";
 }
 
@@ -87,7 +87,7 @@ function submitNewProject() {
     //Collect info about new project
     let projectName01 = document.querySelector('#projectName01').value;
     let description = document.querySelector('#description')
-    
+
     let userFormDueDate = document.querySelector('#datepicker')
 
     //TODO Add function to make sure user is not overwritting data of already exicting project
@@ -97,57 +97,79 @@ function submitNewProject() {
     var docRef = db.collection("projects").doc(projectName01);
 
 
-    
+
     //Makes sure user doesn't add a super long subject title
     // if (???.value.length > 51) {
     //     snackbar.innerText = 'Subject must be less than 50 charterers long';
     //     showAlert();
     // }
 
-
+    //Make sure we are not overwriting already exciting project
     docRef.get().then((doc) => {
         if (doc.exists) {
             snackbar.innerText = "Project Already Exists! Please select a different name.";
-         showAlert()
+            showAlert()
             // console.log("Document data:", doc.data());
             // ifProjectExists = true;
             // console.log(ifProjectExists)
         } else {
 
-            //This will fix the project names not showing up in dropdown.
-            db.collection('projects').doc(projectName01).set({
-                state: 'initialized'
-            });
-
-            //Firebase will not allow me to use "data".value inside our set function 
-            //I have to only use a var when setting data in db,
-            //this, we call the .value beforehand.
             let userDescription = description.value
             let dueDate = userFormDueDate.value;
 
-            //Save Description and due date to db
-            db.collection('projects').doc(projectName01).set({
-                Description: userDescription,
-                dueDate: dueDate
-            });
+            //Makes sure subject title and Description are not too long
+            if (userDescription.length > 201 || projectName01.length > 51) {
 
-            // doc.data() will be undefined in this case
-            return db.collection('projects').doc(projectName01).collection('projectTickets').doc('discard').set({
-                value: 'discard'
-    
-            }).then(() =>{
-                snackbar.innerText = "New Project Created!";
-                showAlert()
-            });
+                //We need another nested branch of ifs because one might be true and the other not
+                if (userDescription.length > 201) {
+                    snackbar.innerText = "Description must be less than 200 characters";
+                    showAlert()
+                }
 
-           
-           
+                if (projectName01.length > 51) {
+                    snackbar.innerText = "Subject must be less than 50 characters";
+                    showAlert()
+                }
+            }
+
+            //Assuming subject and Description are not too long
+            else {
+                //This will fix the project names not showing up in dropdown.
+                db.collection('projects').doc(projectName01).set({
+                    state: 'initialized'
+                });
+
+                //Firebase will not allow me to use "data".value inside our set function 
+                //I have to only use a var when setting data in db,
+                //this, we call the .value beforehand.
+                
+
+                //Save Description and due date to db
+                db.collection('projects').doc(projectName01).set({
+                    Description: userDescription,
+                    dueDate: dueDate
+                });
+
+                // doc.data() will be undefined in this case
+                return db.collection('projects').doc(projectName01).collection('projectTickets').doc('discard').set({
+                    value: 'discard'
+
+                }).then(() => {
+                    snackbar.innerText = "New Project Created!";
+                    showAlert()
+                });
+
+
+
+            }
+
+
         }
     }).catch((error) => {
         console.log("Error getting document:", error);
     });
 
-   
+
 
 
     //If Document already exists
