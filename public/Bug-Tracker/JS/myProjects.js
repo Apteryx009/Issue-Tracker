@@ -10,19 +10,18 @@ let testData = document.querySelector('#testData')
 
 
 
-userAction.addEventListener('click', loadPage)
+userAction.addEventListener('click', loadTickets)
 viewAllTickets.addEventListener('click', loadPage3)
 
 addProject.addEventListener('click', submitNewProject)
 
-function loadPage(e) {
+function loadPage3(e) {
 
     window.location.href = "../HTML/projectTickets.html";
 }
 
 
-
-function loadPage3(e) {
+function loadTickets(doc) {
 
     window.location.href = "../HTML/projectTicketsMain.html";
 }
@@ -73,17 +72,32 @@ function renderDoc(doc) {
     projectNode.innerHTML = `
     <div class="result__entry">
     <div class="issue__properties">
-      <div class="issue__entry"><span style="background-color: #f45e51">${doc.id}</span></div>
-      <div class="issue__entry" title="this is a bug"><span style="background-color: #f45e51">${certainField01.Description}</span></div>
+      <div  class="issue__entry"><span style="background-color: #f45e51">${doc.id}</span></div>
+      <div  class="issue__entry" title="this is a bug"><span style="background-color: #f45e51">${certainField01.Description}</span></div>
 
     </div>
   </div>
     `;
+    
+    
+    projectNode.value = doc.id;
+
+    //This will collect project name that user clicked so that we may load 
+    //tickets of that project. Furthermore, it will direct user
+    //to new page. 
+    projectNode.addEventListener('click', function(){
+        localStorage.setItem('loadProject', projectNode.value)
+        window.location.href = "../HTML/projectTicketsMain.html";
+        console.log(projectNode.value)
+    });
     container.appendChild(projectNode);
 
     //Refresh page to show new project that has been added
    
 }
+
+
+
 
 
 
