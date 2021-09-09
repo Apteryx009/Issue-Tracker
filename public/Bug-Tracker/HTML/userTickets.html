@@ -6,7 +6,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bug Tracker: home</title>
+    <title>Bug Tracker: User Tickets</title>
     <!-- <link rel="stylesheet" href="../CSS/style.css">  There is conflict here.  -->
     <!-- <link rel="stylesheet" href="../CSS/aside.css">   -->
     <link rel="stylesheet" href="../CSS/projectTicketsMain.css">
@@ -40,7 +40,9 @@
 
         <main class="main">
 
-                <h4>List of all ticket history for project. Please click on ticket to see further details. </h3>
+            <!-- policy: User will not be able to be assigned ticket to project if they
+            do not have acess to the project. This page is more of a filter of convenience -->
+                <h4>Personal Tickets that have been requested or assigned by you.</h3>
                     <button class="btn btn-success btn-sm" id="createNewTicket">Create New Ticket</button>
 
             <div class="main_cards">
