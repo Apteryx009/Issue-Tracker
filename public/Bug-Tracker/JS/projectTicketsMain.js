@@ -79,7 +79,7 @@ function renderDoc(doc) {
     <div class="priority__entry"><span>${certainField01.priority}</span></div>
     <div class="created__entry"><span>${certainField01.CreatedAt}</span></div>
     <div class="due-date__entry"><span>${certainField01.userDate}</span></div>
-    <div class="registered__entry"><span>${certainField01.assignee}</span></div>
+    <div class="registered__entry"><span>${certainField01.SubmitterName}</span></div>
     
     </div> 
     `;

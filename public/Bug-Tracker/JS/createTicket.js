@@ -105,6 +105,9 @@ var subject
 var ProjectName
 var Submitter
 
+//Name of user from db
+let SubmitterName;
+
 
 //This function gathers all data user has selected 
 //or entered and send it to firebase database
@@ -182,8 +185,9 @@ let numOfTickets
 function saveToDb() {
 
    //get name of Submitter
-    var priority01 = document.getElementById("userFormNames");
-    var SubmitterName = priority01.value;
+    
+    SubmitterName = localStorage.getItem('nameOfUser');
+    console.log(SubmitterName)
 
     //Get UID of submitter
     Submitter = localStorage.getItem('userUID')
@@ -204,7 +208,7 @@ function saveToDb() {
         NumTickets: numOfTickets,
         SubmitterName: SubmitterName,
         SubmitterUID: Submitter, 
-        CreatedAt: date ,
+        CreatedAt: date,
         ticketStatus: 'open'
 
     }).then(() => {
@@ -256,3 +260,4 @@ function showAlert() {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 }
+
