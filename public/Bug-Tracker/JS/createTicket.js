@@ -87,7 +87,7 @@ function showData() {
     // var theSelect = demoForm.demoSelect;
     var priority = document.getElementById("userFormNames");
     var priorityUser = priority.value;
-    console.log(priorityUser)
+    console.log(priorityUser + "test")
 }
 
 
@@ -181,6 +181,12 @@ let numOfTickets
 //Sizes user inputs to a Ticket document inside firebase
 function saveToDb() {
 
+   //get name of Submitter
+    var priority01 = document.getElementById("userFormNames");
+    var SubmitterName = priority01.value;
+
+    //Get UID of submitter
+    Submitter = localStorage.getItem('userUID')
 
     //Gets size before remember 
     getSize()
@@ -196,7 +202,8 @@ function saveToDb() {
         subject: subject.value,
         ProjectName: ProjectName.value,
         NumTickets: numOfTickets,
-        Submitter: Submitter,
+        SubmitterName: SubmitterName,
+        SubmitterUID: Submitter, 
         CreatedAt: date ,
         ticketStatus: 'open'
 
