@@ -8,7 +8,7 @@ const db = firebase.firestore();
 
 
 //put project name inside html "header"
-displayProjectName.innerHTML = `List of all ticket history for project ${projectName}. Please click on ticket to see further details. `;
+displayProjectName.innerHTML = `List of all personal ticket history. Please click on ticket to see further details. `;
 
 document.addEventListener('DOMContentLoaded', function () {
     loadTicketDetails();
@@ -29,16 +29,36 @@ let counter = 0;
 function loadTicketDetails() {
 
     let userUID = localStorage.getItem("userUID")
+    let userUID01 = userUID.replace(/['"]+/g, '')
 
-
-    //TODO********, display tickets for user where they assigned them, have been assigned. 
+    //TODO********, display tickets for user where they assigned them, have been assigned.
+    
+    //Display tickets user has been assigned
     console.log(projectName);
-    db.collectionGroup("projectTickets").where("asigneeUID", "==", userUID)
+    db.collectionGroup("projectTickets").where("asigneeUID", "==", userUID01)
     .get()
     .then(function(querySnapshot) {
-        // below is your loop
+       
+        querySnapshot.forEach(function(doc) {
+            renderDoc(doc)
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+
+    
+    // let SubmitterUID = localStorage.getItem("SubmitterUID")
+    // SubmitterUID = SubmitterUID.replace(/['"]+/g, '');
+    // console.log(SubmitterUID);
+    //Display tickets user has assigned to others
+    db.collectionGroup("projectTickets").where("SubmitterUID", "==", userUID)
+    .get()
+    .then(function(querySnapshot) {
+       
         querySnapshot.forEach(function(doc) {
             console.log(doc.id, " => ", doc.data());
+            renderDoc(doc)
         });
     })
     .catch(function(error) {
