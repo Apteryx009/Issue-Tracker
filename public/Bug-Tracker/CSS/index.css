@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(136, 170, 51);
+    background-position: 0px 10px, 0% 0%, 0% 0%;
+    background-repeat: repeat, repeat, repeat;
+    background-attachment: scroll, scroll, scroll;
+    background-image: radial-gradient(circle at 0% 50%, rgba(96, 16, 48, 0) 9px, rgb(102, 17, 51) 10px, rgba(96, 16, 48, 0) 11px), radial-gradient(at 100% 100%, rgba(96, 16, 48, 0) 9px, rgb(102, 17, 51) 10px, rgba(96, 16, 48, 0) 11px), none;
+    background-origin: padding-box, padding-box, padding-box;
+    background-clip: border-box, border-box, border-box;
+    background-size: 20px 20px;
+    --darkreader-inline-bgcolor: #82a039;
+    --darkreader-inline-bgimage: radial-gradient(circle at 0% 50%, rgba(96, 27, 54, 0) 9px, #651c39 10px, rgba(96, 27, 54, 0) 11px), radial-gradient(at 100% 100%, rgba(96, 27, 54, 0) 9px, #651c39 10px, rgba(96, 27, 54, 0) 11px), none;
+}
