@@ -91,7 +91,7 @@ function renderDoc(doc) {
     //tickets of that project. Furthermore, it will direct user
     //to new page. 
     projectNode.addEventListener('click', function () {
-        localStorage.setItem('loadTicket', projectNode.value)
+        localStorage.setItem('loadTicket', projectNode.id)
         window.location.href = "../HTML/projectTickets.html";
         console.log(projectNode.value)
     });

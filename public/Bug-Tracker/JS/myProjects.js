@@ -1,5 +1,5 @@
 //A test button which will load projectTickets.html at user request
-let userAction = document.querySelector('#loadProjectTickets')
+// let userAction = document.querySelector('#loadProjectTickets')
 let addProject = document.querySelector('#addProject')
 let viewAllTickets = document.querySelector('#viewAllTickets')
 
@@ -10,7 +10,7 @@ let testData = document.querySelector('#testData')
 
 
 
-userAction.addEventListener('click', loadTickets)
+// userAction.addEventListener('click', loadTickets)
 viewAllTickets.addEventListener('click', loadPage3)
 
 addProject.addEventListener('click', submitNewProject)

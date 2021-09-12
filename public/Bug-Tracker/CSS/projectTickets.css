@@ -1,28 +1,21 @@
-
-
-body{
+body {
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
 
 .overview_card-info {
-   
   margin-left: 25%;
-   font-size: larger;
-} 
-
-
-.overview_card{
-  height: 200px;
+  font-size: larger;
 }
 
-
+.overview_card {
+  /* height: 200px; */
+}
 
 .datepicker td, .datepicker th {
-width: 1.5em;
-height: 1.5em;
+  width: 1.5em;
+  height: 1.5em;
 }
-
 
 .main_cards {
   margin: 10px;
@@ -31,22 +24,13 @@ height: 1.5em;
   height: auto;
 }
 
-#card2{
-  overflow:scroll;
+#card2 {
+  overflow: scroll;
 }
 
-#card1{
- 
-  
-}
-
-.btn-sm{
+.btn-sm {
   width: 15%;
 }
-
-
-
-
 
 /* .card {
   grid-template-areas:
@@ -55,26 +39,32 @@ height: 1.5em;
 } */
 
 
-/* Desktop css */
-@media only screen and (min-width: 750px) {
- 
- .card{
-
-
-   /* flex-basis: 250px;
-  flex-grow: 1;
+/* /Mobile css  */
+@media only screen and (max-width: 750px) {
+  .card {
+    
   margin: 10px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
   background-color: seagreen;
-   height: 100px;
+   
   border: 1px solid darkblue;
   border-radius: 4px;
-  color: darkblue;  */
-  height: auto;
-} 
+  color: darkblue;  
+    height: auto;
+  }
+
+  .main_cards {
+    height: auto;
+    grid-template-areas:
+      'card1' 
+      'card1'
+      'card1' 
+      'card1'
+      'card2'; 
+  }
 
   .d-flex {
     /* width: 90%; */
@@ -82,83 +72,161 @@ height: 1.5em;
     justify-content: space-between;
     height: auto;
   }
-
-  #card4{
-    height: 500px;
+  #card4 {
+    position: relative;
+    height: 600px;
   }
-
   textarea {
     resize: vertical;
   }
-
-   .two{
-    padding-left: 15rem;
-   
-  } 
-  
-  .main_cards {
-   
-    /* grid-template-areas:
-      'card1' 'card1'
-      'card2' 'card3'; */
-      
-  } 
-
-  /* define organization  */
-  #main{
-      grid-row: 1;
-      grid-column: 1 / 6;
-      display: grid;
-      height: auto
-  }
-
-  main{
+  .two {
+    position: relative;
+    padding-left: 3rem;
+    width: 50%;
     height: auto;
   }
-
-  #card1{
+  .main_cards {
+    height: auto;
+  }
+  /* define organization  */
+  #main {
+    grid-row: 1;
+    grid-column: 1 / 6;
+    display: grid;
+    height: 900px;
+  }
+  .main {
+    /* width: 50rem;
+    height: auto; */
+  }
+  main {
+    height: auto;
+  }
+  #card1 {
     grid-row: 1 / span 6;
-    height: 30rem;
+    height: auto;
+    width: auto;
   }
-  #card2{
-     /* height: auto; */
-      grid-row: 2;
-      grid-column: 1 / 2;
-      display: grid;
-      position: relative;
+  #card2 {
+    /* height: auto; */
+    grid-row: 2;
+    grid-column: 1 / 2;
+    display: grid;
+    position: relative;
   }
-
-  #card3{
-      grid-row: 2;
-      grid-column: 2 / 4;
-      display: grid;
+  #card3 {
+    grid-row: 2;
+    grid-column: 2 / 4;
+    display: grid;
   }
-  
-  #card2{
+  #card2 {
     grid-row: 2;
     grid-column: 3 / 2;
     display: grid;
     position: relative;
+  }
+  .subcard {
+    display: flex;
+    justify-self: left;
+  }
+  .leftItem {
+    display: flex;
+    margin-right: 8rem;
+  }
+  .rightItem {
+    display: flex;
+  }
+
+
 }
 
 
-  .subcard{
-      display: flex;
-     justify-self: left;
+/* Desktop css */
+
+@media only screen and (min-width: 750px) {
+  .card {
+     flex-basis: 250px;
+  flex-grow: 1;
+  margin: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: seagreen;
+   
+  border: 1px solid darkblue;
+  border-radius: 4px;
+  color: darkblue;  
+    height: auto;
+  }
+  .d-flex {
+    position: relative;
+    /* width: 90%; */
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+  }
+  #card4 {
+    height: 500px;
+  }
+  textarea {
+    resize: vertical;
+  }
+  .two {
+    padding-left: 15rem;
   }
 
-  .leftItem{
-      display: flex;
-      margin-right: 8rem;
-    
+  /* define organization  */
+  #main {
+    position: relative;
+    grid-row: 1;
+    grid-column: 1 / 6;
+    display: grid;
+    height: auto;
   }
-
-  .rightItem{
-      display: flex;
-    
+  .main {
+    /* width: 50rem;
+    height: auto; */
   }
-
+  main {
+    height: auto;
+  }
+  #card1 {
+    grid-row: 1 / span 6;
+    height: auto;
+    width: auto;
+  }
+  #card2 {
+    /* height: auto; */
+    grid-row: 2;
+    grid-column: 1 / 2;
+    display: grid;
+    position: relative;
+  }
+  #card3 {
+    grid-row: 2;
+    grid-column: 2 / 4;
+    display: grid;
+  }
+  #card2 {
+    grid-row: 2;
+    grid-column: 3 / 2;
+    display: grid;
+    position: relative;
+  }
+  .subcard {
+    display: flex;
+    justify-self: left;
+  }
+  .leftItem {
+    display: flex;
+    margin-right: 8rem;
+  }
+  .rightItem {
+    display: flex;
+  }
 }
+
 /* End of Desktop only css */
 
 /* .left_card {
@@ -170,17 +238,14 @@ height: 1.5em;
   justify-content: space-between;
   padding: 20px;
   /* background-color: seagreen; */
-  /* height: 100px;
+
+/* height: 100px;
   border: 1px solid darkblue;
   border-radius: 4px;
   color: darkblue;
-} */ */
+} */
 
-
-
-
-
-.dropbtn {
+*/ .dropbtn {
   background-color: #04AA6D;
   color: white;
   padding: 4px 16px 4px 16px;
@@ -198,7 +263,7 @@ height: 1.5em;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -209,15 +274,18 @@ height: 1.5em;
   display: block;
 }
 
-.dropdown-content{
+.dropdown-content {
   grid-row-end: 1;
- }
+}
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-
- 
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
