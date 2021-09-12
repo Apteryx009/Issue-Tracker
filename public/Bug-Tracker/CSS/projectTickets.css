@@ -176,6 +176,16 @@ body {
     padding-left: 15rem;
   }
 
+#container-twopp2{
+
+}
+/* 
+  #twop2 { 
+    overflow:auto;
+    align-items: left;
+  } */
+
+
   /* define organization  */
   #main {
     position: relative;
