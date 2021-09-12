@@ -176,7 +176,9 @@ function saveToDb() {
         subject: subject.value,
         ProjectName: ProjectName.value,
         NumTickets: numOfTickets,
-        Submitter: Submitter
+        Submitter: Submitter,
+        CreatedAt: date ,
+        ticketStatus: 'open'
 
     }).then(() => {
 
