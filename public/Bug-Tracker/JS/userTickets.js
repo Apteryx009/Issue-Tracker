@@ -1,78 +1,18 @@
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-
-// var ref = firebase.database().ref("projects/");
-
-// console.log(ref)
-
-// let nameOfUser = getName(); 
-
-// function getUserSpecificTickets(){
-//     let ref = db.collection('projects').get().then(function (querySnapshot) {
-//         querySnapshot.docs.forEach(function (doc) {
-//             ref.child(doc.id).get().then(function (querySnapshot) {
-//                 querySnapshot.docs.forEach(function (doc2) {
-//                     console.log(doc2.id)
-//                 });
-//             });
-//             ref = ref + doc.id;
-//            console.log(ref) 
-//         });
-//     });
-// }
-
-// // function getSubCollection(){
-// //     ref.collection('projectTickets').get().then(function (querySnapshot) {
-// //         querySnapshot.docs.forEach(function (doc) {
-           
-            
-// //            console.log( doc.data()) 
-// //         });
-// //     });
-// // }
-
-// getUserSpecificTickets()
-
 let createNewTicket = document.querySelector('#createNewTicket');
 let displayProjectName = document.querySelector('#displayProjectName');
 let projectName = localStorage.getItem("loadProject");
+const auth = firebase.auth();
+const db = firebase.firestore();
 
-
-//get name of user
-function getName() {
-    let nameOfUser;
-    let userID = localStorage.getItem('userUID');
-
-    //This is nessary to remove the double quotes around userUID
-    userID = userID.replace(/['"]+/g, '');
-    // console.log(userID)
-    db.collection('users').get().then(function (querySnapshot) {
-        querySnapshot.docs.forEach(function (doc) {
-           if(doc.id == userID){
-            nameOfUser = doc.data().name;
-            localStorage.setItem('nameOfUser', nameOfUser);
-           }
-        });
-    });
-}
 
 
 
 //put project name inside html "header"
 displayProjectName.innerHTML = `List of all ticket history for project ${projectName}. Please click on ticket to see further details. `;
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
-    loadTicketDetails01();
-    
+    loadTicketDetails();
 }, false);
-
- nameOfUser = getName();
-
- 
- 
 
 createNewTicket.addEventListener('click', loadPage)
 
@@ -86,11 +26,17 @@ function loadPage(e) {
 let counter = 0;
 
 //Get and display all tickets and their details for requested project.
-function loadTicketDetails01() {
-    let nameOfUser = localStorage.getItem('nameOfUser')
-    db.collectionGroup("projectTickets").where("assignee", "==", nameOfUser)
+function loadTicketDetails() {
+
+    let userUID = localStorage.getItem("userUID")
+
+
+    //TODO********, display tickets for user where they assigned them, have been assigned. 
+    console.log(projectName);
+    db.collectionGroup("projectTickets").where("asigneeUID", "==", userUID)
     .get()
     .then(function(querySnapshot) {
+        // below is your loop
         querySnapshot.forEach(function(doc) {
             console.log(doc.id, " => ", doc.data());
         });
@@ -133,7 +79,7 @@ function renderDoc(doc) {
     <div class="priority__entry"><span>${certainField01.priority}</span></div>
     <div class="created__entry"><span>${certainField01.CreatedAt}</span></div>
     <div class="due-date__entry"><span>${certainField01.userDate}</span></div>
-    <div class="registered__entry"><span>${certainField01.assignee}</span></div>
+    <div class="registered__entry"><span>${certainField01.SubmitterName}</span></div>
     
     </div> 
     `;
@@ -178,5 +124,3 @@ function deleteDiscard(doc) {
        
     }
 }
-
-
