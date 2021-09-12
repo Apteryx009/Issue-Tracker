@@ -68,23 +68,12 @@ signInBtn.addEventListener('click', e => {
 
     //IK this looks odd, but it runs perfectly and gives zero bugs
     const promise = auth.signInWithEmailAndPassword(email, pass).then(cred => {
-        return db.collection('users').doc(cred.user.uid).set({
-           
-
-        }).then(() => {
+       
             //This code below will be called AFTER the catach below
             localStorage.setItem('userUID', JSON.stringify(cred.user.uid));
 
         });
-        //promise.catch(e => errorDetails.innerText = e.message);
-
-        // promise.catch(e => console.log(e.message));
-
-
-
-
-
-    });
+        
     promise.catch(e => errorDetails.innerText = e.message);
 })
 

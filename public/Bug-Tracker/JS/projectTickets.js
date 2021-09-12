@@ -1,3 +1,4 @@
+//TODO: FIX bug where every bug is registed by dfgdfg.
 const auth = firebase.auth();
 const db = firebase.firestore();
 

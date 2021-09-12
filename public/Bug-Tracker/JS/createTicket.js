@@ -186,8 +186,12 @@ function saveToDb() {
 
    //get name of Submitter
     
-    SubmitterName = localStorage.getItem('nameOfUser');
-    console.log(SubmitterName)
+    // SubmitterName = localStorage.getItem('nameOfUser');
+    // console.log(SubmitterName)
+
+
+    //UID of assignee
+    console.log(assigneeUID.value + "assignee UID")
 
     //Get UID of submitter
     Submitter = localStorage.getItem('userUID')
