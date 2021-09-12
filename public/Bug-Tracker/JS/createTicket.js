@@ -42,6 +42,7 @@ function renderDoc(doc) {
     let option = document.createElement('option');
     //In case we need to ref it later  
     option.setAttribute('data-id', doc.id);
+    option.setAttribute('onclick',getUIDOfAssignee());
 
     //Fill values with names of users
     option.setAttribute('value', doc.data().name);
@@ -155,6 +156,23 @@ function collectDataTicket() {
     }
 }
 
+let assigneeUID; 
+
+
+//Get UID of assignee. This is useful because two assignees
+//might share the same name
+function getUIDOfAssignee(){
+    
+       //Gets UID of assignee
+       $("#userFormNames").change(function () {
+        assigneeUID = $(this).find(':selected').data("id");
+   });
+ 
+   
+}
+
+
+
 //Holds size of how many tickets there are
 let size01;
 
@@ -163,11 +181,13 @@ let numOfTickets
 //Sizes user inputs to a Ticket document inside firebase
 function saveToDb() {
 
+
     //Gets size before remember 
     getSize()
     //Create new doc for the new ticket
     return db.collection('projects').doc(ProjectName.value).collection('projectTickets').doc().set({
         assignee: nameUserSubmitted.value,
+        asigneeUID: assigneeUID,
         ticketType: ticketType.value,
         Category: Category.value,
         priority: priority.value,
