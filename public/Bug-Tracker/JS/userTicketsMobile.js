@@ -80,7 +80,7 @@ function renderDoc(doc) {
         //do nothing
     }
 
-    else {
+   
 
       
         
@@ -95,19 +95,12 @@ function renderDoc(doc) {
     projectNode.innerHTML = `
      <div class="issue__properties">
     <div class="issue__entry"><span style="background-color: #f45e51">bug</span></div>
-    <div class="subject__entry" title="${certainField01.subject}"><span style="white-space: pre-line">${certainField01.subject}</span></div>
+    <div  id="crop" class="subject__entry" title="${certainField01.subject}"><span style="white-space: pre-line">${certainField01.subject}</span></div>
     <div class="asignee__entry"><span>${certainField01.assignee}</span></div>
-    <div class="status__entry"><span style="background-color: #f45e51">${certainField01.ticketStatus}</span></div>
-    <div class="category__entry"><span>${certainField01.Category}</span></div>
-    <div class="priority__entry"><span>${certainField01.priority}</span></div>
-    <div class="created__entry"><span>${certainField01.CreatedAt}</span></div>
-    <div class="due-date__entry"><span>${certainField01.userDate}</span></div>
-    <div class="registered__entry"><span>${certainField01.SubmitterName}</span></div>
-    
     </div> 
     `;
      
-    //If Mobile screen
+ 
     
     //Sets value equal to specific ticket number we want to get later on
     // projectNode.value = doc.data().where('NumTickets', '=', '10');
@@ -125,7 +118,7 @@ function renderDoc(doc) {
 
     container.appendChild(projectNode);
 }
-}
+
 
 
 
@@ -149,16 +142,4 @@ function deleteDiscard(doc) {
        
     }
 }
-
-
-//Mobile script. There will be too many divs for mobile users,
-//Thus, show only what is nessary. 
-
-
-
-
-let mobileDiv1 = document.querySelector('.result__container');
-let mobileDiv2 = document.querySelector('.result__entry');
-
-//target resize event
 
