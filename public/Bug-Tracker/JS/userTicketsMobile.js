@@ -143,3 +143,15 @@ function deleteDiscard(doc) {
     }
 }
 
+
+function executeIfMinWidth750 () {
+    if (window.matchMedia('(min-width: 750px)').matches) {
+        window.location.replace("projectTicketsMain.html");
+    }
+  }
+  
+  // call initially
+  executeIfMinWidth750();
+  
+  // add handler for resize
+  window.addEventListener('resize', executeIfMinWidth750);

@@ -29,17 +29,18 @@ let counter = 0;
 function loadTicketDetails() {
 
     let userUID = localStorage.getItem("userUID")
-    let userUID01 = userUID.replace(/['"]+/g, '')
+    userUID = userUID.replace(/['"]+/g, '')
 
     //TODO********, display tickets for user where they assigned them, have been assigned.
     
     //Display tickets user has been assigned
     console.log(projectName);
-    db.collectionGroup("projectTickets").where("asigneeUID", "==", userUID01)
+    db.collectionGroup("projectTickets").where("asigneeUID", "==", userUID)
     .get()
     .then(function(querySnapshot) {
        
         querySnapshot.forEach(function(doc) {
+            
             renderDoc(doc)
         });
     })

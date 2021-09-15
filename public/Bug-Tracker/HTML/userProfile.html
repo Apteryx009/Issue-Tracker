@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
+      
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyBNRFfYg12CG-c5NJlTN0uTwp31NGe3P08",
+      
+                authDomain: "bug-tracker-e4401.firebaseapp.com",
+      
+                databaseURL: "https://bug-tracker-e4401-default-rtdb.firebaseio.com",
+      
+                projectId: "bug-tracker-e4401",
+      
+                storageBucket: "bug-tracker-e4401.appspot.com",
+      
+                messagingSenderId: "180501724640",
+      
+                appId: "1:180501724640:web:86dd3220fff7fd8a837f85",
+      
+                measurementId: "G-XHC9FRL0M8"
+      
+            };
+            firebase.initializeApp(firebaseConfig);
+        </script>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bug Tracker: Project Tickets</title>
+      
+        <!-- These two css links are required in every file -->
+        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="../CSS/aside.css">
+      
+       
+      
+      </head>
+
+<body>
+    
+  <div class="grid-container">
+    <div class="menu-icon">
+      <strong> &#9776;</strong>
+    </div>
+    <header class="header">
+      <div class="header_search">Search...</div>
+      <div class="header_avatar">Logout</div>
+    </header>
+    <aside class="aside">
+      <div class="aside_close-icon">
+        <strong>&times;</strong>
+      </div>
+      <ul class="aside_list">
+        <li class="aside_list-item">User Login</li>
+        <li class="aside_list-item">Dashboard Home</li>
+        <li class="aside_list-item">Manage Role</li>
+        <li class="aside_list-item">Projects</li>
+        <li class="aside_list-item">Manage Users</li>
+        <li class="aside_list-item">My Tickets</li>
+        <li class="aside_list-item">User Profile</li>
+      </ul>
+    </aside>
+  
+    <main class="main">
+      <div class="main_cards">
+        <div class="card">Card</div>
+        <div class="card">Card</div>
+        <div class="card">Card</div>
+        <div class="card">Card</div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer_copyright">&copy;2021</div>
+      <div class="footer_byline">Made with &hearts;</div>
+    </footer>
+  </div>
+
+  <script defer src="../JS/userProfile.js"></script>
+  <script defer src="../JS/aside.js"></script>
+</body>
+
+</html>
