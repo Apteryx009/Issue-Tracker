@@ -162,3 +162,17 @@ let mobileDiv2 = document.querySelector('.result__entry');
 
 //target resize event
 
+
+//Basically, if user resizes window to be small
+//Switch to mobile page or vice versa
+function executeIfMaxWidth750 (e) {
+    if (window.matchMedia('(max-width: 750px)').matches) {
+        window.location.replace("userTicketsMobile.html");
+    }
+  }
+  
+  // call initially
+  executeIfMaxWidth750();
+  
+  // add handler for resize
+  window.addEventListener('resize', executeIfMaxWidth750);

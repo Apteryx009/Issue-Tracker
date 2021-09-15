@@ -70,19 +70,12 @@ function renderDoc(doc) {
 
     const container = document.querySelector('.result__container')
     projectNode.innerHTML = `
-     <div class="issue__properties">
-    <div class="issue__entry"><span style="background-color: #f45e51">bug</span></div>
-    <div class="subject__entry" title="${certainField01.subject}"><span style="white-space: pre-line">${certainField01.subject}</span></div>
-    <div class="asignee__entry"><span>${certainField01.assignee}</span></div>
-    <div class="status__entry"><span style="background-color: #f45e51">${certainField01.ticketStatus}</span></div>
-    <div class="category__entry"><span>${certainField01.Category}</span></div>
-    <div class="priority__entry"><span>${certainField01.priority}</span></div>
-    <div class="created__entry"><span>${certainField01.CreatedAt}</span></div>
-    <div class="due-date__entry"><span>${certainField01.userDate}</span></div>
-    <div class="registered__entry"><span>${certainField01.SubmitterName}</span></div>
-    
-    </div> 
-    `;
+    <div class="issue__properties">
+   <div class="issue__entry"><span style="background-color: #f45e51">bug</span></div>
+   <div  id="crop" class="subject__entry" title="${certainField01.subject}"><span style="white-space: pre-line">${certainField01.subject}</span></div>
+   <div class="asignee__entry"><span>${certainField01.assignee}</span></div>
+   </div> 
+   `;
 
     //Sets value equal to specific ticket number we want to get later on
     // projectNode.value = doc.data().where('NumTickets', '=', '10');
@@ -125,15 +118,16 @@ function deleteDiscard(doc) {
     }
 }
 
-
-function executeIfMaxWidth750 () {
-    if (window.matchMedia('(max-width: 750px)').matches) {
-        window.location.replace("projectTicketsMainMobile.html");
+//Basically, if user resizes window to be small
+//Switch to mobile page or vice versa
+function executeIfMinWidth750 () {
+    if (window.matchMedia('(min-width: 750px)').matches) {
+        window.location.replace("projectTicketsMain.html");
     }
   }
   
   // call initially
-  executeIfMaxWidth750();
+  executeIfMinWidth750();
   
   // add handler for resize
-  window.addEventListener('resize', executeIfMaxWidth750);
+  window.addEventListener('resize', executeIfMinWidth750);

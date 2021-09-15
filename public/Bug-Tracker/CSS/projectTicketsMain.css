@@ -93,6 +93,8 @@ body {
     height: auto;
     width: auto;
   }
+
+ 
   
   .card:first-child {
     grid-area: card1;
