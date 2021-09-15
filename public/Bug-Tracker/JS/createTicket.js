@@ -42,7 +42,7 @@ function renderDoc(doc) {
     let option = document.createElement('option');
     //In case we need to ref it later  
     option.setAttribute('data-id', doc.id);
-    option.setAttribute('onclick',getUIDOfAssignee());
+    option.setAttribute('onclick', getUIDOfAssignee());
 
     //Fill values with names of users
     option.setAttribute('value', doc.data().name);
@@ -129,7 +129,7 @@ function collectDataTicket() {
 
     console.log(subject.value.length)
 
-   
+
     //Makes sure user doesn't add a super long subject title
     if (subject.value.length > 51) {
         snackbar.innerText = 'Subject must be less than 50 charterers long';
@@ -159,19 +159,20 @@ function collectDataTicket() {
     }
 }
 
-let assigneeUID; 
+let assigneeUID;
 
 
 //Get UID of assignee. This is useful because two assignees
 //might share the same name
-function getUIDOfAssignee(){
-    
-       //Gets UID of assignee
-       $("#userFormNames").change(function () {
+function getUIDOfAssignee() {
+
+    //Gets UID of assignee
+    $("#userFormNames").change(function () {
         assigneeUID = $(this).find(':selected').data("id");
-   });
- 
-   
+        localStorage.setItem("assigneeUID", assigneeUID);
+    });
+
+
 }
 
 
@@ -184,24 +185,37 @@ let numOfTickets
 //Sizes user inputs to a Ticket document inside firebase
 function saveToDb() {
 
-   //get name of Submitter
-    
-    // SubmitterName = localStorage.getItem('nameOfUser');
-    // console.log(SubmitterName)
 
-
-    //UID of assignee
-    console.log(assigneeUID.value + "assignee UID")
 
     //Get UID of submitter
     Submitter = localStorage.getItem('userUID')
+    Submitter = Submitter.replace(/['"]+/g, '');
+
+    //Get UID of assignee
+    let assigneeUID01 = localStorage.getItem('assigneeUID');
+   
+    getSubmitterName(Submitter);
+
+    let SubmitterName01 = localStorage.getItem('SubmitterName');
+    //  console.log(SubmitterName01 + "Submitter name")
+
+
+  
+
+
+
+
+    //UID of assignee
+    // console.log(assigneeUID.value + "assignee UID")
+
+
 
     //Gets size before remember 
     getSize()
     //Create new doc for the new ticket
     return db.collection('projects').doc(ProjectName.value).collection('projectTickets').doc().set({
         assignee: nameUserSubmitted.value,
-        asigneeUID: assigneeUID,
+        asigneeUID: assigneeUID01,
         ticketType: ticketType.value,
         Category: Category.value,
         priority: priority.value,
@@ -210,8 +224,8 @@ function saveToDb() {
         subject: subject.value,
         ProjectName: ProjectName.value,
         NumTickets: numOfTickets,
-        SubmitterName: SubmitterName,
-        SubmitterUID: Submitter, 
+         SubmitterName: SubmitterName01,
+        SubmitterUID: Submitter,
         CreatedAt: date,
         ticketStatus: 'open'
 
@@ -265,3 +279,14 @@ function showAlert() {
     setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 }
 
+//Get name of Submitter
+function getSubmitterName(Submitter){
+        //Get name of Submitter
+        db.collection('users').get().then(function (querySnapshot) {
+            querySnapshot.docs.forEach(function (doc) {
+                if(doc.id == Submitter){
+                    localStorage.setItem('SubmitterName', doc.data().name)
+                }
+            });
+        });
+}

@@ -9,6 +9,7 @@ const errorDetails = document.getElementById('error_output')
 //Get name of user
 const name01 = document.getElementById('name')
 
+
 //Popup
 const snackbar = document.getElementById('snackbar')
 
