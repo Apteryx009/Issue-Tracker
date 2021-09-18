@@ -21,4 +21,6 @@ for(let i =0;  i < asideButtons.length; i++){
  });
 }
 
+
+
 console.log(nameObt[0]);
