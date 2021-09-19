@@ -5,6 +5,18 @@ const db = firebase.firestore();
 let dataFields = document.querySelectorAll(".two");
 console.log(dataFields);
 
+let addComment = document.getElementById("addComment");
+
+addComment.addEventListener('click', function () {
+    CommentData();
+});
+
+//Get tickets that already exist
+document.addEventListener('DOMContentLoaded', function () {
+    getCommentData();
+}, false);
+
+
 let loadProject = localStorage.getItem("loadProject");
 console.log(loadProject)
 
@@ -19,14 +31,14 @@ db.collection('projects').doc(loadProject).collection('projectTickets').get()
 
             //Convert ticket num in db to int
             let loadTicketInt = parseInt(loadTicket)
-           
 
-            if(doc.data().NumTickets == (loadTicketInt +1)){
+
+            if (doc.data().NumTickets == (loadTicketInt + 1)) {
                 renderDoc(doc);
                 console.log('test')
             }
 
-            console.log(doc.id, " => ",(loadTicket +1));
+            console.log(doc.id, " => ", (loadTicket + 1));
         });
     })
     .catch(function (error) {
@@ -35,13 +47,100 @@ db.collection('projects').doc(loadProject).collection('projectTickets').get()
 
 
 //Fills in data fields
-function renderDoc(doc){
-   dataFields[0].textContent =  doc.data().subject; 
-   dataFields[1].textContent =  doc.data().description; 
-   dataFields[2].textContent =  doc.data().SubmitterName; 
-   dataFields[3].textContent =  doc.data().assignee; 
-   dataFields[4].textContent =  doc.data().priority; 
-   dataFields[5].textContent =  doc.data().Category; 
-   dataFields[6].textContent =  doc.data().userDate; 
-   dataFields[7].textContent =  doc.data().CreatedAt; 
+function renderDoc(doc) {
+    dataFields[0].textContent = doc.data().subject;
+    dataFields[1].textContent = doc.data().description;
+    dataFields[2].textContent = doc.data().SubmitterName;
+    dataFields[3].textContent = doc.data().assignee;
+    dataFields[4].textContent = doc.data().priority;
+    dataFields[5].textContent = doc.data().Category;
+    dataFields[6].textContent = doc.data().userDate;
+    dataFields[7].textContent = doc.data().CreatedAt;
 }
+
+
+let CommentSubmitterUID
+let SubmitterName01 
+let TicketNum
+let comment
+var date
+
+//Set ticket in db for project from user
+function CommentData() {
+
+    //Get UID of current user
+    CommentSubmitterUID = localStorage.getItem('userUID')
+    CommentSubmitterUID = CommentSubmitterUID.replace(/['"]+/g, '');
+
+    getSubmitterName(CommentSubmitterUID);
+
+     SubmitterName01 = localStorage.getItem('CommentSubmitterName');
+     TicketNum = localStorage.getItem('loadTicket');
+
+    //Collect user comment data
+     comment = document.getElementById("userComment");
+    comment = comment.value;
+    console.log(comment + " " + SubmitterName01)
+
+    //Get Date
+     date = (new Date()).toISOString().split('T')[0];
+    console.log(date)
+
+    return db.collection('comments').doc(loadProject).collection('projectComments').doc().set({
+        CommentSubmitter: SubmitterName01,
+        date: date,
+        comment: comment,
+        ticketNum: TicketNum
+
+    }).then(() => {
+        window.location.reload();
+      });
+}
+
+function getCommentData() {
+
+    let TicketNum = localStorage.getItem('loadTicket');
+    db.collection('comments').doc(loadProject).collection('projectComments').get() 
+        .then(function (querySnapshot) {
+            // below is your loop
+            querySnapshot.forEach(function (doc) {
+
+                //Convert ticket num in db to int
+                let loadTicketInt = parseInt(loadTicket)
+
+                if (doc.data().ticketNum == TicketNum) {
+                //Call function to update UI with tickets in db
+                updateUI(doc.data().comment, doc.data().CommentSubmitter, doc.data().date);
+                
+                //Testing
+                console.log(doc.id, " => ", doc.data().comment);
+                }
+            });
+        });
+}
+
+function updateUI(comment1, name1, date1){
+    let commentDiv = document.getElementById('commentsDiv');
+    const projectNode = document.createElement('div');
+
+    projectNode.innerHTML = `
+    <p>"${comment1}" -${name1}. ${date1}</p>
+    <div class="dropdown-divider"></div>`;
+
+    commentDiv.appendChild(projectNode);
+}
+
+
+
+//Get name of Submitter
+function getSubmitterName(Submitter) {
+    //Get name of Submitter
+    db.collection('users').get().then(function (querySnapshot) {
+        querySnapshot.docs.forEach(function (doc) {
+            if (doc.id == Submitter) {
+                localStorage.setItem('CommentSubmitterName', doc.data().name)
+            }
+        });
+    });
+}
+
