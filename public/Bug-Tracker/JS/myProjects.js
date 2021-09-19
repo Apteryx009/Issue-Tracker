@@ -11,7 +11,7 @@ let testData = document.querySelector('#testData')
 
 
 // userAction.addEventListener('click', loadTickets)
-viewAllTickets.addEventListener('click', loadPage3)
+// viewAllTickets.addEventListener('click', loadPage3)
 
 addProject.addEventListener('click', submitNewProject)
 
