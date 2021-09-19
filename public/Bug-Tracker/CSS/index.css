@@ -1,12 +1,61 @@
 body {
-    background-color: rgb(136, 170, 51);
-    background-position: 0px 10px, 0% 0%, 0% 0%;
-    background-repeat: repeat, repeat, repeat;
-    background-attachment: scroll, scroll, scroll;
-    background-image: radial-gradient(circle at 0% 50%, rgba(96, 16, 48, 0) 9px, rgb(102, 17, 51) 10px, rgba(96, 16, 48, 0) 11px), radial-gradient(at 100% 100%, rgba(96, 16, 48, 0) 9px, rgb(102, 17, 51) 10px, rgba(96, 16, 48, 0) 11px), none;
-    background-origin: padding-box, padding-box, padding-box;
-    background-clip: border-box, border-box, border-box;
-    background-size: 20px 20px;
-    --darkreader-inline-bgcolor: #82a039;
-    --darkreader-inline-bgimage: radial-gradient(circle at 0% 50%, rgba(96, 27, 54, 0) 9px, #651c39 10px, rgba(96, 27, 54, 0) 11px), radial-gradient(at 100% 100%, rgba(96, 27, 54, 0) 9px, #651c39 10px, rgba(96, 27, 54, 0) 11px), none;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+    text-align: center;
+   
+  
 }
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+#mainWelcome{
+    text-align: center;
+
+
+    
+    } 
+
+.center, .form-control, .mb-3{
+    text-align: center;
+   
+}
+
+.form-control, .input-group-text{
+    position: relative;
+    left: 35%;
+
+}
+
+textarea{
+    width: 10%;
+}
+
+
+.mb-3 label, .mb-3 input{
+    width: 30%;
+    align-content: center;
+    align-self: center;
+    
+   
+}
+
+.class {
+   text-align: center;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    left: 200px;
+  }

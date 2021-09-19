@@ -55,7 +55,7 @@ const provider = new firebase.auth.EmailAuthProvider();
 signInBtn.addEventListener('click', e => {
 
     //Clear Error field:
-    errorDetails.innerText = "";
+    //errorDetails.innerText = "";
 
     const email = txtEmail.value;
     const pass = txtPass.value;
@@ -73,9 +73,13 @@ signInBtn.addEventListener('click', e => {
             localStorage.setItem('userUID', JSON.stringify(cred.user.uid));
 
         });
-        
-    promise.catch(e => errorDetails.innerText = e.message);
-})
+      //errorDetails.innerText = e.message  
+    promise.catch( e =>{
+        snackbar.innerText = e.message;
+        showAlert();
+       
+    });
+});
 
     // function saveToFile(userId){
 
@@ -129,4 +133,17 @@ signInBtn.addEventListener('click', e => {
         }
     });
 
-    //Why
+    
+//Snackbar
+const snackbar = document.getElementById('snackbar')
+
+function showAlert() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}

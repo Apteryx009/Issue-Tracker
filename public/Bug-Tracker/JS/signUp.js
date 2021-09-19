@@ -23,7 +23,7 @@ const db = firebase.firestore();
 
 signUpBtn.addEventListener('click', e => {
     const userName = document.getElementById('name');
-    errorDetails.innerText = "";
+    //errorDetails.innerText = "";
     const email = txtEmail.value;
     console.log(txtEmail.value) //EMPTY string?
     const pass = txtPass.value;
@@ -59,7 +59,10 @@ signUpBtn.addEventListener('click', e => {
 
 
         })
-        promise.catch(e => errorDetails.innerText = e.message);
+        promise.catch(e =>{
+            snackbar.innerText = e.message;
+            showAlert();
+        });
     } else{
         snackbar.innerText = "Please enter a name";
         showAlert()
@@ -110,6 +113,20 @@ auth.onAuthStateChanged(firebaseUser => {
 
 
 //For the alert
+function showAlert() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
+
+
+
 function showAlert() {
     // Get the snackbar DIV
     var x = document.getElementById("snackbar");
