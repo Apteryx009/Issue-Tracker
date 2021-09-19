@@ -51,11 +51,14 @@
 
     <link rel="stylesheet" href="../CSS/snackBar.css">
     <link rel="stylesheet" href="../CSS/signUp.css">
+    <link rel="stylesheet" href="../CSS/index.css">
 </head>
 
 <body>
 
-  <h1>Issue Tracker</h1>
+  <div id="mainWelcome">
+    <h1>Issue Tracker</h1>
+  </div>
 
   
 
@@ -64,8 +67,7 @@
 <section id="whenSignedOut">
 
   
-  <button id="signUpBtn" class="btn btn-danger">Sign Up</button>
-
+  
 </section>
 
 <section id="whenSignedIn" hidden="true">
@@ -83,6 +85,8 @@
 
 </section>
 
+<hr>
+
 <div class="mb-3">
     <label for="nameInput" class="form-label">Name</label>
     <input type="name" class="form-control" id="name" placeholder="name" required id="userName">
@@ -96,6 +100,7 @@
   <input type="password" class="form-control" id="password" placeholder="password">
 </div>
 
+<button id="signUpBtn" class="btn btn-danger">Sign Up</button>
 
 
 

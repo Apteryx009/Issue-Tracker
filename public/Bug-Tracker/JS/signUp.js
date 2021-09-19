@@ -21,6 +21,15 @@ const txtPass = document.getElementById('password');
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+
+function loadPage(e) {
+    window.location.href = "../../Bug-Tracker/HTML/userHome.html";
+   
+
+}
+
+
+
 signUpBtn.addEventListener('click', e => {
     const userName = document.getElementById('name');
     //errorDetails.innerText = "";
@@ -97,6 +106,7 @@ auth.onAuthStateChanged(firebaseUser => {
         // whenSignedIn2.hidden = false; whenSignedIn2.innerHTML = "Sucess!";
         snackbar.innerText = "Sucess! You are logged in!";
         showAlert()
+        setTimeout(function () { loadPage(); }, 2000);
         // userDetails.innerHTML = `<h3>Hello ${user.displayName}!</h3> <p>User ID: ${user.uid}</p>`;
     } else {
         // not signed in
@@ -127,13 +137,3 @@ function showAlert() {
 
 
 
-function showAlert() {
-    // Get the snackbar DIV
-    var x = document.getElementById("snackbar");
-
-    // Add the "show" class to DIV
-    x.className = "show";
-
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-}

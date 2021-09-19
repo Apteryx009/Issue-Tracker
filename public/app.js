@@ -13,7 +13,7 @@
 let userAction = document.querySelector('#DashHome')
 //console.log(userAction);
 
-userAction.addEventListener('click', loadPage)
+// userAction.addEventListener('click', loadPage)
 
 function loadPage(e) {
     window.location.href = "Bug-Tracker/HTML/userHome.html";
@@ -71,6 +71,11 @@ signInBtn.addEventListener('click', e => {
        
             //This code below will be called AFTER the catach below
             localStorage.setItem('userUID', JSON.stringify(cred.user.uid));
+            snackbar.innerText = "Sucess!"
+            showAlert();
+            setTimeout(function () { loadPage(); }, 2000);
+
+            
 
         });
       //errorDetails.innerText = e.message  
@@ -122,6 +127,7 @@ signInBtn.addEventListener('click', e => {
             whenSignedIn.hidden = false;
             whenSignedOut.hidden = true;
             whenSignedIn2.hidden = false; whenSignedIn2.innerHTML = "Sucess!";
+            setTimeout(function () { loadPage(); }, 2000);
             // userDetails.innerHTML = `<h3>Hello ${user.displayName}!</h3> <p>User ID: ${user.uid}</p>`;
         } else {
             // not signed in
