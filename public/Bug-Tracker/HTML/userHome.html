@@ -41,52 +41,25 @@
       <div class="main_cards">
         <div class="card">Card1
           <canvas id="myChart"></canvas>
-          <script>
-
-            const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
-              type: 'bar',
-              data: {
-                labels: ['Low', 'Medium', 'High'],
-                datasets: [{
-                  label: 'Tickets by Priority',
-                  data: [12, 19, 3],
-                  backgroundColor: [
-
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)'
-
-                  ],
-                  borderColor: [
-
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)'
-
-                  ],
-                  borderWidth: 1
-                }]
-              },
-              options: {
-                scales: {
-                  y: {
-                    beginAtZero: true
-                  }
-                }
-              }
-            });
-          </script>
+          
 
         </div>
         <div class="card">Card222
          
+          <canvas id="myChart2"></canvas>
+          <!-- <script src="../JS/chart.js"></script> -->
+        
 
         
 
       </div>
-      <div class="card">Card3</div>
-      <div class="card">Card4</div>
+      <div class="card">Card3
+        <canvas id="myChart3"></canvas>
+      </div>
+
+      <div class="card">Card4
+        <canvas id="myChart4"></canvas>
+      </div>
   </div>
   </main>
   <footer class="footer">
