@@ -20,3 +20,13 @@
         toggle(aside, 'active');
       });
   
+
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     chart1();
+    // }, false);
+
+    // function chart1(){
+    //   let myChart = document.getElementsById('chart1').getContext('2d');
+
+    //   let  userChart = new Chart(myChart, )
+    // }

@@ -2,16 +2,19 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bug Tracker: home</title>
   <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/userHome.css">
   <link rel="stylesheet" href="../CSS/aside.css">
 </head>
 
 <body>
-    
+
   <div class="grid-container">
     <div class="menu-icon">
       <strong> &#9776;</strong>
@@ -28,24 +31,68 @@
         <li class="aside_list-item">Dashboard Home</li>
         <li class="aside_list-item">Manage Role</li>
         <li class="aside_list-item">Projects</li>
-       
+
         <li class="aside_list-item">My Tickets</li>
         <li class="aside_list-item">User Profile</li>
       </ul>
     </aside>
-  
+
     <main class="main">
       <div class="main_cards">
-        <div class="card">Card</div>
-        <div class="card">Card</div>
-        <div class="card">Card</div>
-        <div class="card">Card</div>
+        <div class="card">Card1
+          <canvas id="myChart"></canvas>
+          <script>
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['Low', 'Medium', 'High'],
+                datasets: [{
+                  label: 'Tickets by Priority',
+                  data: [12, 19, 3],
+                  backgroundColor: [
+
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+
+                  ],
+                  borderColor: [
+
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+
+                  ],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+
+        </div>
+        <div class="card">Card222
+         
+
+        
+
       </div>
-    </main>
-    <footer class="footer">
-      <div class="footer_copyright">&copy;2021</div>
-      <div class="footer_byline">Made with &hearts;</div>
-    </footer>
+      <div class="card">Card3</div>
+      <div class="card">Card4</div>
+  </div>
+  </main>
+  <footer class="footer">
+    <div class="footer_copyright">&copy;2021</div>
+    <div class="footer_byline">Made with &hearts;</div>
+  </footer>
   </div>
 
   <script defer src="../JS/userHome.js"></script>
