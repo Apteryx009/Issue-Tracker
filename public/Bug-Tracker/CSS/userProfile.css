@@ -1,0 +1,59 @@
+@media only screen and (min-width: 750px) {
+   
+    .grid-container {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        grid-template-rows: 50px 1fr 50px;
+        grid-template-areas:
+          'aside header'
+          'aside main'
+          'aside footer';
+        height: 100vh;
+      }
+
+    .main_cards {
+        margin: 10px;
+        display: grid;
+         grid-template-columns: 1fr;
+         grid-template-rows: 600px;
+        grid-template-areas:
+     'card1'
+     'card1';
+        grid-gap: 10px;
+        height: auto;
+      }
+
+      /* .card {
+        
+      } */
+
+
+   
+    
+  }
+
+  #userIcon{
+    display: block;
+    margin: auto;
+  }
+
+  #userNameMain{
+    display: block;
+
+     margin-left: 5.7rem; 
+  }
+
+  #section1{
+      margin-left: 40%;
+      width: 250px;
+  }
+
+  .badge {
+    margin-left: 20%;
+    font-size: larger;
+  }
+
+  .button{
+    margin-left: 27%;
+    
+  }

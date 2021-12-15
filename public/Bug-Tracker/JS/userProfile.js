@@ -17,7 +17,7 @@ function getSubmitterName(Submitter){
     });
 }
 
-console.log("hello " +  localStorage.getItem("SubmitterName"))
+console.log("hello " +  localStorage.getItem("nameOfUser"))
 
 
 //Mobile menu dashboard
@@ -40,4 +40,17 @@ console.log("hello " +  localStorage.getItem("SubmitterName"))
 
     asideClose.addEventListener('click', function() {
       toggle(aside, 'active');
+    });
+    
+
+    //Display user avavatar
+  //  document.getElementById("card1").innerHtml = randomAvatarGenerator.getRandomAvatar(8);
+
+    //Display name of user
+    const userNameMain = document.querySelector('#userNameMain');
+    userNameMain.innerHTML = localStorage.getItem("nameOfUser");
+
+    const report = document.querySelector('#report');
+    report.addEventListener('click', function() {
+     
     });

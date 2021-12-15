@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<head>
 
-        <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
-      
-        <script>
-            var firebaseConfig = {
-                apiKey: "AIzaSyBNRFfYg12CG-c5NJlTN0uTwp31NGe3P08",
-      
-                authDomain: "bug-tracker-e4401.firebaseapp.com",
-      
-                databaseURL: "https://bug-tracker-e4401-default-rtdb.firebaseio.com",
-      
-                projectId: "bug-tracker-e4401",
-      
-                storageBucket: "bug-tracker-e4401.appspot.com",
-      
-                messagingSenderId: "180501724640",
-      
-                appId: "1:180501724640:web:86dd3220fff7fd8a837f85",
-      
-                measurementId: "G-XHC9FRL0M8"
-      
-            };
-            firebase.initializeApp(firebaseConfig);
-        </script>
-        
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Bug Tracker: Project Tickets</title>
-      
-        <!-- These two css links are required in every file -->
-        <link rel="stylesheet" href="../CSS/style.css">
-        <link rel="stylesheet" href="../CSS/aside.css">
-      
-       
-      
-      </head>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
+
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBNRFfYg12CG-c5NJlTN0uTwp31NGe3P08",
+
+      authDomain: "bug-tracker-e4401.firebaseapp.com",
+
+      databaseURL: "https://bug-tracker-e4401-default-rtdb.firebaseio.com",
+
+      projectId: "bug-tracker-e4401",
+
+      storageBucket: "bug-tracker-e4401.appspot.com",
+
+      messagingSenderId: "180501724640",
+
+      appId: "1:180501724640:web:86dd3220fff7fd8a837f85",
+
+      measurementId: "G-XHC9FRL0M8"
+
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bug Tracker: Project Tickets</title>
+
+  <!-- These two css links are required in every file -->
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/aside.css">
+  <link rel="stylesheet" href="../CSS/userProfile.css">
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.1/dist/jdenticon.min.js" async
+    integrity="sha384-l0/0sn63N3mskDgRYJZA6Mogihu0VY3CusdLMiwpJ9LFPklOARUcOiWEIGGmFELx" crossorigin="anonymous">
+    </script>
+
+
+</head>
 
 <body>
-    
+
   <div class="grid-container">
     <div class="menu-icon">
       <strong> &#9776;</strong>
@@ -64,13 +69,29 @@
         <li class="aside_list-item">User Profile</li>
       </ul>
     </aside>
-  
+
     <main class="main">
       <div class="main_cards">
-        <div class="card">Card</div>
-        <div class="card">Card</div>
-        <div class="card">Card</div>
-        <div class="card">Card</div>
+        <div id="card1" class="card">Card1
+          <section id="section1">
+            <svg id="userIcon" data-jdenticon-value="user127" width="80" height="80">
+              Random User Icon
+            </svg>
+            <h5 id="userNameMain"></h5>
+            <hr>
+            <div class="badge bg-primary text-wrap" style="width: 10rem;">
+              ADMIN
+            </div>
+            <hr>
+     
+            <a class="button"  class="btn btn-outline-danger" href="mailto:email@test.de">Report Problem</a></button>
+              
+            
+            <hr>
+          </section>
+        </div>
+
+
       </div>
     </main>
     <footer class="footer">
