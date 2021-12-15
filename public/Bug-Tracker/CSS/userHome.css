@@ -1,3 +1,17 @@
 canvas{
-    max-height: 95%;
+    max-height: 90%;
+}
+
+.main_cards{
+    height: 100%;
+    
+}
+
+.card{
+    height: 50vh;
+}
+
+
+#card02{
+    top: 0rem;
 }
