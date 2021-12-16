@@ -32,6 +32,7 @@ function loadPage(e) {
 
 signUpBtn.addEventListener('click', e => {
     const userName = document.getElementById('name');
+    //localStorage.setItem("nameUser", userName.textContent)
     //errorDetails.innerText = "";
     const email = txtEmail.value;
     console.log(txtEmail.value) //EMPTY string?

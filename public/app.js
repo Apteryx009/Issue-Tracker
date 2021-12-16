@@ -153,3 +153,34 @@ function showAlert() {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 }
+
+
+const demoAdmin = document.getElementById('demoAdminBtn');
+//Demo Admin button funcdtionality
+demoAdmin.addEventListener('click', e => {
+
+    //Clear Error field:
+    //errorDetails.innerText = "";
+
+    const email = "adminDemo99@gmail.com";
+    const pass = "adminPassword";
+
+    //IK this looks odd, but it runs perfectly and gives zero bugs
+    const promise = auth.signInWithEmailAndPassword(email, pass).then(cred => {
+       
+            //This code below will be called AFTER the catach below
+            localStorage.setItem('userUID', JSON.stringify(cred.user.uid));
+            snackbar.innerText = "Sucess!"
+            showAlert();
+            setTimeout(function () { loadPage(); }, 2000);
+
+            
+
+        });
+      //errorDetails.innerText = e.message  
+    promise.catch( e =>{
+        snackbar.innerText = e.message;
+        showAlert();
+       
+    });
+});

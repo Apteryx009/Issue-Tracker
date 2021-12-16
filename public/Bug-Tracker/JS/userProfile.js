@@ -49,8 +49,25 @@ console.log("hello " +  localStorage.getItem("nameOfUser"))
     //Display name of user
     const userNameMain = document.querySelector('#userNameMain');
     userNameMain.innerHTML = localStorage.getItem("nameOfUser");
+    let ourUID = localStorage.getItem('userUID');
+    function getName(){
+      //Get name of Submitter
+      db.collection('users').get().then(function (querySnapshot) {
+          querySnapshot.docs.forEach(function (doc) {
+              // if(doc.id == ourUID){
+                  localStorage.setItem('currentUserName', doc.data().name)
+                  console.log( doc.data().name)
+              // }
+          });
+      });
+}
 
+
+
+   //Button such that user may email support
     const report = document.querySelector('#report');
     report.addEventListener('click', function() {
      
     });
+
+    getName()
