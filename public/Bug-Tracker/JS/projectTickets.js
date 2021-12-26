@@ -3,9 +3,30 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 
 let dataFields = document.querySelectorAll(".two");
-console.log(dataFields);
+console.log("hi");
 
 let addComment = document.getElementById("addComment");
+let editBtn = document.getElementById("editBtn");
+
+editBtn.addEventListener('click', function () {
+ let copyDataFields = dataFields;
+
+ //We need to delete every element for desprtions so user can edit
+// dataFields.forEach(function(obj){
+//     delete obj;
+// });
+//renderDocEmpty();
+
+let textBoxArr = document.getElementById("card1").querySelectorAll(".form-control");
+console.log(textBoxArr)
+for(var i = 0; i < textBoxArr.length; i++){
+    textBoxArr[i].style.visibility = 'visible'
+}
+
+ 
+});
+
+
 
 addComment.addEventListener('click', function () {
     CommentData();
@@ -56,6 +77,19 @@ function renderDoc(doc) {
     dataFields[5].textContent = doc.data().Category;
     dataFields[6].textContent = doc.data().userDate;
     dataFields[7].textContent = doc.data().CreatedAt;
+    dataFields[8].textContent = doc.data().ticketStatus;
+}
+
+function renderDocEmpty() {
+    dataFields[0].textContent = ""
+    dataFields[1].textContent = ""
+    dataFields[2].textContent = ""
+    dataFields[3].textContent = ""
+    dataFields[4].textContent = ""
+    dataFields[5].textContent = ""
+    dataFields[6].textContent =""
+    dataFields[7].textContent = ""
+    dataFields[8].textContent = ""
 }
 
 

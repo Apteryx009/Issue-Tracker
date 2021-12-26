@@ -160,6 +160,19 @@ body {
   color: darkblue;  
     height: auto;
   }
+
+/* This will show a highlight on desktop when user hovers mouse over ticket descriptions */
+.two:hover{
+  background-color: yellow;
+}
+
+/* Area where user may edit the values of ticket */
+#card1 textarea{
+ width: 80%;
+  background-color: rgba(185, 238, 10, 0.548);
+
+}
+
   .d-flex {
     position: relative;
     /* width: 90%; */

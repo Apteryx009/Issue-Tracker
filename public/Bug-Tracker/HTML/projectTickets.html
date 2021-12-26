@@ -54,7 +54,7 @@
       <strong> &#9776;</strong>
     </div>
     <header class="header">
-      <div class="header_search">Ticket Tracker</div>
+      <div class="header_search">Ticket Tracker</div>d
     </header>
     <aside class="aside">
       <div class="aside_close-icon">
@@ -86,7 +86,7 @@
         <div class="card" id="card1">
 
           <div id="main">
-
+            <button id="editBtn" class="btn btn-danger btn-sm">Edit</button>
 
             <div id="container-twopp2" class="d-flex">
 
@@ -119,7 +119,9 @@
             <div class="d-flex">
 
               <p>Assigned Developer</p>
+              <textarea style= "visibility: hidden;" class="form-control" placeholder="New Value"  aria-label="With textarea"></textarea>
               <p class="two" id="twopp4"></p>
+             
             </div>
 
             <div class="dropdown-divider"></div>
@@ -151,6 +153,14 @@
 
               <p>Date Created</p>
               <p class="two" id="twopp8"></p>
+            </div>
+
+            <div class="dropdown-divider"></div>
+            <div class="d-flex">
+
+              <p>Ticket Status</p>
+              <p class="two" id="twopp8"></p>
+              
             </div>
 
 
@@ -197,7 +207,7 @@
     </footer>
   </div>
 
-  <script defer src="../JS/userHome.js"></script>
+  <!-- <script defer src="../JS/userHome.js"></script> -->
   <script defer src="../JS/aside.js"></script>
   <script defer src="../JS/projectTickets.js"></script>
   

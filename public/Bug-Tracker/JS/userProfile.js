@@ -54,10 +54,14 @@ console.log("hello " +  localStorage.getItem("nameOfUser"))
       //Get name of Submitter
       db.collection('users').get().then(function (querySnapshot) {
           querySnapshot.docs.forEach(function (doc) {
-              // if(doc.id == ourUID){
+               if(doc.id == ourUID){
+                console.log(doc.id)
+                console.log(ourUID)
                   localStorage.setItem('currentUserName', doc.data().name)
                   console.log( doc.data().name)
-              // }
+                  console.log("hi")
+               }
+              //console.log("hi")
           });
       });
 }
@@ -65,9 +69,9 @@ console.log("hello " +  localStorage.getItem("nameOfUser"))
 
 
    //Button such that user may email support
-    const report = document.querySelector('#report');
-    report.addEventListener('click', function() {
+    // const report = document.querySelector('#report');
+    // report.addEventListener('click', function() {
      
-    });
+    // });
 
     getName()
