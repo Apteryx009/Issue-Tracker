@@ -40,7 +40,7 @@ function loadTicketDetails() {
     .then(function(querySnapshot) {
        
         querySnapshot.forEach(function(doc) {
-            
+            console.log('ayoooo')
             renderDoc(doc)
         });
     })

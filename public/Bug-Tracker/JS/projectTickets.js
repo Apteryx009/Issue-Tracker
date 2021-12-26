@@ -8,6 +8,7 @@ console.log("hi");
 let addComment = document.getElementById("addComment");
 let editBtn = document.getElementById("editBtn");
 let saveBtn = document.getElementById("saveBtn");
+let submitBtn = document.getElementById("submitBtn");
 
 editBtn.addEventListener('click', function () {
     let copyDataFields = dataFields;
@@ -21,8 +22,10 @@ editBtn.addEventListener('click', function () {
 
 });
 
+//We make this global because to submit to db we need to acess data from another function later on
+let textBoxArr;
 saveBtn.addEventListener('click', function () {
-    let textBoxArr = document.getElementById("card1").querySelectorAll(".form-control");
+     textBoxArr = document.getElementById("card1").querySelectorAll(".form-control");
     let newValArr;
     //console.log(textBoxArr)
     for (var i = 0; i < textBoxArr.length; i++) {
@@ -36,6 +39,15 @@ saveBtn.addEventListener('click', function () {
        
     }
   //  console.log(newValArr)
+
+});
+
+submitBtn.addEventListener('click', function () {
+    let projectName = localStorage.getItem('loadProject');
+    let loadTicket = localStorage.getItem('loadTicket');
+    console.log(projectName);
+
+    updateTicketDoc();
 
 });
 
@@ -58,6 +70,8 @@ let loadTicket = localStorage.getItem('loadTicket');
 console.log(loadTicket)
 
 //Get Ticket document
+function getTicketDoc(){
+
 db.collection('projects').doc(loadProject).collection('projectTickets').get()
     .then(function (querySnapshot) {
         // below is your loop
@@ -78,6 +92,68 @@ db.collection('projects').doc(loadProject).collection('projectTickets').get()
     .catch(function (error) {
         console.log("Error getting documents: ", error);
     });
+}
+getTicketDoc();
+
+
+
+function updateTicketDoc(){
+    //This is painful, but we need to get all elements that user may of changed, and update db
+    let subject = dataFields[0].textContent;
+    let descript = dataFields[1].textContent;
+    let assigner = dataFields[2].textContent;
+    let assigned = dataFields[3].textContent;
+    let project = dataFields[4].textContent;
+    let cat = dataFields[5].textContent;
+    let due = dataFields[6].textContent;
+    let createdAt = dataFields[7].textContent;
+    let status = dataFields[8].textContent;
+
+
+    db.collection('projects').doc(loadProject).collection('projectTickets').get()
+    .then(function (querySnapshot) {
+        // below is your loop
+        querySnapshot.forEach(function (doc) {
+
+            //Convert ticket num in db to int
+            let loadTicketInt = parseInt(loadTicket)
+
+
+            if (doc.data().NumTickets == (loadTicketInt + 1)) {
+                return db.collection('projects').doc(loadProject).collection('projectTickets').doc().set({
+                    assignee: 'fix',
+                    asigneeUID:  'fix',
+                    ticketType:  'fix',
+                    Category:  'fix',
+                    priority:  'fix',
+                    userDate:  'fix',
+                    description:  'fix',
+                    subject:  'fix',
+                    ProjectName:  'fix',
+                    NumTickets:  'fix',
+                     SubmitterName:  'fix',
+                    SubmitterUID:  'fix',
+                    CreatedAt:  'fix',
+                    ticketStatus: 'open'
+            
+                }).then(() => {
+            
+                })
+
+
+                console.log('test')
+            }
+
+            console.log(doc.id, " => ", (loadTicket + 1));
+        });
+    })
+    .catch(function (error) {
+        console.log("Error getting documents: ", error);
+    });
+
+
+
+}
 
 
 //Fills in data fields
