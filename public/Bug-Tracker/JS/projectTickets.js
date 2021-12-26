@@ -7,23 +7,36 @@ console.log("hi");
 
 let addComment = document.getElementById("addComment");
 let editBtn = document.getElementById("editBtn");
+let saveBtn = document.getElementById("saveBtn");
 
 editBtn.addEventListener('click', function () {
- let copyDataFields = dataFields;
+    let copyDataFields = dataFields;
 
- //We need to delete every element for desprtions so user can edit
-// dataFields.forEach(function(obj){
-//     delete obj;
-// });
-//renderDocEmpty();
+    let textBoxArr = document.getElementById("card1").querySelectorAll(".form-control");
+    console.log(textBoxArr)
+    for (var i = 0; i < textBoxArr.length; i++) {
+        textBoxArr[i].style.visibility = 'visible'
+    }
 
-let textBoxArr = document.getElementById("card1").querySelectorAll(".form-control");
-console.log(textBoxArr)
-for(var i = 0; i < textBoxArr.length; i++){
-    textBoxArr[i].style.visibility = 'visible'
-}
 
- 
+});
+
+saveBtn.addEventListener('click', function () {
+    let textBoxArr = document.getElementById("card1").querySelectorAll(".form-control");
+    let newValArr;
+    //console.log(textBoxArr)
+    for (var i = 0; i < textBoxArr.length; i++) {
+        console.log( textBoxArr[i].value);
+        textBoxArr[i].style.visibility = 'hidden'
+
+        //Update UI
+        if(textBoxArr[i].value){
+            dataFields[i].textContent = textBoxArr[i].value;
+        }
+       
+    }
+  //  console.log(newValArr)
+
 });
 
 
@@ -87,14 +100,14 @@ function renderDocEmpty() {
     dataFields[3].textContent = ""
     dataFields[4].textContent = ""
     dataFields[5].textContent = ""
-    dataFields[6].textContent =""
+    dataFields[6].textContent = ""
     dataFields[7].textContent = ""
     dataFields[8].textContent = ""
 }
 
 
 let CommentSubmitterUID
-let SubmitterName01 
+let SubmitterName01
 let TicketNum
 let comment
 var date
@@ -108,16 +121,16 @@ function CommentData() {
 
     getSubmitterName(CommentSubmitterUID);
 
-     SubmitterName01 = localStorage.getItem('CommentSubmitterName');
-     TicketNum = localStorage.getItem('loadTicket');
+    SubmitterName01 = localStorage.getItem('CommentSubmitterName');
+    TicketNum = localStorage.getItem('loadTicket');
 
     //Collect user comment data
-     comment = document.getElementById("userComment");
+    comment = document.getElementById("userComment");
     comment = comment.value;
     console.log(comment + " " + SubmitterName01)
 
     //Get Date
-     date = (new Date()).toISOString().split('T')[0];
+    date = (new Date()).toISOString().split('T')[0];
     console.log(date)
 
     return db.collection('comments').doc(loadProject).collection('projectComments').doc().set({
@@ -128,13 +141,13 @@ function CommentData() {
 
     }).then(() => {
         window.location.reload();
-      });
+    });
 }
 
 function getCommentData() {
 
     let TicketNum = localStorage.getItem('loadTicket');
-    db.collection('comments').doc(loadProject).collection('projectComments').get() 
+    db.collection('comments').doc(loadProject).collection('projectComments').get()
         .then(function (querySnapshot) {
             // below is your loop
             querySnapshot.forEach(function (doc) {
@@ -143,17 +156,17 @@ function getCommentData() {
                 let loadTicketInt = parseInt(loadTicket)
 
                 if (doc.data().ticketNum == TicketNum) {
-                //Call function to update UI with tickets in db
-                updateUI(doc.data().comment, doc.data().CommentSubmitter, doc.data().date);
-                
-                //Testing
-                console.log(doc.id, " => ", doc.data().comment);
+                    //Call function to update UI with tickets in db
+                    updateUI(doc.data().comment, doc.data().CommentSubmitter, doc.data().date);
+
+                    //Testing
+                    console.log(doc.id, " => ", doc.data().comment);
                 }
             });
         });
 }
 
-function updateUI(comment1, name1, date1){
+function updateUI(comment1, name1, date1) {
     let commentDiv = document.getElementById('commentsDiv');
     const projectNode = document.createElement('div');
 
