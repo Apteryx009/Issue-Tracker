@@ -161,6 +161,18 @@ body {
     height: auto;
   }
 
+  textarea{
+    min-width: 50px;
+    max-width: 200px;
+  }
+
+  #buttons {
+    display: block;
+    text-align:justify;
+    text-align-last:center;
+    margin: 5px;
+  }
+
 /* This will show a highlight on desktop when user hovers mouse over ticket descriptions */
 .two:hover{
   background-color: yellow;

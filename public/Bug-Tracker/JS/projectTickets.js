@@ -43,20 +43,20 @@ editBtn.addEventListener('click', function () {
 //We make this global because to submit to db we need to acess data from another function later on
 let textBoxArr;
 saveBtn.addEventListener('click', function () {
-     textBoxArr = document.getElementById("card1").querySelectorAll(".form-control");
+    textBoxArr = document.getElementById("card1").querySelectorAll(".form-control");
     let newValArr;
     //console.log(textBoxArr)
     for (var i = 0; i < textBoxArr.length; i++) {
-        console.log( textBoxArr[i].value);
+        console.log(textBoxArr[i].value);
         textBoxArr[i].style.visibility = 'hidden'
 
         //Update UI
-        if(textBoxArr[i].value){
+        if (textBoxArr[i].value) {
             dataFields[i].textContent = textBoxArr[i].value;
         }
-       
+
     }
-  //  console.log(newValArr)
+    //  console.log(newValArr)
 
 });
 
@@ -88,87 +88,95 @@ let loadTicket = localStorage.getItem('loadTicket');
 console.log(loadTicket)
 
 //Get Ticket document
-function getTicketDoc(){
+function getTicketDoc() {
 
-db.collection('projects').doc(loadProject).collection('projectTickets').get()
-    .then(function (querySnapshot) {
-        // below is your loop
-        querySnapshot.forEach(function (doc) {
+    db.collection('projects').doc(loadProject).collection('projectTickets').get()
+        .then(function (querySnapshot) {
+            // below is your loop
+            querySnapshot.forEach(function (doc) {
 
-            //Convert ticket num in db to int
-            let loadTicketInt = parseInt(loadTicket)
+                //Convert ticket num in db to int
+                let loadTicketInt = parseInt(loadTicket)
 
 
-            if (doc.data().NumTickets == (loadTicketInt + 1)) {
-                renderDoc(doc);
-                console.log('test')
-            }
+                if (doc.data().NumTickets == (loadTicketInt + 1)) {
+                    renderDoc(doc);
+                    console.log('test')
+                }
 
-         //   console.log(doc.id, " => ", (loadTicket + 1));
+                //   console.log(doc.id, " => ", (loadTicket + 1));
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
         });
-    })
-    .catch(function (error) {
-        console.log("Error getting documents: ", error);
-    });
 }
 getTicketDoc();
 
 
 
-function updateTicketDoc(){
-    //This is painful, but we need to get all elements that user may of changed, and update db
-    // let subject = dataFields[0].textContent;
-    // let descript = dataFields[1].textContent;
-    // let assigner = dataFields[2].textContent;
-    // let assigned = dataFields[3].textContent;
-    // let project = dataFields[4].textContent;
-    // let cat = dataFields[5].textContent;
-    // let due = dataFields[6].textContent;
-    // let createdAt = dataFields[7].textContent;
-    // let status = dataFields[8].textContent;
+function updateTicketDoc() {
+    //Every area where user may modify
+    //We may have vars in database that are not displayed on screen
+    //So this solution will allow us to save those vars in db whilst updating what user has submitted without changing 
+    //other vars to null
+    Category = dataFields[5].textContent;
+    CreatedAt = dataFields[7].textContent;
+    // NumTickets = dataFields[].textContent;
+    ProjectName = dataFields[4].textContent;
+    SubmitterName = dataFields[2].textContent;
+    //     SubmitterUID;
+    //     asigneeUID;
+    assignee = dataFields[3].textContent;
+    description = dataFields[1].textContent;
+    // priority  =dataFields[5].textContent;
+    subject = dataFields[0].textContent;
+    ticketStatus = dataFields[8].textContent;
+    //     ticketType;
+    userDate = dataFields[6].textContent;
 
 
     db.collection('projects').doc(loadProject).collection('projectTickets').get()
-    .then(function (querySnapshot) {
-        // below is your loop
-        querySnapshot.forEach(function (doc) {
+        .then(function (querySnapshot) {
+            // below is your loop
+            querySnapshot.forEach(function (doc) {
 
-            //Convert ticket num in db to int
-            let loadTicketInt = parseInt(loadTicket)
+                //Convert ticket num in db to int
+                let loadTicketInt = parseInt(loadTicket)
 
-           // console.log("doc id " +  doc.id)
-            if (doc.data().NumTickets == (loadTicketInt + 1)) {
-                console.log("doc id yes " +  doc.id)
-                return db.collection('projects').doc(loadProject).collection('projectTickets').doc(doc.id).set({
-                     Category: Category,
-                      CreatedAt : CreatedAt, 
-                      NumTickets :NumTickets,
-                       ProjectName : ProjectName,
-                       SubmitterName : SubmitterName,
-                      SubmitterUID :SubmitterUID,
-                       asigneeUID :asigneeUID,
-                      assignee :assignee,
-                      description :description,
-                       priority :priority,
-                      subject :subject,
-                   ticketStatus :ticketStatus,
-                   ticketType :ticketType,
-                      userDate: userDate
-            
-                }).then(() => {
-            
-                })
+                // console.log("doc id " +  doc.id)
+                if (doc.data().NumTickets == (loadTicketInt + 1)) {
+                    console.log("doc id yes " + doc.id)
+                    return db.collection('projects').doc(loadProject).collection('projectTickets').doc(doc.id).set({
+                        Category: Category,
+                        CreatedAt: CreatedAt,
+                        NumTickets: NumTickets,
+                        ProjectName: ProjectName,
+                        SubmitterName: SubmitterName,
+                        SubmitterUID: SubmitterUID,
+                        asigneeUID: asigneeUID,
+                        assignee: assignee,
+                        description: description,
+                        priority: priority,
+                        subject: subject,
+                        ticketStatus: ticketStatus,
+                        ticketType: ticketType,
+                        userDate: userDate
+
+                    }).then(() => {
+
+                    })
 
 
-                console.log('test')
-            }
+                    console.log('test')
+                }
 
-           // console.log(doc.id, " => ", (loadTicket + 1));
+                // console.log(doc.id, " => ", (loadTicket + 1));
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
         });
-    })
-    .catch(function (error) {
-        console.log("Error getting documents: ", error);
-    });
 
 
 
@@ -190,21 +198,21 @@ function renderDoc(doc) {
 }
 
 
-function updateVars(doc){
-  Category = doc.data().Category;
-  CreatedAt =doc.data().CreatedAt;
-  NumTickets = doc.data().NumTickets;
-  ProjectName = doc.data().ProjectName;
-  SubmitterName = doc.data().SubmitterName;
-  SubmitterUID = doc.data().SubmitterUID;
-  asigneeUID = doc.data().asigneeUID;
-  assignee = doc.data().assignee;
-  description = doc.data().description;
-  priority = doc.data().priority;
-  subject = doc.data().subject;
-  ticketStatus = doc.data().ticketStatus;
-  ticketType = doc.data().ticketType;
-  userDate = doc.data().userDate;
+function updateVars(doc) {
+    Category = doc.data().Category;
+    CreatedAt = doc.data().CreatedAt;
+    NumTickets = doc.data().NumTickets;
+    ProjectName = doc.data().ProjectName;
+    SubmitterName = doc.data().SubmitterName;
+    SubmitterUID = doc.data().SubmitterUID;
+    asigneeUID = doc.data().asigneeUID;
+    assignee = doc.data().assignee;
+    description = doc.data().description;
+    priority = doc.data().priority;
+    subject = doc.data().subject;
+    ticketStatus = doc.data().ticketStatus;
+    ticketType = doc.data().ticketType;
+    userDate = doc.data().userDate;
 }
 
 function renderDocEmpty() {
