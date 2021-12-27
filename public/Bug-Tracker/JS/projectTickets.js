@@ -1,6 +1,7 @@
 //TODO: FIX bug where every bug is registed by dfgdfg.
 const auth = firebase.auth();
 const db = firebase.firestore();
+const snackbar = document.getElementById('snackbar')
 
 let dataFields = document.querySelectorAll(".two");
 console.log("hi");
@@ -64,8 +65,12 @@ submitBtn.addEventListener('click', function () {
     let projectName = localStorage.getItem('loadProject');
     let loadTicket = localStorage.getItem('loadTicket');
     console.log(projectName);
-
+    snackbar.innerText = 'Ticket Updated!';
+    showAlert();
     updateTicketDoc();
+
+    //Show snackbar for user
+  
 
 });
 
@@ -312,4 +317,17 @@ function getSubmitterName(Submitter) {
         });
     });
 }
+
+
+function showAlert() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
 
