@@ -5,6 +5,24 @@ const db = firebase.firestore();
 let dataFields = document.querySelectorAll(".two");
 console.log("hi");
 
+//Global vars for updating db
+let Category;
+let CreatedAt;
+let NumTickets;
+let ProjectName;
+let SubmitterName;
+let SubmitterUID;
+let asigneeUID;
+let assignee;
+let description;
+let priority;
+let subject;
+let ticketStatus;
+let ticketType;
+let userDate;
+//
+
+
 let addComment = document.getElementById("addComment");
 let editBtn = document.getElementById("editBtn");
 let saveBtn = document.getElementById("saveBtn");
@@ -86,7 +104,7 @@ db.collection('projects').doc(loadProject).collection('projectTickets').get()
                 console.log('test')
             }
 
-            console.log(doc.id, " => ", (loadTicket + 1));
+         //   console.log(doc.id, " => ", (loadTicket + 1));
         });
     })
     .catch(function (error) {
@@ -99,15 +117,15 @@ getTicketDoc();
 
 function updateTicketDoc(){
     //This is painful, but we need to get all elements that user may of changed, and update db
-    let subject = dataFields[0].textContent;
-    let descript = dataFields[1].textContent;
-    let assigner = dataFields[2].textContent;
-    let assigned = dataFields[3].textContent;
-    let project = dataFields[4].textContent;
-    let cat = dataFields[5].textContent;
-    let due = dataFields[6].textContent;
-    let createdAt = dataFields[7].textContent;
-    let status = dataFields[8].textContent;
+    // let subject = dataFields[0].textContent;
+    // let descript = dataFields[1].textContent;
+    // let assigner = dataFields[2].textContent;
+    // let assigned = dataFields[3].textContent;
+    // let project = dataFields[4].textContent;
+    // let cat = dataFields[5].textContent;
+    // let due = dataFields[6].textContent;
+    // let createdAt = dataFields[7].textContent;
+    // let status = dataFields[8].textContent;
 
 
     db.collection('projects').doc(loadProject).collection('projectTickets').get()
@@ -118,23 +136,24 @@ function updateTicketDoc(){
             //Convert ticket num in db to int
             let loadTicketInt = parseInt(loadTicket)
 
-
+           // console.log("doc id " +  doc.id)
             if (doc.data().NumTickets == (loadTicketInt + 1)) {
-                return db.collection('projects').doc(loadProject).collection('projectTickets').doc().set({
-                    assignee: 'fix',
-                    asigneeUID:  'fix',
-                    ticketType:  'fix',
-                    Category:  'fix',
-                    priority:  'fix',
-                    userDate:  'fix',
-                    description:  'fix',
-                    subject:  'fix',
-                    ProjectName:  'fix',
-                    NumTickets:  'fix',
-                     SubmitterName:  'fix',
-                    SubmitterUID:  'fix',
-                    CreatedAt:  'fix',
-                    ticketStatus: 'open'
+                console.log("doc id yes " +  doc.id)
+                return db.collection('projects').doc(loadProject).collection('projectTickets').doc(doc.id).set({
+                     Category: Category,
+                      CreatedAt : CreatedAt, 
+                      NumTickets :NumTickets,
+                       ProjectName : ProjectName,
+                       SubmitterName : SubmitterName,
+                      SubmitterUID :SubmitterUID,
+                       asigneeUID :asigneeUID,
+                      assignee :assignee,
+                      description :description,
+                       priority :priority,
+                      subject :subject,
+                   ticketStatus :ticketStatus,
+                   ticketType :ticketType,
+                      userDate: userDate
             
                 }).then(() => {
             
@@ -144,7 +163,7 @@ function updateTicketDoc(){
                 console.log('test')
             }
 
-            console.log(doc.id, " => ", (loadTicket + 1));
+           // console.log(doc.id, " => ", (loadTicket + 1));
         });
     })
     .catch(function (error) {
@@ -158,6 +177,7 @@ function updateTicketDoc(){
 
 //Fills in data fields
 function renderDoc(doc) {
+    updateVars(doc); //Set our given global vars to what is in database
     dataFields[0].textContent = doc.data().subject;
     dataFields[1].textContent = doc.data().description;
     dataFields[2].textContent = doc.data().SubmitterName;
@@ -167,6 +187,24 @@ function renderDoc(doc) {
     dataFields[6].textContent = doc.data().userDate;
     dataFields[7].textContent = doc.data().CreatedAt;
     dataFields[8].textContent = doc.data().ticketStatus;
+}
+
+
+function updateVars(doc){
+  Category = doc.data().Category;
+  CreatedAt =doc.data().CreatedAt;
+  NumTickets = doc.data().NumTickets;
+  ProjectName = doc.data().ProjectName;
+  SubmitterName = doc.data().SubmitterName;
+  SubmitterUID = doc.data().SubmitterUID;
+  asigneeUID = doc.data().asigneeUID;
+  assignee = doc.data().assignee;
+  description = doc.data().description;
+  priority = doc.data().priority;
+  subject = doc.data().subject;
+  ticketStatus = doc.data().ticketStatus;
+  ticketType = doc.data().ticketType;
+  userDate = doc.data().userDate;
 }
 
 function renderDocEmpty() {
