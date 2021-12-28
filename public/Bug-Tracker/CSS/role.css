@@ -9,12 +9,19 @@
    
     .main_cards {
      
-      grid-template-areas:
-        'card1 card2'
-        'card1 card2';
+      /* grid-template-areas:
+        'card1' 
+         'card2' 
+         'card3'; */
     }
   }
   
+
+  #groupDiv, #personDiv, #roleDiv, #somethingDiv{
+    /* width:100px; */
+    max-height:400px;
+    overflow-y:scroll;
+  }
 
   .left_card {
     flex-basis: 250px;
