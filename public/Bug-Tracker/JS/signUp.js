@@ -5,7 +5,7 @@ const userDetails = document.getElementById('userDetails');
 const signOutBtn = document.getElementById('signOutBtn');
 const errorDetails = document.getElementById('error_output')
 
-
+var roleValue = document.getElementById("roleValue");
 //Get name of user
 const name01 = document.getElementById('name')
 
@@ -59,7 +59,8 @@ signUpBtn.addEventListener('click', e => {
     if (userName.checkValidity() == true) {
         const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
             return db.collection('users').doc(cred.user.uid).set({
-                name: name01.value
+                name: name01.value,
+                role: roleValue.innerText
 
             }).then(() => {
                 //This code below will be called AFTER the catach below
@@ -138,3 +139,8 @@ function showAlert() {
 
 
 
+function roleValueChange(roleValue01){
+    // var roleValue = document.getElementById("roleValue");
+    roleValue.innerText = roleValue01;
+    console.log(roleValue01)
+}

@@ -91,6 +91,10 @@
     <label for="nameInput" class="form-label">Name</label>
     <input type="name" class="form-control" id="name" placeholder="name" required id="userName">
   </div>
+
+
+  
+
 <div class="mb-3">
   <label for="emailInput" class="form-label">Email address</label>
   <input type="email" class="form-control" id="email" placeholder="name@example.com">
@@ -98,6 +102,26 @@
 <div class="mb-3">
   <label for="passwordInput" class="form-label">Password</label>
   <input type="password" class="form-control" id="password" placeholder="password">
+</div>
+
+
+<div class="mb-3">
+
+ 
+
+  <div class="dropdown">
+    <button class="dropbtn">--Select Role--</button>
+    <div class="dropdown-content">
+      <a onclick="roleValueChange('Full-stack Dev')" href="#">Full-stack Dev</a>
+      <a onclick="roleValueChange('Front-End Dev')" href="#">Front-End Dev</a>
+      <a onclick="roleValueChange('Back-End Dev')" href="#">Back-End Dev</a> 
+      <a onclick="roleValueChange('Designer')" href="#">Designer</a>
+    </div>
+
+    <p  id="roleValue"></p>
+  </div>
+
+
 </div>
 
 <button id="signUpBtn" class="btn btn-danger">Sign Up</button>
