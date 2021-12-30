@@ -5,6 +5,11 @@
  } 
 
 
+ .colorred {
+  background-color: red;
+}
+
+
  @media only screen and (min-width: 750px) {
    
     .main_cards {

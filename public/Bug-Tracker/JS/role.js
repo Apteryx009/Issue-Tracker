@@ -1,5 +1,6 @@
 //Get elements from HTML
 const groupDiv = document.getElementById('groupDiv');
+const clearUsers01 = document.getElementById('clearUsers');
 const personDiv = document.getElementById('personDiv');
 const roleDiv = document.getElementById('roleDiv');
 const somethingDiv = document.getElementById('somethingDiv');
@@ -9,23 +10,81 @@ const db = firebase.firestore();
 
 
 function group(){
+
     db.collection('groups').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
             renderDoc(doc, "list-group-item .disabled", doc.id, "groupList")
         });
     });
+    var div = document.getElementById("GroupDiv");
+   
 }
 
 
 function person(){
     db.collection('groups').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
-            renderDoc(doc, "list-group-item .disabled", doc.data().userEmail, 'personList')
+            renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList')
         });
     });
 
 }
 
+clearUsers01.addEventListener('click', e=> {
+    clearUsers();
+ 
+})
+
+
+//When user click on a group let us say, then we need to highlight what they clicked on, keep the highlight, and display revleent users
+
+let gropuDiv = document.querySelector('#groupDiv');
+groupDiv.addEventListener('click', e=> {
+//  let exactGroup = e.target.innerText //This will get us the group name that user clicked on
+//  //This will act as a toggle
+//  if((!(e.target.class == "list-group-item list-group-item-warning"))){
+//      e.target.class = "list-group-item list-group-item-warning"
+//      console.log( e.target.class)
+//  }
+//  else{
+//     e.target.class = "list-group-item list-group-item"
+//     console.log( e.target.class)
+//  }
+//  //e.target.style.backgroundColor = "pink";
+  
+    e.target.classList.toggle("colorred");
+    if(e.target.classList.contains("colorred")){
+        clearUsers();
+    }
+
+   showUsers('1')
+
+
+})
+
+
+
+
+//Only shows users within group
+function showUsers(groupName){
+    db.collection('groups').get().then(function (querySnapshot) {
+        console.log('hey')
+        querySnapshot.docs.forEach(function (doc) {
+            if(doc.data().group == groupName)
+            renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList')
+        });
+    });
+}
+
+function clearUsers(){
+    console.log('test')
+    var elements = document.getElementsByClassName("person");
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+ 
+    
+}
 
 function Role(){
 
@@ -49,4 +108,4 @@ function renderDoc(doc, className, value, list) {
 
 
 group()
-person()
+//person()
