@@ -7,7 +7,7 @@ const somethingDiv = document.getElementById('somethingDiv');
 
 const auth = firebase.auth();
 const db = firebase.firestore();
-
+let groupNum01;
 
 function group(){
 
@@ -57,20 +57,32 @@ groupDiv.addEventListener('click', e=> {
         clearUsers();
     }
 
-   showUsers('1')
+   //Add call to function to get group number 
+  // let groupNuum01 = getGroupNumber(e);
+//    console.log(localStorage.getItem('groupNum') + "hey hey")
+   
+   showUsers(e.target.id) //Only show people of specfied group selected by user
 
 
 })
 
 
+//Not in use, but might need to implement later
+function getGroupNumber(e){
+    let groupName =e.target.innerText;
+
+    //  let fetchedGroupId = document.querySelectorAll(`#${groupName}`);
+
+
+}
 
 
 //Only shows users within group
-function showUsers(groupName){
+function showUsers(groupNum){
     db.collection('groups').get().then(function (querySnapshot) {
         console.log('hey')
         querySnapshot.docs.forEach(function (doc) {
-            if(doc.data().group == groupName)
+            if(doc.data().group == groupNum)
             renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList')
         });
     });
@@ -95,11 +107,16 @@ function something(){
 }
 
 
-function renderDoc(doc, className, value, list) {
+function renderDoc(doc, className, value, list) { //Value is user email
     var ul = document.getElementById(list); //Give unorderd list (container)
    console.log(doc.data().userEmail) //Make sure able to retreive email
+
+  
+
+
   let liElement = document.createElement('li'); //Create new li to tack on
   liElement.setAttribute('class', className); //Attach class to it (bootstrap id prob)
+  liElement.setAttribute('id', doc.data().group);
   liElement.appendChild(document.createTextNode(value)); //Value of child element
   //let liElementText = document.createElement(doc.data().userEmail)
   let className01 = document.querySelector(className)

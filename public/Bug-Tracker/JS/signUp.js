@@ -60,7 +60,7 @@ signUpBtn.addEventListener('click', e => {
         const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
             return db.collection('users').doc(cred.user.uid).set({
                 name: name01.value,
-                role: roleValue.innerText
+                role1: roleValue.innerText
 
             }).then(() => {
                 //This code below will be called AFTER the catach below
@@ -143,4 +143,25 @@ function roleValueChange(roleValue01){
     // var roleValue = document.getElementById("roleValue");
     roleValue.innerText = roleValue01;
     console.log(roleValue01)
+}
+
+
+//If user click yes on create new group
+function createGroup(){
+    setTimeout(1000);
+
+    let userdecsion = document.querySelector('#userCreateGroup')
+    let groupBox = document.querySelector('#yesCreateGroup')
+
+
+    if (userdecsion.value == 'Yes') {
+        groupBox.hidden = false;
+    }
+
+    else {
+        groupBox.hidden = true;
+    }
+
+
+
 }

@@ -154,7 +154,7 @@ function submitNewProject() {
     //     snackbar.innerText = 'Subject must be less than 50 charterers long';
     //     showAlert();
     // }
-
+console.log('test34')
     //Make sure we are not overwriting already exciting project
     docRef.get().then((doc) => {
         if (doc.exists) {
