@@ -3,7 +3,7 @@ const groupDiv = document.getElementById('groupDiv');
 const clearUsers01 = document.getElementById('clearUsers');
 const personDiv = document.getElementById('personDiv');
 const roleDiv = document.getElementById('roleDiv');
-const somethingDiv = document.getElementById('somethingDiv');
+const editRoleDiv = document.getElementById('editRoleDiv');
 
 const auth = firebase.auth();
 const db = firebase.firestore();
@@ -24,7 +24,8 @@ function group(){
 function person(){
     db.collection('groups').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
-            renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList')
+            renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList') //Display email
+           
         });
     });
 
@@ -37,6 +38,7 @@ clearUsers01.addEventListener('click', e=> {
 
 
 //When user click on a group let us say, then we need to highlight what they clicked on, keep the highlight, and display revleent users
+let personClicked;
 
 let gropuDiv = document.querySelector('#groupDiv');
 groupDiv.addEventListener('click', e=> {
@@ -60,11 +62,53 @@ groupDiv.addEventListener('click', e=> {
    //Add call to function to get group number 
   // let groupNuum01 = getGroupNumber(e);
 //    console.log(localStorage.getItem('groupNum') + "hey hey")
-   
-   showUsers(e.target.id) //Only show people of specfied group selected by user
+   //&& e.target.classList.contains('colorred')
+if(e.target.classList.contains('colorred')){ //This if will prevent user list from showing up twice
+    showUsers(e.target.id) //Only show people of specfied group selected by user
+
+}
 
 
 })
+
+personDiv.addEventListener('click', e=> {
+    e.target.classList.toggle("colorred");
+    console.log("u clicked on " +  e.target.innerText)
+    personClicked = e.target.innerText;
+
+    console.log("I want to show role")
+    db.collection('groups').get().then(function (querySnapshot) {
+        querySnapshot.docs.forEach(function (doc) {
+            if(doc.data().userEmail == personClicked && e.target.classList.contains('colorred')){ //The second half of this statment prevents showing the role twice
+                renderDoc(doc, "list-group-item .disabled", doc.data().role, "roleShowList") //Display Roles           
+
+            }
+        });
+    });
+
+
+    //Add call to show roles
+    //showRoles();
+});
+
+//Will show all roles of selected user
+// function showRoles(){
+//     //roleDiv
+
+//     db.collection('users').get().then(function (querySnapshot) {
+//         //console.log('hey99')
+//         querySnapshot.docs.forEach(function (doc) {
+//              if(doc.data().email == personClicked)
+//             renderDoc(doc, "list-group-item person .disabled", doc.data().Role, 'roleShowList')
+//         });
+//     });
+// }
+
+function changeRoles(){
+    //editRoleDiv
+
+}
+
 
 
 //Not in use, but might need to implement later
@@ -80,7 +124,7 @@ function getGroupNumber(e){
 //Only shows users within group
 function showUsers(groupNum){
     db.collection('groups').get().then(function (querySnapshot) {
-        console.log('hey')
+        console.log('hey99')
         querySnapshot.docs.forEach(function (doc) {
             if(doc.data().group == groupNum)
             renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList')

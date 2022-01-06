@@ -60,7 +60,9 @@ signUpBtn.addEventListener('click', e => {
         const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
             return db.collection('users').doc(cred.user.uid).set({
                 name: name01.value,
-                role1: roleValue.innerText
+                role1: roleValue.innerText,
+                email: email,
+               // group: not sure about num index on this
 
             }).then(() => {
                 //This code below will be called AFTER the catach below
