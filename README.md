@@ -5,11 +5,11 @@ in collaborative settings.
 
 ## General info
 A real-time demonstration is available at: https://bug-tracker-e4401.web.app/ 
+Please note only chromium based browsers are supported at this moment such as Google Chrome, Microsoft edge, Opera, Brave, etc.
 
 
 ## Technologies
 Pure JS.
-
 
 Firebase cloud computing
 
