@@ -1,6 +1,7 @@
 //Get elements from HTML
 const groupDiv = document.getElementById('groupDiv');
 const clearUsers01 = document.getElementById('clearUsers');
+const clearRoles01 = document.getElementById('clearRoles');
 const personDiv = document.getElementById('personDiv');
 const roleDiv = document.getElementById('roleDiv');
 const editRoleDiv = document.getElementById('editRoleDiv');
@@ -34,6 +35,11 @@ function person(){
 clearUsers01.addEventListener('click', e=> {
     clearUsers();
  
+})
+
+clearRoles01.addEventListener('click', e=> {
+    console.log('t111est')
+    clearRoles();
 })
 
 
@@ -80,7 +86,7 @@ personDiv.addEventListener('click', e=> {
     db.collection('groups').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
             if(doc.data().userEmail == personClicked && e.target.classList.contains('colorred')){ //The second half of this statment prevents showing the role twice
-                renderDoc(doc, "list-group-item .disabled", doc.data().role, "roleShowList") //Display Roles           
+                renderDoc(doc, "list-group-item role .disabled", doc.data().role, "roleShowList") //Display Roles           
 
             }
         });
@@ -135,6 +141,20 @@ function showUsers(groupNum){
 function clearUsers(){
     console.log('test')
     var elements = document.getElementsByClassName("person");
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+ 
+    
+}
+
+
+
+
+
+function clearRoles(){
+    console.log('test roles')
+    var elements = document.getElementsByClassName("role");
     while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
     }
