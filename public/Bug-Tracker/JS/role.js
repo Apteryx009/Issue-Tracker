@@ -82,11 +82,20 @@ personDiv.addEventListener('click', e=> {
     console.log("u clicked on " +  e.target.innerText)
     personClicked = e.target.innerText;
 
+    //If we didn't add this, the roles would just keep displaying into a stack
+    if(e.target.classList.contains("colorred")){
+        clearRoles();
+    }
+
+
     console.log("I want to show role")
     db.collection('groups').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
             if(doc.data().userEmail == personClicked && e.target.classList.contains('colorred')){ //The second half of this statment prevents showing the role twice
-                renderDoc(doc, "list-group-item role .disabled", doc.data().role, "roleShowList") //Display Roles           
+                //Display Roles      
+                renderDoc2(doc, "list-group-item role .disabled", 
+                doc.data().role1, doc.data().role2, doc.data().role3, doc.data().role4, doc.data().role5,
+                "roleShowList")      
 
             }
         });
@@ -185,6 +194,26 @@ function renderDoc(doc, className, value, list) { //Value is user email
   //let liElementText = document.createElement(doc.data().userEmail)
   let className01 = document.querySelector(className)
   ul.appendChild(liElement) //Append new child element
+}
+
+// function to display all roles of user
+function renderDoc2(doc, className, value, value2, value3, value4, valu5, list) { //Value is user email
+    var ul = document.getElementById(list); //Give unorderd list (container)
+   console.log(doc.data().userEmail) //Make sure able to retreive email
+
+  //Push given roles into one array
+  var a = [];
+  a.push(value, value2, value3, value4, valu5);
+
+  for(let z=0; z < 5; z++){
+  let liElement = document.createElement('li'); //Create new li to tack on
+  liElement.setAttribute('class', className); //Attach class to it (bootstrap id prob)
+  liElement.setAttribute('id', doc.data().group);
+  liElement.appendChild(document.createTextNode(a[z])); //Value of child element
+  //let liElementText = document.createElement(doc.data().userEmail)
+  let className01 = document.querySelector(className)
+  ul.appendChild(liElement) //Append new child element
+  }
 }
 
 
