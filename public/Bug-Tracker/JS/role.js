@@ -3,13 +3,17 @@ const groupDiv = document.getElementById('groupDiv');
 const clearUsers01 = document.getElementById('clearUsers');
 const clearRoles01 = document.getElementById('clearRoles');
 const personDiv = document.getElementById('personDiv');
+const deleteRoles = document.getElementById('deleteRoles');
 const roleDiv = document.getElementById('roleDiv');
 const editRoleDiv = document.getElementById('editRoleDiv');
+
+let dataFields = document.querySelectorAll(".two");
 
 const auth = firebase.auth();
 const db = firebase.firestore();
 let groupNum01;
-
+let elementsToDel = [];
+let elementsToDelUnique;
 function group(){
 
     db.collection('groups').get().then(function (querySnapshot) {
@@ -42,6 +46,23 @@ clearRoles01.addEventListener('click', e=> {
     clearRoles();
 })
 
+deleteRoles.addEventListener('click', e=> {
+    clearSelectedRoles();
+    deleteFromDb()
+
+})
+
+
+
+
+function deleteFromDb(){
+   let ourGroup = localStorage.getItem("userGroup001");
+   //elementsToDel
+   elementsToDelUnique = [new Set(elementsToDel)];
+   console.log(elementsToDelUnique);
+
+
+}
 
 //When user click on a group let us say, then we need to highlight what they clicked on, keep the highlight, and display revleent users
 let personClicked;
@@ -61,6 +82,7 @@ groupDiv.addEventListener('click', e=> {
 //  //e.target.style.backgroundColor = "pink";
   
     e.target.classList.toggle("colorred");
+    localStorage.setItem("userGroup001", e.target.innerText); //Will set local storage item needed later for currently selected group
     if(e.target.classList.contains("colorred")){
         clearUsers();
     }
@@ -76,6 +98,44 @@ if(e.target.classList.contains('colorred')){ //This if will prevent user list fr
 
 
 })
+ //Elements needed to delete in firebase!
+//This will clear selected roles on screen from user
+function clearSelectedRoles(){
+    var elements = document.getElementById("roleShowList").querySelectorAll(".colorred")
+    // let copyLength = elements.length;
+    // var elementsToDel = [];
+    // let i =0
+    // while(copyLength.length > 0){
+    
+    //     copyLength--;
+    //     elementsToDel[i] = elements[copyLength];
+    //     i++
+    // }
+
+   // console.log(elementsToDel.id)
+  
+    while(elements.length > 0){
+        elementsToDel.push(elements[0].id);
+        //console.log(elements[0].id)
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
+let markFordelation = [];
+roleDiv.addEventListener('click', e=> {
+ //markFordelation.push(e.target.id);
+
+    e.target.classList.toggle("colorred");
+    // if(e.target.classList.contains("colorred")){
+    //     markFordelation.push(e.target.id);
+    // }
+    // else{
+    //     var item = e.target.id;
+    //     var index = markFordelation.indexOf(item);
+    //     markFordelation.splice(index, 1);
+    // }
+});
+
 
 personDiv.addEventListener('click', e=> {
     e.target.classList.toggle("colorred");
@@ -208,7 +268,7 @@ function renderDoc2(doc, className, value, value2, value3, value4, valu5, list) 
   for(let z=0; z < 5; z++){
   let liElement = document.createElement('li'); //Create new li to tack on
   liElement.setAttribute('class', className); //Attach class to it (bootstrap id prob)
-  liElement.setAttribute('id', doc.data().group);
+  liElement.setAttribute('id', z);
   liElement.appendChild(document.createTextNode(a[z])); //Value of child element
   //let liElementText = document.createElement(doc.data().userEmail)
   let className01 = document.querySelector(className)

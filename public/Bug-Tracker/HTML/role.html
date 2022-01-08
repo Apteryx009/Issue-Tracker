@@ -2,29 +2,30 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bug Tracker: role</title>
 
-  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js" ></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
   <script>
     var firebaseConfig = {
       apiKey: "AIzaSyBNRFfYg12CG-c5NJlTN0uTwp31NGe3P08",
 
-    authDomain: "bug-tracker-e4401.firebaseapp.com",
+      authDomain: "bug-tracker-e4401.firebaseapp.com",
 
-    databaseURL: "https://bug-tracker-e4401-default-rtdb.firebaseio.com",
+      databaseURL: "https://bug-tracker-e4401-default-rtdb.firebaseio.com",
 
-    projectId: "bug-tracker-e4401",
+      projectId: "bug-tracker-e4401",
 
-    storageBucket: "bug-tracker-e4401.appspot.com",
+      storageBucket: "bug-tracker-e4401.appspot.com",
 
-    messagingSenderId: "180501724640",
+      messagingSenderId: "180501724640",
 
-    appId: "1:180501724640:web:86dd3220fff7fd8a837f85",
+      appId: "1:180501724640:web:86dd3220fff7fd8a837f85",
 
-    measurementId: "G-XHC9FRL0M8"
+      measurementId: "G-XHC9FRL0M8"
 
     };
     firebase.initializeApp(firebaseConfig);
@@ -40,7 +41,7 @@
 </head>
 
 <body>
-    
+
   <div class="grid-container">
     <div class="menu-icon">
       <strong> &#9776;</strong>
@@ -57,37 +58,38 @@
         <li class="aside_list-item">Dashboard Home</li>
         <li class="aside_list-item">Manage Role</li>
         <li class="aside_list-item">Projects</li>
-        
+
         <li class="aside_list-item">My Tickets</li>
         <li class="aside_list-item">User Profile</li>
       </ul>
     </aside>
-  
-     
 
-        <main class="main">
-            <div class="main_overview">
-                <div class="overview_card">
-                  <div class="overview_card-info">ADMIN ACCESS: User Management System: max 5 roles per user</div>
-                  
-                  <div class="overview_card-icon"></div>
-                </div>
-            </div>
 
-            <button id="clearUsers" class="btn btn-warning btn-sm">Clear Users</button>  
-            <button id="clearRoles" class="btn btn-warning btn-sm">Clear Roles</button> 
-        <div class="main_cards">
-            <div id='groupDiv' class="card">Select a group:
 
-              <ul id="groupList"   class="list-group">
-              <!-- JS will dynmically add elements -->
-              
-              </ul>
-               
+    <main class="main">
+      <div class="main_overview">
+        <div class="overview_card">
+          <div class="overview_card-info">ADMIN ACCESS: User Management System: max 5 roles per user</div>
 
-                  
+          <div class="overview_card-icon"></div>
+        </div>
+      </div>
 
-                 <!-- Select the Role to assign
+      <button id="clearUsers" class="btn btn-warning btn-sm">Clear Users</button>
+      <button id="clearRoles" class="btn btn-warning btn-sm">Clear Roles</button>
+      <button id="deleteRoles" class="btn btn-warning btn-sm">Delete Roles</button>
+      <div class="main_cards">
+        <div id='groupDiv' class="card">Select a group:
+
+          <ul id="groupList" class="list-group">
+            <!-- JS will dynmically add elements -->
+
+          </ul>
+
+
+
+
+          <!-- Select the Role to assign
                   <div class="dropdown">
                     <button class="dropbtn">--Select Role/None--</button>
                     <div class="dropdown-content">
@@ -96,64 +98,121 @@
                       <a href="#">Link 3</a>
                     </div>
                   </div> -->
-                    
+
+        </div>
+
+        <div id="personDiv" class="card">Select a person:
+          <ul id="personList" class="list-group">
+            <!-- JS will dynmically add elements -->
+          </ul>
+
+        </div>
+
+        <div id="roleDiv" class="card">Roles already given to user for the group:
+          <div class="card" id="card1">
+
+            <div id="main">
+              
+              <div id="buttons">
+              <button id="editBtn" class="btn btn-danger btn-sm">Edit</button>
+              <button id="saveBtn" class="btn btn-dark btn-sm">Apply</button>
+              <button id="submitBtn" class="btn btn-warning btn-sm">Submit</button>
             </div>
             
-            <div id="personDiv" class="card">Select a person: 
-              <ul  id="personList" class="list-group">
-                 <!-- JS will dynmically add elements -->
-              </ul>
-
-            </div>
-
-            <div id="roleDiv" class="card">Roles already given to user for the group: 
-              <ul id='roleShowList' class="list-group">
-                <!-- <li class="list-group-item .disabled">Crsdfas justo odio</li>
-                <li class="list-group-item .disabled">Dasdfpibus ac facilisis in</li>
-                <li class="list-group-item .disabled">Mosdfrbi leo risus</li> -->
-          
-              </ul>
-
-            </div>
-
-            <div id="editRoleDiv" class="card">Add New Role to User (remember to hit submit)
-              <!-- <ul class="list-group">
-                 <li class="list-group-item .disabled">Crsdfas justo odio</li>
-                <li class="list-group-item .disabled">Dasdfpibus ac facilisis in</li> -->
-            
-              <!-- </ul>  -->
-
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">New Role:</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+  
+           
+  
+              <!-- It says dropdown divider, but it is from bootstrap.
+              I really like the way it looks, which is why I chose it.  -->
+              <div class="dropdown-divider"></div>
+  
+              <div class="d-flex">
+  
+                <!-- TODO Add padding and fix this ui -->
+                <p>Role1 </p>
+                <textarea style= "visibility: hidden;" class="form-control" placeholder="New Value"  aria-label="With textarea"></textarea>
+                <p class="two" id="twopp2">
+  
+                </p>
+              </div>
+              <div class="dropdown-divider"></div>
+  
+              <div class="d-flex">
+  
+                <p>Role1</p>
+                <textarea style= "visibility: hidden;" class="form-control" placeholder="New Value"  aria-label="With textarea"></textarea>
+                <p class="two" id="twopp3"></p>
               </div>
 
+              <div class="d-flex">
+  
+                <p>Role3</p>
+                <textarea style= "visibility: hidden;" class="form-control" placeholder="New Value"  aria-label="With textarea"></textarea>
+                <p class="two" id="twopp3"></p>
+              </div>
 
+              <div class="d-flex">
+  
+                <p>Role4</p>
+                <textarea style= "visibility: hidden;" class="form-control" placeholder="New Value"  aria-label="With textarea"></textarea>
+                <p class="two" id="twopp3"></p>
+              </div>
+
+              <div class="d-flex">
+  
+                <p>Role5</p>
+                <textarea style= "visibility: hidden;" class="form-control" placeholder="New Value"  aria-label="With textarea"></textarea>
+                <p class="two" id="twopp3"></p>
+              </div>
+  
+       
+                
+              </div>
+  
+  
             </div>
+        </div>
+        
 
-            <div id="projectDiv" class="card">Projects that user has collaboration in
-              <ul class="list-group">
-                <li class="list-group-item .disabled">Crsdfas justo odio</li>
-               
-              </ul>
+        <div id="editRoleDiv" class="card">Add New Role to User (remember to hit submit)
+          <!-- <ul class="list-group">
+                 <li class="list-group-item .disabled">Crsdfas justo odio</li>
+                <li class="list-group-item .disabled">Dasdfpibus ac facilisis in</li> -->
 
-            </div>
+          <!-- </ul>  -->
 
-
-            <div id="editProjecdtDiv" class="card">Remove User From Group
-              <ul class="list-group">
-                <li class="list-group-item .disabled">Yes</li>
-                <li class="list-group-item .disabled">Yes, I am sure</li>
-             
-              </ul>
-
-            </div>
-            
-            <button id="submitBtn" class="btn btn-warning btn-sm">Submit</button>   
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">New Role:</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm">
           </div>
 
-          
-         
+
+        </div>
+
+        <div id="projectDiv" class="card">Projects that user has collaboration in
+          <ul class="list-group">
+            <li class="list-group-item .disabled">Crsdfas justo odio</li>
+
+          </ul>
+
+        </div>
+
+
+        <div id="editProjecdtDiv" class="card">Remove User From Group
+          <ul class="list-group">
+            <li class="list-group-item .disabled">Yes</li>
+            <li class="list-group-item .disabled">Yes, I am sure</li>
+
+          </ul>
+
+        </div>
+
+        <button id="submitBtn" class="btn btn-warning btn-sm">Submit</button>
+      </div>
+
+
+
     </main>
     <footer class="footer">
       <div class="footer_copyright">&copy;2021</div>
@@ -161,7 +220,7 @@
     </footer>
   </div>
 
-  
+
 
   <script defer src="../JS/userHome.js"></script>
   <script defer src="../JS/aside.js"></script>

@@ -9,6 +9,16 @@
   background-color: red;
 }
 
+#roleDiv{
+ /* width: 80%; */
+ /* border-right: none; */
+}
+#roleDivRight{
+  width: 20%;
+  align-self:auto;
+  background-color: aqua;
+}
+
 
  @media only screen and (min-width: 750px) {
    
