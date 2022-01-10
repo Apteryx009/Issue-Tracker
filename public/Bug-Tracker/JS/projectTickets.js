@@ -62,7 +62,7 @@ saveBtn.addEventListener('click', function () {
 });
 
 submitBtn.addEventListener('click', function () {
-    let projectName = localStorage.getItem('loadProject');
+    let projectName = localStorage.getItem('projectName');
     let loadTicket = localStorage.getItem('loadTicket');
     console.log(projectName);
     snackbar.innerText = 'Ticket Updated!';
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 
-let loadProject = localStorage.getItem("loadProject");
+let loadProject = localStorage.getItem("projectName");
 console.log(loadProject)
 
 let loadTicket = localStorage.getItem('loadTicket');
@@ -106,8 +106,8 @@ function getTicketDoc() {
                 //Convert ticket num in db to int
                 let loadTicketInt = parseInt(loadTicket)
 
-
-                if (doc.data().NumTickets == (loadTicketInt + 1)) {
+                let ticketName = localStorage.getItem('idOfSpecificTicket'); console.log(ticketName);
+                if (doc.id == ticketName) {
                     renderDoc(doc);
                     console.log('test')
                 }
@@ -273,6 +273,7 @@ function CommentData() {
         window.location.reload();
     });
 }
+
 
 function getCommentData() {
 
