@@ -92,6 +92,9 @@ console.log(loadProject)
 let loadTicket = localStorage.getItem('loadTicket');
 console.log(loadTicket)
 
+
+
+
 //Get Ticket document
 function getTicketDoc() {
 

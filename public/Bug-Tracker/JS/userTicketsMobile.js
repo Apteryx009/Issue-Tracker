@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
     loadTicketDetails();
 }, false);
 
+
+
 createNewTicket.addEventListener('click', loadPage)
 
 function loadPage(e) {
@@ -30,6 +32,9 @@ function loadTicketDetails() {
 
     let userUID = localStorage.getItem("userUID")
     let userUID01 = userUID.replace(/['"]+/g, '')
+
+
+    console.log("test")
 
     //TODO********, display tickets for user where they assigned them, have been assigned.
     
@@ -74,6 +79,7 @@ function renderDoc(doc) {
     var certainField01 = doc.data();
     backUpdoc = doc;
 
+    console.log("test")
 
 
     if(doc.id == 'discard'){

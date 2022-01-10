@@ -58,6 +58,7 @@ function loadTicketDetails() {
     .then(function(querySnapshot) {
        
         querySnapshot.forEach(function(doc) {
+          
             console.log(doc.id, " => ", doc.data());
             renderDoc(doc)
         });
@@ -68,6 +69,13 @@ function loadTicketDetails() {
 
 }
 
+
+function getProjectName(doc){
+    let path = doc.ref.path
+    let projectNameFromPath = path.split(('/'))
+    console.log(projectNameFromPath[1])
+    return projectNameFromPath[1];
+}
 
 
 //Update and display to UI
@@ -94,7 +102,7 @@ function renderDoc(doc) {
   
     const container = document.querySelector('.result__container')
     projectNode.innerHTML = `
-     <div class="issue__properties">
+     <div ="${doc.id}" class="issue__properties">
     <div class="issue__entry"><span style="background-color: #f45e51">bug</span></div>
     <div class="subject__entry" title="${certainField01.subject}"><span style="white-space: pre-line">${certainField01.subject}</span></div>
     <div class="asignee__entry"><span>${certainField01.assignee}</span></div>
@@ -117,7 +125,9 @@ function renderDoc(doc) {
     //tickets of that project. Furthermore, it will direct user
     //to new page. 
     projectNode.addEventListener('click', function () {
-        localStorage.setItem('loadTicket', projectNode.id)
+        let projectName = getProjectName(doc)
+        localStorage.setItem('projectName', projectName);
+        localStorage.setItem('idOfSpecificTicket', doc.id)
         window.location.href = "../HTML/projectTickets.html";
         console.log(projectNode.value)
     });
