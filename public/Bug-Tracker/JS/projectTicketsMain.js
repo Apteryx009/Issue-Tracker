@@ -27,7 +27,7 @@ let counter = 0;
 
 //Get and display all tickets and their details for requested project.
 function loadTicketDetails() {
-
+    projectName = localStorage.getItem("loadProject");
     console.log(projectName);
     db.collection('projects').doc(projectName).collection("projectTickets").get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
@@ -137,3 +137,5 @@ function executeIfMaxWidth750 () {
   
   // add handler for resize
   window.addEventListener('resize', executeIfMaxWidth750);
+  //window.addEventListener('size', executeIfMaxWidth750);
+  //executeIfMaxWidth750();
