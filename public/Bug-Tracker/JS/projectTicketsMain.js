@@ -92,6 +92,7 @@ function renderDoc(doc) {
     //to new page. 
     projectNode.addEventListener('click', function () {
         localStorage.setItem('loadTicket', projectNode.id)
+        localStorage.setItem('idOfSpecificTicket', doc.id)
         window.location.href = "../HTML/projectTickets.html";
         console.log(projectNode.value)
     });

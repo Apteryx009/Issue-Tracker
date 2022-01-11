@@ -62,7 +62,7 @@ saveBtn.addEventListener('click', function () {
 });
 
 submitBtn.addEventListener('click', function () {
-    let projectName = localStorage.getItem('projectName');
+    let projectName = localStorage.getItem('loadProject');
     let loadTicket = localStorage.getItem('loadTicket');
     console.log(projectName);
     snackbar.innerText = 'Ticket Updated!';
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 
-let loadProject = localStorage.getItem("projectName");
+let loadProject = localStorage.getItem("loadProject");
 console.log(loadProject)
 
 let loadTicket = localStorage.getItem('loadTicket');

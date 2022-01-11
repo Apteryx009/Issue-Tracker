@@ -239,12 +239,14 @@ function getGroupNumber(e) {
 
 //Only shows users within group
 function showUsers(groupNum) {
+    let emailat;
     db.collection('groups').get().then(function (querySnapshot) {
         console.log('hey99')
         querySnapshot.docs.forEach(function (doc) {
             if (doc.data().group == groupNum)
                 renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList')
-                console.log(doc.data().users)
+            //   emailat =  doc.data().users[0];
+            //   console.log(emailat)
         });
     });
 }
