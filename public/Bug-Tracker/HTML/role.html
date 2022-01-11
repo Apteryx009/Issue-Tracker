@@ -36,7 +36,14 @@
   <link rel="stylesheet" href="../CSS/style.css">
   <link rel="stylesheet" href="../CSS/aside.css">
 
+
+  <!-- maybe delete this  -->
+  <link rel="stylesheet" href="../CSS/projectTickets.css">
+
   <link rel="stylesheet" href="../CSS/role.css">
+
+
+
 
 </head>
 
@@ -116,7 +123,7 @@
               <div id="buttons">
               <button id="editBtn" class="btn btn-danger btn-sm">Edit</button>
               <button id="saveBtn" class="btn btn-dark btn-sm">Apply</button>
-              <button id="submitBtn" class="btn btn-warning btn-sm">Submit</button>
+              <button id="submitBtnRoles" class="btn btn-warning btn-sm">Submit</button>
             </div>
             
   
@@ -144,6 +151,8 @@
                 <p class="two" id="twopp3"></p>
               </div>
 
+              <div class="dropdown-divider"></div>
+
               <div class="d-flex">
   
                 <p>Role3</p>
@@ -151,6 +160,8 @@
                 <p class="two" id="twopp3"></p>
               </div>
 
+
+              <div class="dropdown-divider"></div>
               <div class="d-flex">
   
                 <p>Role4</p>
@@ -158,6 +169,7 @@
                 <p class="two" id="twopp3"></p>
               </div>
 
+              <div class="dropdown-divider"></div>
               <div class="d-flex">
   
                 <p>Role5</p>
@@ -165,7 +177,7 @@
                 <p class="two" id="twopp3"></p>
               </div>
   
-       
+              <div class="dropdown-divider"></div>
                 
               </div>
   
@@ -190,19 +202,20 @@
 
         </div>  -->
 
-        <div id="projectDiv" class="card">Projects that user has collaboration in
-          <ul class="list-group">
-            <li class="list-group-item .disabled">Crsdfas justo odio</li>
+        <!-- todo -->
+        <!-- <div id="projectDiv" class="card">Projects that user has collaboration in
+          <ul id="projectsList"  class="list-group">
+            <li class="list-group-item .disabled">Crsdfas justo odio</li> -->
 
-          </ul>
+          <!-- </ul>
 
-        </div>
+        </div> --> 
 
 
         <div id="editProjecdtDiv" class="card">Remove User From Group
           <ul class="list-group">
-            <li class="list-group-item .disabled">Yes</li>
-            <li class="list-group-item .disabled">Yes, I am sure</li>
+            <li id="yes1" class="list-group-item .disabled">Yes</li>
+            <li id="yes2" class="list-group-item .disabled">Yes, I am sure</li>
 
           </ul>
 
@@ -225,6 +238,8 @@
   <script defer src="../JS/userHome.js"></script>
   <script defer src="../JS/aside.js"></script>
   <script defer src="../JS/role.js"></script>
+
+  <div id="snackbar"></div> 
 </body>
 
 </html>
