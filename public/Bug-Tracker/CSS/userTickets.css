@@ -21,6 +21,9 @@ body {
       'footer';
     height: 100vh;
   }
+
+
+
   
   .header {
     grid-area: header;
@@ -197,6 +200,8 @@ body {
     display: flex;
     justify-content: center;
   }
+  
+  
   .subject__prop {
     padding: 40px 0px 10px 0px;
     width: 200%;
@@ -223,7 +228,7 @@ body {
   .subject__entry {
     padding: 10px 0px 10px 0px;
     width: 200%;
-    text-align: left;
+    text-align: center;
   }
   .issue__properties:hover {
     background-color: #fcfade;

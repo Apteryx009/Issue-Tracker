@@ -128,6 +128,9 @@ function updateTicketDoc() {
     //We may have vars in database that are not displayed on screen
     //So this solution will allow us to save those vars in db whilst updating what user has submitted without changing 
     //other vars to null
+
+    dataFields = document.querySelectorAll(".two"); //need fresh set
+
     Category = dataFields[5].textContent;
     CreatedAt = dataFields[7].textContent;
     // NumTickets = dataFields[].textContent;
@@ -140,6 +143,7 @@ function updateTicketDoc() {
     // priority  =dataFields[5].textContent;
     subject = dataFields[0].textContent;
     ticketStatus = dataFields[8].textContent;
+    console.log(ticketStatus)
     //     ticketType;
     userDate = dataFields[6].textContent;
 
@@ -150,10 +154,10 @@ function updateTicketDoc() {
             querySnapshot.forEach(function (doc) {
 
                 //Convert ticket num in db to int
-                let loadTicketInt = parseInt(loadTicket)
-
-                // console.log("doc id " +  doc.id)
-                if (doc.data().NumTickets == (loadTicketInt + 1)) {
+                //let loadTicketInt = parseInt(loadTicket)
+                let ticketId = localStorage.getItem("idOfSpecificTicket");
+                // console.log("doc id " +  doc.id) //TESTINMG
+                 if (doc.id == ticketId) {
                     console.log("doc id yes " + doc.id)
                     return db.collection('projects').doc(loadProject).collection('projectTickets').doc(doc.id).set({
                         Category: Category,
@@ -177,7 +181,7 @@ function updateTicketDoc() {
 
 
                     console.log('test')
-                }
+                 }
 
                 // console.log(doc.id, " => ", (loadTicket + 1));
             });

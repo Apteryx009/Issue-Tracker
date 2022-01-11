@@ -38,7 +38,7 @@ function person() {
     db.collection('groups').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
             renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList') //Display email
-
+            console.log( "mctester")
         });
     });
 
@@ -244,6 +244,7 @@ function showUsers(groupNum) {
         querySnapshot.docs.forEach(function (doc) {
             if (doc.data().group == groupNum)
                 renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList')
+                console.log(doc.data().users)
         });
     });
 }
