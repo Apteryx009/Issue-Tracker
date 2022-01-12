@@ -33,12 +33,12 @@ function group() {
 
 }
 
-
+//discord here
 function person() {
     db.collection('groups').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
             renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList') //Display email
-            console.log( "mctester")
+            //console.log(doc.data().users[0])
         });
     });
 
@@ -123,8 +123,8 @@ submitBtnAll.addEventListener('click', e => {
     submitAll();
 })
 
-function submitAll(){
-console.log('test')
+function submitAll() {
+    console.log('test')
 }
 
 
@@ -168,7 +168,7 @@ roleDiv.addEventListener('click', e => {
 
 
 personDiv.addEventListener('click', e => {
-  //  let roleRight = getElementsByClassName(".two");
+    //  let roleRight = getElementsByClassName(".two");
 
     e.target.classList.toggle("colorred");
     console.log("u clicked on " + e.target.innerText)
@@ -183,23 +183,31 @@ personDiv.addEventListener('click', e => {
     console.log("I want to show role")
     db.collection('groups').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
-            if (doc.data().userEmail == personClicked && e.target.classList.contains('colorred')) { //The second half of this statment prevents showing the role twice
-                //Display Roles      
-                // renderDoc2(doc, "list-group-item role .disabled", 
-                // doc.data().role1, doc.data().role2, doc.data().role3, doc.data().role4, doc.data().role5,
-                // "roleShowList") 
+            if (doc.data().users) {
+                for (let i = 0; i < doc.data().users.length; i++) {
+                    if (doc.data().users[i] == personClicked && e.target.classList.contains('colorred')) { //The second half of this statment prevents showing the role twice
+                        //Display Roles      
+                        // renderDoc2(doc, "list-group-item role .disabled", 
+                        // doc.data().role1, doc.data().role2, doc.data().role3, doc.data().role4, doc.data().role5,
+                        // "roleShowList") 
+                        let nameid = parseInt(e.target.id)
+                        nameid = nameid + nameid*4;
+                        console.log(nameid)
 
-                //This will display proper roles to screen for given user
-                dataFields[0].textContent = doc.data().role1;
-                dataFields[1].textContent = doc.data().role2;
-                dataFields[2].textContent = doc.data().role3;
-                dataFields[3].textContent = doc.data().role4;
-                dataFields[4].textContent = doc.data().role5;
+                        if (doc.data().roleGroup0) {
+                        //This will display proper roles to screen for given user
+                        dataFields[0].textContent = doc.data().roleGroup0[nameid];
+                        dataFields[1].textContent = doc.data().roleGroup0[nameid+1];
+                        dataFields[2].textContent = doc.data().roleGroup0[nameid+ 2];
+                        dataFields[3].textContent = doc.data().roleGroup0[nameid+ 3];
+                        dataFields[4].textContent = doc.data().roleGroup0[nameid+ 4];
+                        }
+                    }
 
-                
-
+                }
             }
         });
+
     });
 
 
@@ -236,17 +244,23 @@ function getGroupNumber(e) {
 
 }
 
-
+//discord here
 //Only shows users within group
 function showUsers(groupNum) {
-    let emailat;
+    // let emailat;
     db.collection('groups').get().then(function (querySnapshot) {
         console.log('hey99')
         querySnapshot.docs.forEach(function (doc) {
-            if (doc.data().group == groupNum)
-                renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList')
-            //   emailat =  doc.data().users[0];
-            //   console.log(emailat)
+            // if (doc.data().group == groupNum) {
+            //     renderDoc(doc, "list-group-item person .disabled", doc.data().userEmail, 'personList')
+            // }//    emailat =  doc.data().users[0];
+            //This was the super hard part that took forever to figure out
+            //So, some collections will be blank, which is why we need the IF
+            if (doc.data().users && doc.data().group == groupNum) {
+                renderDoc4(doc, "list-group-item person .disabled", doc.data().users, 'personList')
+
+                console.log(doc.data().users[0]);
+            }
         });
     });
 }
@@ -300,20 +314,20 @@ function showGroupsOfUser() {
             //    // renderDoc(doc, "userGroup", "project name", "projectsList"); //value needs to be project name
             // }            
             console.log('ayoooo2')
-           let  selectedUser = "5R0JHvLyLgTgKmIJSbMpiMiXWrf1"
+            let selectedUser = "5R0JHvLyLgTgKmIJSbMpiMiXWrf1"
             db.collectionGroup("projects").where("asigneeUID", "==", selectedUser)
-            .get()
-            .then(function(querySnapshot) {
-               
-                querySnapshot.forEach(function(doc) {
-                    console.log('ayoooo')
-                    renderDoc(doc, "userGroup", "project name", "projectsList");
+                .get()
+                .then(function (querySnapshot) {
+
+                    querySnapshot.forEach(function (doc) {
+                        console.log('ayoooo')
+                        renderDoc(doc, "userGroup", "project name", "projectsList");
+                    });
+                })
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
                 });
-            })
-            .catch(function(error) {
-                console.log("Error getting documents: ", error);
-            });
-        
+
 
             //if Assigner UID == selected user UID
 
@@ -366,6 +380,23 @@ function renderDoc2(doc, className, value, value2, value3, value4, valu5, list) 
     }
 }
 
+
+function renderDoc4(doc, className, value, list) { //Value is user email
+    var ul = document.getElementById(list); //Give unorderd list (container)
+    console.log(doc.data().userEmail) //Make sure able to retreive email
+
+
+
+    for (let i = 0; i < value.length; i++) {
+        let liElement = document.createElement('li'); //Create new li to tack on
+        liElement.setAttribute('class', className); //Attach class to it (bootstrap id prob)
+        liElement.setAttribute('id', i);
+        liElement.appendChild(document.createTextNode(value[i])); //Value of child element
+        //let liElementText = document.createElement(doc.data().userEmail)
+        let className01 = document.querySelector(className)
+        ul.appendChild(liElement) //Append new child element
+    }
+}
 
 //For user editing of roles:
 let dataFields = document.querySelectorAll(".two");
