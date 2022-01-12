@@ -73,6 +73,7 @@ function renderDoc(doc) {
     <div class="result__entry">
     <div class="issue__properties">
       <div  class="issue__entry"><span style="background-color: #f45e51">${doc.id}</span></div>
+      
       <div  class="issue__entry" title="this is a bug"><span style="background-color: #f45e51">${certainField01.Description}</span></div>
 
     </div>

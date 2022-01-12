@@ -86,6 +86,22 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 
+//Show ticket number
+document.addEventListener('DOMContentLoaded', function () {
+   let showTicket = localStorage.getItem("loadTicket");
+   let h3TicketNum = document.getElementById("ticketNumH3");
+   h3TicketNum.innerText = showTicket;
+}, false);
+
+//Show ticket project
+document.addEventListener('DOMContentLoaded', function () {
+    let showTicket = localStorage.getItem("loadProject");
+    let h3TicketNum = document.getElementById("ticketProjectH4");
+    h3TicketNum.innerText = showTicket;
+ }, false);
+ 
+
+
 let loadProject = localStorage.getItem("loadProject");
 console.log(loadProject)
 

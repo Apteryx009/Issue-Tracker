@@ -218,7 +218,7 @@ body {
   .subject__entry {
     padding: 10px 0px 10px 0px;
     width: 200%;
-    text-align: left;
+    text-align: center;
   }
   .issue__properties:hover {
     background-color: #fcfade;
