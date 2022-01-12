@@ -99,10 +99,14 @@ function renderDoc(doc) {
     //This will give each div a unique id
     projectNode.setAttribute("id", counter);
 
+    let ref = doc.ref.path;
+    ref = ref.split('/');
+    console.log(ref[1])
+
   
     const container = document.querySelector('.result__container')
     projectNode.innerHTML = `
-     <div ="${doc.id}" class="issue__properties">
+     <div ="${doc.id}" class="issue__properties ${ref[1]}">
     
     <div class="subject__entry" title="${certainField01.subject}"><span style="white-space: pre-line">${certainField01.subject}</span></div>
     <div class="asignee__entry"><span>${certainField01.assignee}</span></div>
@@ -126,7 +130,7 @@ function renderDoc(doc) {
     //to new page. 
     projectNode.addEventListener('click', function () {
         let projectName = getProjectName(doc)
-        localStorage.setItem('projectName', projectName);
+        localStorage.setItem('loadProject', projectName);
         localStorage.setItem('idOfSpecificTicket', doc.id)
         window.location.href = "../HTML/projectTickets.html";
         console.log(projectNode.value)

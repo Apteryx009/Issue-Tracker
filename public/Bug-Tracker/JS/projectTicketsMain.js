@@ -68,9 +68,14 @@ function renderDoc(doc) {
     //This will give each div a unique id
     projectNode.setAttribute("id", counter);
 
+    
+    let ref = doc.ref.path;
+    ref = ref.split('/');
+    console.log(ref[1] + 'aaa')
+
     const container = document.querySelector('.result__container')
     projectNode.innerHTML = `
-     <div class="issue__properties">
+     <div class="issue__properties ${ref[1]}">
     <div class="subject__entry" title="${certainField01.subject}"><span style="white-space: pre-line">${certainField01.subject}</span></div>
     <div class="asignee__entry"><span>${certainField01.assignee}</span></div>
     <div class="status__entry"><span style="background-color: #f45e51">${certainField01.ticketStatus}</span></div>

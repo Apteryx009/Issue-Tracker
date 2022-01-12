@@ -163,7 +163,7 @@ function updateTicketDoc() {
     //     ticketType;
     userDate = dataFields[6].textContent;
 
-
+    loadProject = localStorage.getItem("loadProject");
     db.collection('projects').doc(loadProject).collection('projectTickets').get()
         .then(function (querySnapshot) {
             // below is your loop
