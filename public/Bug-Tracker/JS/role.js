@@ -27,6 +27,7 @@ function group() {
     db.collection('groups').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
             renderDoc(doc, "list-group-item .disabled", doc.id, "groupList")
+            
         });
     });
     var div = document.getElementById("GroupDiv");
@@ -358,6 +359,7 @@ function renderDoc(doc, className, value, list) { //Value is user email
     //let liElementText = document.createElement(doc.data().userEmail)
     let className01 = document.querySelector(className)
     ul.appendChild(liElement) //Append new child element
+ 
 }
 
 // function to display all roles of user

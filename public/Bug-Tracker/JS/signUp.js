@@ -4,7 +4,8 @@ const home = document.getElementById('home');
 const userDetails = document.getElementById('userDetails');
 const signOutBtn = document.getElementById('signOutBtn');
 const errorDetails = document.getElementById('error_output')
-
+let groupBox = document.querySelector('#yesCreateGroup')
+let groupName = document.querySelector('#groupName')
 var roleValue = document.getElementById("roleValue");
 //Get name of user
 const name01 = document.getElementById('name')
@@ -53,10 +54,34 @@ signUpBtn.addEventListener('click', e => {
         userName.setCustomValidity('Please fill in your Name.');
     })
 
-
     //If user did actully enter a name, this 
     //wil set a new field in our firebase database assioated with user
     if (userName.checkValidity() == true) {
+       
+         let newGroupName = groupName.value;
+        console.log(newGroupName)
+
+        //The following will create a new group (if user wants to),
+        //and set data needed to initialize such group
+        if(newGroupName != null){
+        db.collection('groups').doc(newGroupName).set({
+            totalUsers: '1',
+            roleGroup0: {
+                0: 'null',
+                1: 'null',
+                2: 'null',
+                3: 'null',
+                4: 'null'
+            },
+            totalRoleGroups: 1,
+            totalUsers: 1,
+            users: {
+                0: email
+            }
+
+        })
+    }
+
         const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
             return db.collection('users').doc(cred.user.uid).set({
                 name: name01.value,
@@ -151,13 +176,15 @@ function roleValueChange(roleValue01){
 //If user click yes on create new group
 function createGroup(){
     setTimeout(1000);
+    let newGroupName;
 
     let userdecsion = document.querySelector('#userCreateGroup')
-    let groupBox = document.querySelector('#yesCreateGroup')
+    
 
 
     if (userdecsion.value == 'Yes') {
         groupBox.hidden = false;
+      
     }
 
     else {

@@ -111,7 +111,7 @@
 <hr>
 
 <div id="askUserIfCreateGroup">
-  <p style="background-color: white;">Would you like to create a new group?</p>
+  <p id="question" style="background-color: white;">Would you like to create a new group?</p>
   <div class="dropdown" onclick="createGroup()">
     <form name="userForm">
       <select name="userForm" id="userCreateGroup">
@@ -124,7 +124,7 @@
 
   <div class="mb-3" id="yesCreateGroup" hidden=true>
     <label for="passwordInput" class="form-label"></label>
-    <input type="password" class="form-control" id="groupName" placeholder="Group Name">
+    <input type="text" class="form-control" id="groupName" placeholder="Group Name">
   </div>
 
 
@@ -138,7 +138,7 @@
   <div class="dropdown">
     <button class="dropbtn">--Select General Role--</button>
     <div class="dropdown-content">
-      <a onclick="roleValueChange('Full-stack Dev')" href="#">Full-stack Dev</a>
+      <a onclick="roleValueChange('Full-Stack Dev')" href="#">Full-Stack Dev</a>
       <a onclick="roleValueChange('Front-End Dev')" href="#">Front-End Dev</a>
       <a onclick="roleValueChange('Back-End Dev')" href="#">Back-End Dev</a> 
       <a onclick="roleValueChange('Designer')" href="#">Designer</a>
