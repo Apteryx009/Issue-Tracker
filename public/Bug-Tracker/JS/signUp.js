@@ -60,29 +60,54 @@ signUpBtn.addEventListener('click', e => {
        
          let newGroupName = groupName.value;
         console.log(newGroupName)
+        let totalGroups;
 
-        //The following will create a new group (if user wants to),
-        //and set data needed to initialize such group
-        if(newGroupName != null){
-        db.collection('groups').doc(newGroupName).set({
-            totalUsers: '1',
-            roleGroup0: {
-                0: 'null',
-                1: 'null',
-                2: 'null',
-                3: 'null',
-                4: 'null'
-            },
-            totalRoleGroups: 1,
-            totalUsers: 1,
-            users: {
-                0: email
-            }
+    
+    
+        // console.log("here is total groups" + totalGroups)
 
-        })
-    }
+       
+    
 
         const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
+
+            db.collection('totalGroups').doc('totalGroups').get().then(function(snapshot) {
+                const docData = snapshot.data();
+               
+                localStorage.setItem('TotalGroups', snapshot.data().totalGroups) //save in local storage for later
+            })
+            //If I don't use local storage, totalgroups will always be undefined
+            totalGroups = localStorage.getItem('TotalGroups')
+            totalGroups = parseInt(totalGroups)
+            let increasedGroups = parseInt(totalGroups + 1);
+            //I need to increment total Groups by 1
+            db.collection('totalGroups').doc('totalGroups').set({
+                totalGroups: increasedGroups
+            })
+    
+    
+            //The following will create a new group (if user wants to),
+            //and set data needed to initialize such group
+            if(newGroupName != null){
+            db.collection('groups').doc(newGroupName).set({
+                 group: increasedGroups, // (must create function to fetch value)
+                totalUsers: '1',
+                roleGroup0: {
+                    0: 'null',
+                    1: 'null',
+                    2: 'null',
+                    3: 'null',
+                    4: 'null'
+                },
+                totalRoleGroups: 1,
+                totalUsers: 1,
+                users: {
+                    0: email
+                }
+    
+            })
+        }
+
             return db.collection('users').doc(cred.user.uid).set({
                 name: name01.value,
                 role1: roleValue.innerText,
