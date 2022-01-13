@@ -103,6 +103,7 @@ groupDiv.addEventListener('click', e => {
     //    console.log(localStorage.getItem('groupNum') + "hey hey")
     //&& e.target.classList.contains('colorred')
     if (e.target.classList.contains('colorred')) { //This if will prevent user list from showing up twice
+        console.log(e.target.id)
         showUsers(e.target.id) //Only show people of specfied group selected by user
 
     }
@@ -249,6 +250,7 @@ function getGroupNumber(e) {
 //Only shows users within group
 function showUsers(groupNum) {
     // let emailat;
+    groupNum = parseInt(groupNum)
     db.collection('groups').get().then(function (querySnapshot) {
         console.log('hey99')
         querySnapshot.docs.forEach(function (doc) {
@@ -260,7 +262,8 @@ function showUsers(groupNum) {
             if (doc.data().users && doc.data().group == groupNum) {
                 renderDoc4(doc, "list-group-item person .disabled", doc.data().users, 'personList')
 
-                console.log(doc.data().users[0]);
+                console.log(  doc.data().group );
+                console.log(  groupNum );
             }
         });
     });
@@ -387,15 +390,17 @@ function renderDoc4(doc, className, value, list) { //Value is user email
     var ul = document.getElementById(list); //Give unorderd list (container)
     console.log(doc.data().userEmail) //Make sure able to retreive email
 
+    console.log(value[0]);  console.log(doc.data().totalUsers + "total users");
 
-
-    for (let i = 0; i < value.length; i++) {
+    //The middle values must be doc.data().totalUsers and not value.legth, for the ladder will give undefined
+    //at random times but REMEMBER, to invite new users to group, we must increment totalUsers for such group
+    for (let i = 0; i < doc.data().totalUsers; i++) {
         let liElement = document.createElement('li'); //Create new li to tack on
         liElement.setAttribute('class', className); //Attach class to it (bootstrap id prob)
         liElement.setAttribute('id', i);
         liElement.appendChild(document.createTextNode(value[i])); //Value of child element
         //let liElementText = document.createElement(doc.data().userEmail)
-        let className01 = document.querySelector(className)
+      //  let className01 = document.querySelector(className)
         ul.appendChild(liElement) //Append new child element
     }
 }
