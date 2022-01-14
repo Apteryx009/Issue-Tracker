@@ -207,14 +207,14 @@ function createGroup(){
     
 
 
-    if (userdecsion.value == 'Yes') {
-        groupBox.hidden = false;
+    // if (userdecsion.value == 'Yes') {
+    //     groupBox.hidden = false;
       
-    }
+    // }
 
-    else {
-        groupBox.hidden = true;
-    }
+    // else {
+    //     groupBox.hidden = true;
+    // }
 
 
 

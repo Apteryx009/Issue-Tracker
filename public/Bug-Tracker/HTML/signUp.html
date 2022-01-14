@@ -111,18 +111,18 @@
 <hr>
 
 <div id="askUserIfCreateGroup">
-  <p id="question" style="background-color: white;">Would you like to create a new group?</p>
+  <p id="question" style="background-color: white;">Please create a new group</p>
   <div class="dropdown" onclick="createGroup()">
     <form name="userForm">
-      <select name="userForm" id="userCreateGroup">
+      <!-- <select name="userForm" id="userCreateGroup">
         <option onclick="createGroup()" value="zilch">Select:</option>
         <option onclick="createGroup()" value="Yes">Yes</option>
         <option onclick="createGroup()" value="No">No</option>
-      </select>
+      </select> -->
     </form>
   </div>
 
-  <div class="mb-3" id="yesCreateGroup" hidden=true>
+  <div class="mb-3" id="yesCreateGroup">
     <label for="passwordInput" class="form-label"></label>
     <input type="text" class="form-control" id="groupName" placeholder="Group Name">
   </div>
