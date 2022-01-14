@@ -60,7 +60,7 @@ signUpBtn.addEventListener('click', e => {
        
          let newGroupName = groupName.value;
         console.log(newGroupName)
-        let totalGroups;
+        let totalGroups01;
 
     
     
@@ -71,22 +71,33 @@ signUpBtn.addEventListener('click', e => {
 
         const promise = auth.createUserWithEmailAndPassword(email, pass).then(cred => {
 
-            db.collection('totalGroups').doc('totalGroups').get().then(function(snapshot) {
-                const docData = snapshot.data();
+            var docRef = db.collection('totalGroups').doc('totalGroups');
+            let ourVal;
+            docRef.get().then(doc => {
+                ourVal =  doc.data().totalGroups;
+              localStorage.setItem('TotalGroups', doc.data().totalGroups ) //prespusses database already has data
+            })
+             
+            console.log("ourVal is " + ourVal)
                
-                localStorage.setItem('TotalGroups', snapshot.data().totalGroups) //save in local storage for later
-            })
+            
             //If I don't use local storage, totalgroups will always be undefined
-            totalGroups = localStorage.getItem('TotalGroups')
-            totalGroups = parseInt(totalGroups)
-            let increasedGroups = parseInt(totalGroups + 1);
-            //I need to increment total Groups by 1
+            totalGroups01 = parseInt( localStorage.getItem('TotalGroups'))
+            totalGroups01 += 1;
+            console.log(typeof totalGroups01 + "   01")
+            console.log( totalGroups01 + "   01")
+            //console.log(parseInt( totalGroups01) + "   01")
+            //totalGroups = totalGroups + 1; 
+           // let increasedGroups =totalGroups + 1;
+
+            //This is what was causing the bug
+         //   I need to increment total Groups by 1
             db.collection('totalGroups').doc('totalGroups').set({
-                totalGroups: increasedGroups
-            })
+                totalGroups: totalGroups01
+            });
     
     
-            //The following will create a new group (if user wants to),
+            //The following will create a new group ,
             //and set data needed to initialize such group
             if(newGroupName != null){
             db.collection('groups').doc(newGroupName).set({
@@ -105,8 +116,8 @@ signUpBtn.addEventListener('click', e => {
                     0: email
                 }
     
-            })
-        }
+            });
+        };
 
             return db.collection('users').doc(cred.user.uid).set({
                 name: name01.value,
@@ -121,7 +132,7 @@ signUpBtn.addEventListener('click', e => {
             });
 
 
-        })
+        });
         promise.catch(e =>{
             snackbar.innerText = e.message;
             showAlert();
