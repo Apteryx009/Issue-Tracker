@@ -149,6 +149,10 @@ function chart4(){
 }
 
 
+//for sidebar
+
+
+
 chart1()
 // chart2()
 chart3()

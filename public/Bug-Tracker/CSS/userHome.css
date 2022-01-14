@@ -1,9 +1,19 @@
 body {
-    background-color: #BBDEFB
+    background-color: #2A9D8F;
+    font-size: 16px;
+    font-family: 'Actor';
 }
 
+.main_cards, .card, .grid-container, .main{
+    background-color: #264653
+}
+
+/* #footer, #footersub1, #footersub3{
+    background-color: #E76F51;
+} */
+
 .bg-black {
-    background-color: rgb(105, 179, 123) 
+    background-color: #E76F51
     /* here */
 }
 
@@ -69,3 +79,18 @@ canvas{
 #card02{
     top: 0rem;
 }
+
+
+/* For scroll bar */
+body::-webkit-scrollbar {
+    width: 0.55rem;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #1e1e24;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #6649b8;
+  }
+
