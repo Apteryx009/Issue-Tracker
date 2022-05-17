@@ -5,7 +5,10 @@ body {
   color: white;
   box-sizing: border-box;
   font-family: monospace;
-  font-size: 15px;
+  background-color: #2A9D8F;
+  font-size: 16px;
+  font-family: 'Actor';
+
 }
 .grid-container {
   display: grid;

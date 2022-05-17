@@ -5,27 +5,7 @@
 
   <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
 
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyBNRFfYg12CG-c5NJlTN0uTwp31NGe3P08",
-
-      authDomain: "bug-tracker-e4401.firebaseapp.com",
-
-      databaseURL: "https://bug-tracker-e4401-default-rtdb.firebaseio.com",
-
-      projectId: "bug-tracker-e4401",
-
-      storageBucket: "bug-tracker-e4401.appspot.com",
-
-      messagingSenderId: "180501724640",
-
-      appId: "1:180501724640:web:86dd3220fff7fd8a837f85",
-
-      measurementId: "G-XHC9FRL0M8"
-
-    };
-    firebase.initializeApp(firebaseConfig);
-  </script>
+  <script src="../JS/firebase.js"></script>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -38,6 +18,8 @@
   <link rel="stylesheet" href="../CSS/aside.css">
   <link rel="stylesheet" href="../CSS/userProfile.css">
 
+  <link rel="stylesheet" href="../CSS/template.css">
+
 
   <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.1/dist/jdenticon.min.js" async
     integrity="sha384-l0/0sn63N3mskDgRYJZA6Mogihu0VY3CusdLMiwpJ9LFPklOARUcOiWEIGGmFELx" crossorigin="anonymous">
@@ -47,14 +29,16 @@
 </head>
 
 <body>
+  <script type=module src="../JS/websiteTemplate.js"></script>
+  <my-header></my-header>
 
   <div class="grid-container">
     <div class="menu-icon">
       <strong> &#9776;</strong>
     </div>
-    <header class="header">
+    <!-- <header class="header">
       <div class="header_search">Ticket Tracker</div>
-    </header>
+    </header> -->
     <aside class="aside">
       <div class="aside_close-icon">
         <strong>&times;</strong>
@@ -91,7 +75,7 @@
           </section>
         </div> -->
 
-        <section  class="vh-auto" style="background-color: #f4f5f7;">
+        <section  class="vh-auto " style="background-color: #E76F51">
           <div  class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col col-lg-6 mb-4 mb-lg-0">
@@ -151,11 +135,13 @@
 
       </div>
     </main>
-    <footer class="footer">
+    <!-- <footer class="footer">
       <div class="footer_copyright">&copy;2021</div>
       <div class="footer_byline">Made with &hearts;</div>
-    </footer>
+    </footer> -->
   </div>
+
+  <my-footer></my-footer>
 
   <script defer src="../JS/userProfile.js"></script>
   <script defer src="../JS/aside.js"></script>

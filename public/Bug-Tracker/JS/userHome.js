@@ -1,5 +1,5 @@
 //DashBoard
-const menuIcon = document.querySelector('.menu-icon');
+const menuIcon = document.querySelector('.navbar-toggler-icon');
 const aside = document.querySelector('.aside');
 const asideClose = document.querySelector('.aside_close-icon');
 

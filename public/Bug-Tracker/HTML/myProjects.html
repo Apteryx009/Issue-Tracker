@@ -6,27 +6,7 @@ it look like planned layout from prevoius idea -->
 <head>
   <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
 
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyBNRFfYg12CG-c5NJlTN0uTwp31NGe3P08",
-
-      authDomain: "bug-tracker-e4401.firebaseapp.com",
-
-      databaseURL: "https://bug-tracker-e4401-default-rtdb.firebaseio.com",
-
-      projectId: "bug-tracker-e4401",
-
-      storageBucket: "bug-tracker-e4401.appspot.com",
-
-      messagingSenderId: "180501724640",
-
-      appId: "1:180501724640:web:86dd3220fff7fd8a837f85",
-
-      measurementId: "G-XHC9FRL0M8"
-
-    };
-    firebase.initializeApp(firebaseConfig);
-  </script>
+  <script src="../JS/firebase.js"></script>
 
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -48,10 +28,16 @@ it look like planned layout from prevoius idea -->
   <link rel="stylesheet" href="../CSS/projectTicketsMain.css">
   <link rel="stylesheet" href="../CSS/myProjects.css">
   <link rel="stylesheet" href="../CSS/snackBar.css">
+  <link rel="stylesheet" href="../CSS/template.css">
 
+  
+  
 </head>
 
 <body>
+  <script type=module src="../JS/websiteTemplate.js"></script>
+  
+  <my-header></my-header>
   <!-- So the general idea is that we can have 
     how many many projects: 1,2, 20, whatever
     but for each of these projects, there will be bugs
@@ -193,10 +179,11 @@ it look like planned layout from prevoius idea -->
 
   </div>
   </main>
-  <footer class="footer">
+  <!-- <footer class="footer">
     <div class="footer_copyright">&copy;2021</div>
     <div class="footer_byline">Made with &hearts;</div>
-  </footer>
+  </footer> -->
+ 
   </div>
 
   <div id="snackbar"></div>
@@ -224,6 +211,8 @@ it look like planned layout from prevoius idea -->
     });
     $('#datepicker').datepicker("setDate", new Date());
   </script>
+
+<my-footer></my-footer>
 
   <script defer src="../JS/userHome.js"></script>
   <script defer src="../JS/aside.js"></script>

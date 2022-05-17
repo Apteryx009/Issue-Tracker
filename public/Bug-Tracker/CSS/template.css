@@ -76,26 +76,4 @@ canvas{
     
 }
 
-.card{
-    height: 50vh;
-}
-
-
-#card02{
-    top: 0rem;
-}
-
-
-/* For scroll bar */
-body::-webkit-scrollbar {
-    width: 0.55rem;
-  }
-  
-  body::-webkit-scrollbar-track {
-    background: #1e1e24;
-  }
-  
-  body::-webkit-scrollbar-thumb {
-    background: #6649b8;
-  }
 
