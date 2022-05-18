@@ -56,7 +56,7 @@ h4{
    
   border: 1px solid darkblue;
   border-radius: 4px;
-  /* color: darkblue;   */
+  color: darkblue;  
     height: auto;
   }
 
@@ -99,6 +99,7 @@ h4{
     grid-column: 1 / 6;
     display: grid;
     height: 900px;
+    
   }
   .main {
     /* width: 50rem;
@@ -111,6 +112,7 @@ h4{
     grid-row: 1 / span 6;
     height: auto;
     width: auto;
+    overflow-x: scroll;
   }
   #card2 {
     /* height: auto; */
@@ -161,7 +163,7 @@ h4{
    
   border: 1px solid darkblue;
   border-radius: 4px;
-  /* color: darkblue;   */
+  color: darkblue;  
     height: auto;
   }
 
@@ -241,8 +243,9 @@ h4{
   }
   #card1 {
     grid-row: 1 / span 6;
-    height: auto;
+    height: 500px;
     width: auto;
+    overflow-x: hidden;
   }
   #card2 {
     /* height: auto; */
