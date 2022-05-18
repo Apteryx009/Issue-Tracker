@@ -3,6 +3,21 @@ const menuIcon = document.querySelector('.navbar-toggler-icon');
 const aside = document.querySelector('.aside');
 const asideClose = document.querySelector('.aside_close-icon');
 
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+//Vars to hold chart data collected from firebase
+
+//Counters
+let priorityAmtLow =0, priorityAmtMed =0, priorityAmtLowHigh =0; 
+
+let statusOpen =0, statusInProg =0, statusResolved =0, statusNeedMoreInfo =0;
+
+let typeFrontEnd =0, typeBackEnd =0, typeDesign =0;
+
+//End of Counters
+
+
 function toggle(el, className) {
   //Basically just do the oppsite.
   if (el.classList.contains(className)) {
@@ -22,6 +37,53 @@ asideClose.addEventListener('click', function () {
 
 
 
+//I have an idea for how to organize the incoming flow of data:
+//Instead of splitting into like 10 different functions to ping the db 10 different times for each stat,
+//Creates 3 functions organizing by prioty, then branch off from there to see subsequent info
+
+function fillChart(){
+db.collectionGroup("projectTickets").where("priority", "==", "Medium") //Returns every priotity where it exists basically
+                                                               //This comparsion operator not might do what I want to
+.get()
+.then(function(querySnapshot) {
+   
+    querySnapshot.forEach(function(doc) {
+      //Prioity counter
+      priorityAmtMed++
+
+      let Cag = doc.data().Category;
+      switch(Cag){
+          case "Back End": 
+            typeBackEnd++
+            console.log("Back end!")
+            break;
+          case "Front End":
+            typeFrontEnd++
+            console.log("Front end!")
+            break;
+          case "Design":
+            typeDesign++
+            console.log("Design!")
+          break;
+        
+      }
+      
+      // console.log("hi");
+      //   console.log("doc.data().priority", " => ", doc.data().priority);
+      //   console.log("doc.data().priority", " => ", doc.data().Category);
+      //   console.log(doc.data().ticketStatus)
+        
+    });
+})
+.catch(function(error) {
+    console.log("Error getting documents: ", error);
+});
+}
+fillChart()
+
+
+
+//We need to take data from firebase, put into the global vars, and use the global vars here instead.
 function chart1(){
   const ctx = document.getElementById('myChart').getContext('2d');
             const myChart = new Chart(ctx, {

@@ -23,6 +23,8 @@ width: 105%;
     margin-top: 60%; 
  }
 
+ 
+
     .grid-container {
         display: grid;
         grid-template-columns: 240px 1fr;
