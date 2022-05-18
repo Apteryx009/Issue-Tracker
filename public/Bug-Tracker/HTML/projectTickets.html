@@ -19,9 +19,15 @@
 
   <link rel="stylesheet" href="../CSS/projectTickets.css">
 
+  <link rel="stylesheet" href="../CSS/template.css">
+
 </head>
 
 <body>
+  <script type=module src="../JS/websiteTemplate.js"></script>
+  
+  <my-header></my-header>
+
   <!-- So the general idea is that we can have 
     how many many projects: 1,2, 20, whatever
     but for each of these projects, there will be bugs
@@ -198,17 +204,14 @@
       </div>
 
     </main>
-    <footer class="footer">
-      <div class="footer_copyright">&copy;2021</div>
-      <div class="footer_byline">Made with &hearts;</div>
-    </footer>
+   
   </div>
   <div id="snackbar"></div> 
   <!-- <script defer src="../JS/userHome.js"></script> -->
   <script defer src="../JS/aside.js"></script>
   <script defer src="../JS/projectTickets.js"></script>
 
- 
+ <my-footer></my-footer>
   
 </body>
 

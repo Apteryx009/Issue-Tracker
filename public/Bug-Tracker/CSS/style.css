@@ -67,9 +67,9 @@ body {
   padding: 20px;
   /* background-color: seagreen; */
   height: 100px;
-  border: 1px solid darkblue;
+  /* border: 1px solid darkblue; */
   border-radius: 4px;
-  color: darkblue;
+  /* color: darkblue; */
 }
 /* Layout for main-cards section // below main_overview */
 .main_cards {
