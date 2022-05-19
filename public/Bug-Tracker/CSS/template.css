@@ -12,10 +12,10 @@ body {
     background-color: #E76F51;
 } */
 
-.img-fluid {
+/* .img-fluid {
     width: 90%;
     height: 90%;
-}
+} */
 
 .bg-black {
     background-color: #E76F51
@@ -55,7 +55,7 @@ body {
     display: block !important
 }
 
-@media (max-width: 992px) {
+@media only screen and (max-width: 749px){
     .right {
         margin-left: 0
     }
@@ -64,6 +64,21 @@ body {
         width: 100%;
         text-align: left
     }
+
+
+    #footersub1{
+        background-color: #264653;
+    }
+
+    .img-fluid {
+        width: 60%;
+        height: 90%;
+    } 
+
+}
+
+@media only screen and (min-width: 750px){
+  
 }
 
 

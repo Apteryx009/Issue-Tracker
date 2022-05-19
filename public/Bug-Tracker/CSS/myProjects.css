@@ -140,6 +140,10 @@
 
 @media only screen and (max-width: 749px){
 
+img{
+  width: 50%;
+}
+
 
 .listSub1, .list-sub2, .list-sub3, .list-sub4{
   padding: 2rem;
