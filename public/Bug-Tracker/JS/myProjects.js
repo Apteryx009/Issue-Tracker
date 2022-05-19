@@ -26,7 +26,7 @@ function loadTickets(doc) {
     window.location.href = "../HTML/projectTicketsMain.html";
 }
 
-
+const auth = firebase.auth();
 const db = firebase.firestore();
 const userUID = localStorage.getItem('userUID');
 

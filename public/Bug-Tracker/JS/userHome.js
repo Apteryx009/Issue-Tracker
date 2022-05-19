@@ -41,77 +41,83 @@ asideClose.addEventListener('click', function () {
 //Instead of splitting into like 10 different functions to ping the db 10 different times for each stat,
 //Creates 3 functions organizing by prioty, then branch off from there to see subsequent info
 
-function fillChart() {
-  
-
-    db.collectionGroup("projectTickets").where("priority", "==", "Medium") //Returns every priotity where it exists basically
-      //This comparsion operator not might do what I want to
-      .get()
-      .then(function (querySnapshot) {
-
-        querySnapshot.forEach(function (doc) {
-          //Prioity counter
-          priorityAmtMed++
-
-          let Cag = doc.data().Category;
-          let status = doc.data().ticketStatus;
-          switch (Cag) {
-            case "Back End":
-              typeBackEnd++
-              console.log("Back end!")
-              break;
-            case "Front End":
-              typeFrontEnd++
-              console.log("Front end!")
-              break;
-            case "Design":
-              typeDesign++
-              console.log("Design!")
-              break;
-
-          }
-
-          //TODO: THESE EXACT DETAILS WILL NEED TO BE REDONE in switch statement!
-          switch (status) {
-
-            case "open":
-              statusOpen++
-
-              break;
-            case "In Progress":
-              console.log(doc.data().ticketStatus)
-              statusInProg++
-
-              break;
-            case "Need More Info":
-              console.log(doc.data().ticketStatus)
-              statusNeedMoreInfo++
-              break;
-            case "Resolved":
-              console.log(doc.data().ticketStatus)
-              statusResolved++
-              break;
+async function fillChart() {
+  let promise = new Promise((resolve, reject) => {
 
 
-            default:
-              console.log(doc.data().ticketStatus)
-              break;
+  db.collectionGroup("projectTickets").where("priority", "==", "Medium") //Returns every priotity where it exists basically
+    //This comparsion operator not might do what I want to
+    .get()
+    .then(function (querySnapshot) {
 
-          }
-    
+      querySnapshot.forEach(function (doc) {
+        //Prioity counter
+        priorityAmtMed++
 
-          // chart4()
-          // console.log("hi");
-          //   console.log("doc.data().priority", " => ", doc.data().priority);
-          //   console.log("doc.data().priority", " => ", doc.data().Category);
-          //   console.log(doc.data().ticketStatus)
-      
+        let Cag = doc.data().Category;
+        let status = doc.data().ticketStatus;
+        switch (Cag) {
+          case "Back End":
+            typeBackEnd++
+            console.log("Back end!")
+            break;
+          case "Front End":
+            typeFrontEnd++
+            console.log("Front end!")
+            break;
+          case "Design":
+            typeDesign++
+            console.log("Design!")
+            break;
+
+        }
+
+        //TODO: THESE EXACT DETAILS WILL NEED TO BE REDONE in switch statement!
+        switch (status) {
+
+          case "open":
+            statusOpen++
+
+            break;
+          case "In Progress":
+            console.log(doc.data().ticketStatus)
+            statusInProg++
+
+            break;
+          case "Need More Info":
+            console.log(doc.data().ticketStatus)
+            statusNeedMoreInfo++
+            break;
+          case "Resolved":
+            console.log(doc.data().ticketStatus)
+            statusResolved++
+            break;
+
+
+          default:
+            console.log(doc.data().ticketStatus)
+            break;
+
+        }
+
+
+        // chart4()
+        // console.log("hi");
+        //   console.log("doc.data().priority", " => ", doc.data().priority);
+        //   console.log("doc.data().priority", " => ", doc.data().Category);
+        //   console.log(doc.data().ticketStatus)
+        resolve('resolved');
       });
-  })
+    })
     .catch(function (error) {
       console.log("Error getting documents: ", error);
     });
-    
+   
+   });
+
+   let result = await promise; // wait until the promise resolves (*)
+   alert(result); // "done!"
+
 }
 
 
@@ -220,7 +226,8 @@ function chart3() {
   });
 }
 
- function chart4() {
+function chart4() {
+
   // await fillChart();
   let labels1 = ['Front-End', 'Back-End', "Design"]
   let data1 = [typeFrontEnd, typeBackEnd, typeDesign]
@@ -244,15 +251,17 @@ function chart3() {
       }
     }
   });
+
 }
 
 
 //for sidebar
 
 
-fillChart()
+
 chart1()
 // chart2()
 chart3()
-chart4()
+
+fillChart()
 
