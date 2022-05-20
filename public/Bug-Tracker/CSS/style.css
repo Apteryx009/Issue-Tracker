@@ -1,3 +1,4 @@
+/* This style is more fundmental and meant to be used across most of the website  */
 
 body {
   margin: 0;
@@ -159,3 +160,15 @@ am afraid if that is done, we will have duplicate code */
 }
 
 
+/* For scrollbar */
+body::-webkit-scrollbar {
+  width: 0.55rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #2A9D8F;
+}

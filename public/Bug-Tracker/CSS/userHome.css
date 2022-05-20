@@ -87,7 +87,7 @@ canvas{
 
 
 /* For scroll bar */
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
     width: 0.55rem;
   }
   
@@ -96,6 +96,6 @@ body::-webkit-scrollbar {
   }
   
   body::-webkit-scrollbar-thumb {
-    background: #6649b8;
-  }
+    background: #2A9D8F;
+  } */
 
