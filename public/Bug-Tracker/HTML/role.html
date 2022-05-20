@@ -21,6 +21,11 @@
 
   <link rel="stylesheet" href="../CSS/role.css"> 
 
+  <!-- //Might need to delete the below three -->
+  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+
 
 
 
@@ -57,158 +62,31 @@
     
 
     <main class="main">
-      <div class="main_overview">
-        <div class="overview_card">
-          <div class="overview_card-info">ADMIN ACCESS: User Management System: max 5 roles per user</div>
+     
+        <div class="card">
 
-          <div class="overview_card-icon"></div>
-        </div>
-      </div>
-
-      <button id="clearUsers" class="btn btn-warning btn-sm">Clear Users</button>
-      <button id="clearRoles" class="btn btn-warning btn-sm">Clear Roles</button>
-      <button id="deleteRoles" class="btn btn-warning btn-sm">Delete Roles</button>
-      <div class="main_cards">
-        <div id='groupDiv' class="card">Select a group:
-
-          <ul id="groupList" class="list-group">
-            <!-- JS will dynmically add elements -->
-
-          </ul>
-
-
-
-
-          <!-- Select the Role to assign
-                  <div class="dropdown">
-                    <button class="dropbtn">--Select Role/None--</button>
-                    <div class="dropdown-content">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a>
-                    </div>
-                  </div> -->
-
-        </div>
-
-        <div id="personDiv" class="card">Select a person:
-          <ul id="personList" class="list-group">
-            <!-- JS will dynmically add elements -->
-          </ul>
-
-        </div>
-
-        <div id="roleDiv" class="card">Roles already given to user for the group:
-          <div class="card" id="card1">
-
-            <div id="main">
-
-              <div id="buttons">
-                <button id="editBtn" class="btn btn-danger btn-sm">Edit</button>
-                <button id="saveBtn" class="btn btn-dark btn-sm">Apply</button>
-                <button id="submitBtnRoles" class="btn btn-warning btn-sm">Submit</button>
+          <h1>Select User</h1>
+          <div id="cover"> 
+            <!-- This cover is too big -->
+            <form method="get" action="">
+              <div class="tb">
+                <div class="td"><input type="text" placeholder="Search" required></div>
+                <div class="td" id="s-cover">
+                  <button type="submit">
+                    <div id="s-circle"></div>
+                    <span></span>
+                  </button>
+                </div>
               </div>
-
-
-
-
-              <!-- It says dropdown divider, but it is from bootstrap.
-              I really like the way it looks, which is why I chose it.  -->
-              <div class="dropdown-divider"></div>
-
-              <div class="d-flex">
-
-                <!-- TODO Add padding and fix this ui -->
-                <p>Role1 </p>
-                <textarea style="visibility: hidden;" class="form-control" placeholder="New Value"
-                  aria-label="With textarea"></textarea>
-                <p class="two" id="twopp2">
-
-                </p>
-              </div>
-              <div class="dropdown-divider"></div>
-
-              <div class="d-flex">
-
-                <p>Role1</p>
-                <textarea style="visibility: hidden;" class="form-control" placeholder="New Value"
-                  aria-label="With textarea"></textarea>
-                <p class="two" id="twopp3"></p>
-              </div>
-
-              <div class="dropdown-divider"></div>
-
-              <div class="d-flex">
-
-                <p>Role3</p>
-                <textarea style="visibility: hidden;" class="form-control" placeholder="New Value"
-                  aria-label="With textarea"></textarea>
-                <p class="two" id="twopp3"></p>
-              </div>
-
-
-              <div class="dropdown-divider"></div>
-              <div class="d-flex">
-
-                <p>Role4</p>
-                <textarea style="visibility: hidden;" class="form-control" placeholder="New Value"
-                  aria-label="With textarea"></textarea>
-                <p class="two" id="twopp3"></p>
-              </div>
-
-              <div class="dropdown-divider"></div>
-              <div class="d-flex">
-
-                <p>Role5</p>
-                <textarea style="visibility: hidden;" class="form-control" placeholder="New Value"
-                  aria-label="With textarea"></textarea>
-                <p class="two" id="twopp3"></p>
-              </div>
-
-              <div class="dropdown-divider"></div>
-
-            </div>
-
-
+            </form>
           </div>
-        </div>
 
-
-        <!-- <div id="editRoleDiv" class="card">Add New Role to User (remember to hit submit)
-         <ul class="list-group">
-                 <li class="list-group-item .disabled">Crsdfas justo odio</li>
-                <li class="list-group-item .disabled">Dasdfpibus ac facilisis in</li> -->
-
-        <!-- </ul>  -->
-
-        <!-- <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-sm">New Role:</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-sm">
-          </div>
-        </div>  -->
-
-        <!-- todo -->
-        <!-- <div id="projectDiv" class="card">Projects that user has collaboration in
-          <ul id="projectsList"  class="list-group">
-            <li class="list-group-item .disabled">Crsdfas justo odio</li> -->
-
-        <!-- </ul>
-        </div> -->
-
-
-        <div id="editProjecdtDiv" class="card">Remove User From Group
-          <ul class="list-group">
-            <li id="yes1" class="list-group-item .disabled">Yes</li>
-            <li id="yes2" class="list-group-item .disabled">Yes, I am sure</li>
-
-          </ul>
 
         </div>
+     
+      
 
-        <!-- <button id="submitBtn" class="btn btn-warning btn-sm">Submit</button> -->
-      </div>
-      <button id="submitBtn" class="btn btn-warning btn-sm">Submit</button>
+      
 
     </main>
 

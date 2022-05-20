@@ -96,7 +96,7 @@ body {
 
 .card:first-child {
   grid-area: card1;
-  height: auto;
+  /* height: auto; */
 }
 .card:nth-child(2) {
   grid-area: card2;
@@ -129,9 +129,10 @@ am afraid if that is done, we will have duplicate code */
   }
 
   .main_cards {
+    width: 95%;
     margin: 10px;
     display: grid;
-    grid-template-columns: 2fr 2fr;
+    /* grid-template-columns: 2fr 2fr; This line caused many problems */
     grid-template-rows: 200px 200px;
     grid-template-areas:
       'card1 card2'

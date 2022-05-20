@@ -47,10 +47,10 @@ function person() {
 
 
 
-clearUsers01.addEventListener('click', e => {
-    clearUsers();
+// clearUsers01.addEventListener('click', e => {
+//     clearUsers();
 
-})
+// })
 
 clearRoles01.addEventListener('click', e => {
     console.log('t111est')
@@ -483,6 +483,7 @@ function showAlert() {
 group()
 //showGroupsOfUser()
 //person()
+
 
 
 
