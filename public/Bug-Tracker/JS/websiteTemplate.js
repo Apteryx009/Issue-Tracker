@@ -33,9 +33,9 @@ class myFooter extends HTMLElement{
     connectedCallback(){
         //alert(1)      
         this.innerHTML = `
-        <footer id="footer" class="bg-primary text-white text-center text-lg-start">
+        <footer id="footer" class="bg-primary text-white text-center text-lg-start" >
         <!-- Grid container -->
-        <div id='footersub1'  class="container p-4">
+        <div id='footersub1'  class="container p-4" style ="background-color: #E76F51;">
           <!--Grid row-->
           <div class="row">
             <!--Grid column-->
@@ -92,7 +92,7 @@ class myFooter extends HTMLElement{
         <!-- Grid container -->
       
         <!-- Copyright -->
-        <div id="footersub3" class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div id="footersub3" class="text-center p-3" style="background-color: #E76F51;">
           &hearts; &hearts; &hearts;
           <a class="text-white" href="https://mdbootstrap.com/"></a>
         </div>

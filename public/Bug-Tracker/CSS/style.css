@@ -143,6 +143,15 @@ am afraid if that is done, we will have duplicate code */
 
 
 
+/* This is for the footer */
+.bg-primary {
+  background-color: #E76F51!important;
+}
+
+
+
+
+
 .menu-icon {
   position: fixed;
   display: flex;
