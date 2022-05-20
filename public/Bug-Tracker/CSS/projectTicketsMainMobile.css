@@ -146,6 +146,17 @@ body {
         'card1 card1';
       grid-gap: 10px;
     }
+
+    .card:first-child {
+      grid-area: card1;
+      height: auto;
+    }
+    .card:nth-child(2) {
+      grid-area: card2;
+    }
+    .card:nth-child(3) {
+      grid-area: card3;
+    }
   }
   
   
