@@ -31,7 +31,7 @@ body {
 
 .main {
   grid-area: main;
-  background-color: white;
+  background-color: #264653;
 }
 .footer {
   grid-area: footer;

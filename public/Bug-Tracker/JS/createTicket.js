@@ -1,6 +1,8 @@
 var date = (new Date()).toISOString().split('T')[0];
 document.getElementById('date').innerHTML = date;
 
+
+
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 // function assignee() {
@@ -23,7 +25,10 @@ function filterFunction() {
     }
 }
 
-const db = firebase.firestore();
+// const auth = firebase.auth();
+// const db = firebase.firestore();
+
+// const db = firebase.firestore();
 
 //Get names of all uses and append (create new <a> tags) into the dropdown we created 
 // retrieve a collection

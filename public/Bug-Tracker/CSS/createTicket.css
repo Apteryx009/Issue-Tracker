@@ -36,11 +36,15 @@
    
     .main_cards {
      
-      /* grid-template-areas:
-        'card1' 'card1'
-        'card2' 'card3'; */
+      grid-template-areas:
+        'card1' 
+        'card2'
+        'card3' 
+        'card4';
         
     } 
+
+
 
     /* define organization  */
     #card1{
@@ -96,7 +100,7 @@
     justify-content: space-between;
     padding: 20px;
     /* background-color: seagreen; */
-    height: 100px;
+    /* height: 100px; */
     border: 1px solid darkblue;
     border-radius: 4px;
     color: darkblue;
