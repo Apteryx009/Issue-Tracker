@@ -20,15 +20,20 @@ let userProjects;
 let Submitter002 = localStorage.getItem('userUID');
 Submitter002 = Submitter002.replace(/['"]+/g, '');
 console.log( Submitter002)
+//OK
+
 
 //Get name of Submitter
 function getSubmitterName(){
     //Get name of Submitter
     db.collection('users').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
+          // console.log('1huh')
          // console.log( doc.id)
             if(doc.id == Submitter002){
+              console.log('huh')
               if(doc.data()){
+                console.log('it worked')
                 setHTMLFields(doc.data().name,doc.data().role1, doc.data().email)
                 userEmail = doc.data().email;
                 nameOfGivenUser = doc.data().name;

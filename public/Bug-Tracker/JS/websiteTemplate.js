@@ -1,14 +1,14 @@
 //<link rel="stylesheet" href="../CSS/aside.css"></link>
-class MyHeader extends HTMLElement{
-  
-    connectedCallback(){
-        //alert(1)   
-           
-        this.innerHTML = `
+class MyHeader extends HTMLElement {
+
+  connectedCallback() {
+    //alert(1)   
+
+    this.innerHTML = `
       
        
         <div class="container-fluid px-0">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black py-0 px-0"> <a class="navbar-brand" ><strong><i>Ticket-Tracker</i></strong></a> <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black py-0 px-0"> <a class="navbar-brand" ><strong><i>Ticket-Tracker</i></strong></a> 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"> <a class="nav-link" href="#">Home</a> </li>
@@ -23,16 +23,16 @@ class MyHeader extends HTMLElement{
 
     
         `
-    }
+  }
 }
 
 
 
 
-class myFooter extends HTMLElement{
-    connectedCallback(){
-        //alert(1)      
-        this.innerHTML = `
+class myFooter extends HTMLElement {
+  connectedCallback() {
+    //alert(1)      
+    this.innerHTML = `
         <footer id="footer" class="bg-primary text-white text-center text-lg-start" >
         <!-- Grid container -->
         <div id='footersub1'  class="container p-4" style ="background-color: #E76F51;">
@@ -99,15 +99,15 @@ class myFooter extends HTMLElement{
         <!-- Copyright -->
       </footer>
                     `
-    }
+  }
 }
 
-class myAside extends HTMLElement{
-    
-    connectedCallback(){
-       // <link rel="stylesheet" href="../CSS/aside.css"></link>
-        //alert(1)      
-        this.innerHTML = `
+class myAside extends HTMLElement {
+
+  connectedCallback() {
+    // <link rel="stylesheet" href="../CSS/aside.css"></link>
+    //alert(1)      
+    this.innerHTML = `
         <style>
 
 
@@ -313,7 +313,7 @@ class myAside extends HTMLElement{
         </ul>
       </aside>
         `
-    }
+  }
 }
 
 

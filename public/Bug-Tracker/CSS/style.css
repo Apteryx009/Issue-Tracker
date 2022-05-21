@@ -148,7 +148,16 @@ am afraid if that is done, we will have duplicate code */
   background-color: #E76F51!important;
 }
 
-
+/* For the header */
+nav {
+  background-color: #E76F51;
+}
+i {
+  color: white;
+  font-style: italic;
+  font: Actor;
+  font-size: 20px;
+}
 
 
 

@@ -4,6 +4,14 @@
      font-size: larger;
  } 
 
+ .main, p, h5 {
+   color: #E76F51;
+ }
+
+ .card{
+  background-color: #264653;
+ }
+
 
  .colorred {
   background-color: red;
@@ -282,11 +290,19 @@ button span:after {
 
 /* End of for search bar */
 
+/* For the user Search bar and selection */
+input, button {
+  height: 2em;
+  /* width: 3em; */
+}
 
+#cardSearch{
+  height: 10px;
+}
 
-
-
-
+#card {
+  padding: 10px;
+}
 
 
 @media screen and (max-width: 620px) {

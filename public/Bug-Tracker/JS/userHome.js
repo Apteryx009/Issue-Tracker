@@ -27,9 +27,9 @@ function toggle(el, className) {
   }
 }
 
-menuIcon.addEventListener('click', function () {
-  toggle(aside, 'active');
-});
+// menuIcon.addEventListener('click', function () {
+//   toggle(aside, 'active');
+// });
 
 asideClose.addEventListener('click', function () {
   toggle(aside, 'active');

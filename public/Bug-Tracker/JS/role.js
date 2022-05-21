@@ -17,9 +17,123 @@ let elementsToDelUnique;
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    showGroupsOfUser();
-}, false);
+//Popup
+const snackbar = document.getElementById('snackbar')
+
+
+
+
+
+//Main work moved down here
+
+let emailOfSearchedUser;
+let userExists = false;
+
+const searchBtn = document.getElementById('searchBtn');
+const userRoleSearch = document.getElementById('userRoleSearch');
+
+searchBtn.addEventListener('click', function () {
+    searchUser()
+});
+
+
+//The basic idea is that the user enters in another user's email
+//And check if it exists in the db, if so, then display info
+
+function searchUser() {
+   
+    console.log('search user called')
+    if (userRoleSearch.value == '') {
+        snackbar.innerText = 'User Not Found!';
+        showAlert();
+    }
+
+    else{
+        console.log(userRoleSearch.value)
+        checkIfUserExists()
+        if(userExists){
+        snackbar.innerText = 'User Found!';
+        showAlert();    
+    }
+
+        else{
+            snackbar.innerText = 'User Not Found!';
+            showAlert();
+        }
+
+       
+    }
+}
+
+
+function checkIfUserExists(){
+    db.collection('users').get().then(function (querySnapshot) {
+        querySnapshot.docs.forEach(function (doc) {
+                if(doc.data().email == userRoleSearch.value){
+                    
+                    emailOfSearchedUser = userRoleSearch.value;
+                    userExists = true;
+                    console.log(emailOfSearchedUser)
+
+                    updateCard(doc);
+                    snackbar.innerText = "User Found!";
+                    showAlert();
+                }
+        });
+    });
+}
+    
+
+
+let nameCard = document.querySelector("#nameCard");
+let emailCard = document.querySelector("#emailCard");;
+let groupCard = document.querySelector("groupCard");;
+let roleCard = document.querySelector("#roleCard");;
+
+
+function updateCard(doc){
+    nameCard.textContent = doc.data().name;
+    emailCard.textContent = doc.data().email;
+
+    roleCard.textContent = doc.data().role1;
+}
+
+
+
+
+
+
+function showAlert() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     showGroupsOfUser();
+// }, false);
 
 
 function group() {
@@ -27,7 +141,7 @@ function group() {
     db.collection('groups').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
             renderDoc(doc, "list-group-item .disabled", doc.id, "groupList")
-            
+
         });
     });
     var div = document.getElementById("GroupDiv");
@@ -52,16 +166,16 @@ function person() {
 
 // })
 
-clearRoles01.addEventListener('click', e => {
-    console.log('t111est')
-    clearRoles();
-})
+// clearRoles01.addEventListener('click', e => {
+//     console.log('t111est')
+//     clearRoles();
+// })
 
-deleteRoles.addEventListener('click', e => {
-    clearSelectedRoles();
-    deleteFromDb()
+// deleteRoles.addEventListener('click', e => {
+//     clearSelectedRoles();
+//     deleteFromDb()
 
-})
+// })
 
 
 
@@ -79,52 +193,57 @@ function deleteFromDb() {
 let personClicked;
 
 let gropuDiv = document.querySelector('#groupDiv');
-groupDiv.addEventListener('click', e => {
-    //  let exactGroup = e.target.innerText //This will get us the group name that user clicked on
-    //  //This will act as a toggle
-    //  if((!(e.target.class == "list-group-item list-group-item-warning"))){
-    //      e.target.class = "list-group-item list-group-item-warning"
-    //      console.log( e.target.class)
-    //  }
-    //  else{
-    //     e.target.class = "list-group-item list-group-item"
-    //     console.log( e.target.class)
-    //  }
-    //  //e.target.style.backgroundColor = "pink";
+// groupDiv.addEventListener('click', e => {
+//  let exactGroup = e.target.innerText //This will get us the group name that user clicked on
+//  //This will act as a toggle
+//  if((!(e.target.class == "list-group-item list-group-item-warning"))){
+//      e.target.class = "list-group-item list-group-item-warning"
+//      console.log( e.target.class)
+//  }
+//  else{
+//     e.target.class = "list-group-item list-group-item"
+//     console.log( e.target.class)
+//  }
+//  //e.target.style.backgroundColor = "pink";
 
-    e.target.classList.toggle("colorred");
-    localStorage.setItem("userGroup001", e.target.innerText); //Will set local storage item needed later for currently selected group
-    if (e.target.classList.contains("colorred")) {
-        clearUsers();
-    }
+//     e.target.classList.toggle("colorred");
+//     localStorage.setItem("userGroup001", e.target.innerText); //Will set local storage item needed later for currently selected group
+//     if (e.target.classList.contains("colorred")) {
+//         clearUsers();
+//     }
 
-    //Add call to function to get group number 
-    // let groupNuum01 = getGroupNumber(e);
-    //    console.log(localStorage.getItem('groupNum') + "hey hey")
-    //&& e.target.classList.contains('colorred')
-    if (e.target.classList.contains('colorred')) { //This if will prevent user list from showing up twice
-        console.log(e.target.id)
-        showUsers(e.target.id) //Only show people of specfied group selected by user
+//     //Add call to function to get group number 
+//     // let groupNuum01 = getGroupNumber(e);
+//     //    console.log(localStorage.getItem('groupNum') + "hey hey")
+//     //&& e.target.classList.contains('colorred')
+//     if (e.target.classList.contains('colorred')) { //This if will prevent user list from showing up twice
+//         console.log(e.target.id)
+//         showUsers(e.target.id) //Only show people of specfied group selected by user
 
-    }
-
-
-})
+//     }
 
 
+// })
 
-let removeFromGroup = document.querySelector('#editProjecdtDiv');
-removeFromGroup.addEventListener('click', e => {
-    e.target.classList.toggle("colorred"); //change color
-})
+
+
+// let removeFromGroup = document.querySelector('#editProjecdtDiv');
+// removeFromGroup.addEventListener('click', e => {
+//     e.target.classList.toggle("colorred"); //change color
+// })
 
 
 //When user wants to submit all decsions
-let submitBtnAll = document.querySelector('#submitBtn');
-submitBtnAll.addEventListener('click', e => {
-    submitAll();
-})
+// let submitBtnAll = document.querySelector('#submitBtn');
+// submitBtnAll.addEventListener('click', e => {
+//     submitAll();
+// })
 
+
+
+
+//JUNK CODE
+/*
 function submitAll() {
     console.log('test')
 }
@@ -153,20 +272,20 @@ function clearSelectedRoles() {
     }
 }
 
-let markFordelation = [];
-roleDiv.addEventListener('click', e => {
-    //markFordelation.push(e.target.id);
+// let markFordelation = [];
+// roleDiv.addEventListener('click', e => {
+//     //markFordelation.push(e.target.id);
 
-    e.target.classList.toggle("colorred");
-    // if(e.target.classList.contains("colorred")){
-    //     markFordelation.push(e.target.id);
-    // }
-    // else{
-    //     var item = e.target.id;
-    //     var index = markFordelation.indexOf(item);
-    //     markFordelation.splice(index, 1);
-    // }
-});
+//     e.target.classList.toggle("colorred");
+//     // if(e.target.classList.contains("colorred")){
+//     //     markFordelation.push(e.target.id);
+//     // }
+//     // else{
+//     //     var item = e.target.id;
+//     //     var index = markFordelation.indexOf(item);
+//     //     markFordelation.splice(index, 1);
+//     // }
+// });
 
 
 personDiv.addEventListener('click', e => {
@@ -193,16 +312,16 @@ personDiv.addEventListener('click', e => {
                         // doc.data().role1, doc.data().role2, doc.data().role3, doc.data().role4, doc.data().role5,
                         // "roleShowList") 
                         let nameid = parseInt(e.target.id)
-                        nameid = nameid + nameid*4;
+                        nameid = nameid + nameid * 4;
                         console.log(nameid)
 
                         if (doc.data().roleGroup0) {
-                        //This will display proper roles to screen for given user
-                        dataFields[0].textContent = doc.data().roleGroup0[nameid];
-                        dataFields[1].textContent = doc.data().roleGroup0[nameid+1];
-                        dataFields[2].textContent = doc.data().roleGroup0[nameid+ 2];
-                        dataFields[3].textContent = doc.data().roleGroup0[nameid+ 3];
-                        dataFields[4].textContent = doc.data().roleGroup0[nameid+ 4];
+                            //This will display proper roles to screen for given user
+                            dataFields[0].textContent = doc.data().roleGroup0[nameid];
+                            dataFields[1].textContent = doc.data().roleGroup0[nameid + 1];
+                            dataFields[2].textContent = doc.data().roleGroup0[nameid + 2];
+                            dataFields[3].textContent = doc.data().roleGroup0[nameid + 3];
+                            dataFields[4].textContent = doc.data().roleGroup0[nameid + 4];
                         }
                     }
 
@@ -262,8 +381,8 @@ function showUsers(groupNum) {
             if (doc.data().users && doc.data().group == groupNum) {
                 renderDoc4(doc, "list-group-item person .disabled", doc.data().users, 'personList')
 
-                console.log(  doc.data().group );
-                console.log(  groupNum );
+                console.log(doc.data().group);
+                console.log(groupNum);
             }
         });
     });
@@ -362,7 +481,7 @@ function renderDoc(doc, className, value, list) { //Value is user email
     //let liElementText = document.createElement(doc.data().userEmail)
     let className01 = document.querySelector(className)
     ul.appendChild(liElement) //Append new child element
- 
+
 }
 
 // function to display all roles of user
@@ -390,7 +509,7 @@ function renderDoc4(doc, className, value, list) { //Value is user email
     var ul = document.getElementById(list); //Give unorderd list (container)
     console.log(doc.data().userEmail) //Make sure able to retreive email
 
-    console.log(value[0]);  console.log(doc.data().totalUsers + "total users");
+    console.log(value[0]); console.log(doc.data().totalUsers + "total users");
 
     //The middle values must be doc.data().totalUsers and not value.legth, for the ladder will give undefined
     //at random times but REMEMBER, to invite new users to group, we must increment totalUsers for such group
@@ -400,7 +519,7 @@ function renderDoc4(doc, className, value, list) { //Value is user email
         liElement.setAttribute('id', i);
         liElement.appendChild(document.createTextNode(value[i])); //Value of child element
         //let liElementText = document.createElement(doc.data().userEmail)
-      //  let className01 = document.querySelector(className)
+        //  let className01 = document.querySelector(className)
         ul.appendChild(liElement) //Append new child element
     }
 }
@@ -487,3 +606,21 @@ group()
 
 
 
+//For the search bar
+const basicAutocomplete = document.querySelector('#search-autocomplete');
+const data = ['One', 'Two', 'Three', 'Four', 'Five'];
+const dataFilter = (value) => {
+    return data.filter((item) => {
+        return item.toLowerCase().startsWith(value.toLowerCase());
+    });
+};
+
+new mdb.Autocomplete(basicAutocomplete, {
+    filter: dataFilter
+});
+
+
+
+
+
+*/
