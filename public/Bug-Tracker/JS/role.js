@@ -93,22 +93,11 @@ function checkIfUserExists(){
 //Given the input of a user's UID.
 //Give OUTPUT of all project names where user has submitted or recieved a ticket
 function findProjectsAssociatedSubmitter(userUID){
-    db.collection('projects').doc().collection('projectTickets').get().then(function (querySnapshot) {
+    db.collection('projects').doc().collection('projectTickets').doc().get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
                 if(doc.data().SubmitterUID == userUID){
                     
-                    //Store UID of user
-                    UIDofSearchedUser = doc.id;
-                    
-                   findProjectsAssociatedSubmitter(UIDofSearchedUser) //Should be correct execution order
-
-                    emailOfSearchedUser = userRoleSearch.value;
-                    userExists = true;
-                    console.log(emailOfSearchedUser)
-
-                    updateCard(doc);
-                    snackbar.innerText = "User Found!";
-                    showAlert();
+                   
                 }
         });
     });
@@ -117,17 +106,19 @@ function findProjectsAssociatedSubmitter(userUID){
 
 
 let nameCard = document.querySelector("#nameCard");
-let emailCard = document.querySelector("#emailCard");;
-let groupCard = document.querySelector("groupCard");;
-let roleCard = document.querySelector("#roleCard");;
+let emailCard = document.querySelector("#emailCard");
+let groupCard = document.querySelector("groupCard");
+let roleCard = document.querySelector("#roleCard");
+let projectCard = document.querySelector("#projectCard");;
+
 
 
 function updateCard(doc){
     nameCard.textContent = doc.data().name;
     emailCard.textContent = doc.data().email;
 
-    roleCard.textContent = doc.data().role1;
-
+    roleCard.textContent += doc.data().role1;
+    projectCard.textContent += doc.data().projects;
 }
 
 
