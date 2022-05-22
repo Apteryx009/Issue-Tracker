@@ -7,6 +7,8 @@ const deleteRoles = document.getElementById('deleteRoles');
 const roleDiv = document.getElementById('roleDiv');
 const editRoleDiv = document.getElementById('editRoleDiv');
 
+let submitBtn = document.getElementById("submitBtn");
+
 //let dataFields = document.querySelectorAll(".two");
 
 const auth = firebase.auth();
@@ -37,54 +39,85 @@ searchBtn.addEventListener('click', function () {
     searchUser()
 });
 
+submitBtn.addEventListener('click', function () {
+    updateUserProfile()
+});
+
+
+
+//Updated user Profile
+function updateUserProfile() {
+
+   let userProjectsArr =  parseUserInput()
+   let length01 = userProjectsArr.length;
+   console.log(userProjectsArr) //Okay thank goodness this is working
+
+    db.collection('users').doc(UIDofSearchedUser).update({
+        name: nameCard.textContent,
+        email: emailCard.textContent,
+        role1: roleCard.textContent, 
+         projects: userProjectsArr
+    });
+
+    snackbar.innerText = 'User Profile Updated!'
+    showAlert()
+}
+
+
+//A small helper function
+function parseUserInput(){
+    let userArray = projectCard.textContent;
+    let substrings = userArray.split(','); //We want to split on comma
+    return substrings;
+}
 
 //The basic idea is that the user enters in another user's email
 //And check if it exists in the db, if so, then display info
 
 function searchUser() {
-   
+
     console.log('search user called')
     if (userRoleSearch.value == '') {
         snackbar.innerText = 'User Not Found!';
         showAlert();
     }
 
-    else{
+    else {
         console.log(userRoleSearch.value)
         checkIfUserExists()
-        if(userExists){
-        // snackbar.innerText = 'User Found!';
-        // showAlert();    
-    }
+        if (userExists) {
+            // snackbar.innerText = 'User Found!';
+            // showAlert();    
+        }
 
-        else{
+        else {
             snackbar.innerText = 'User Not Found!';
             showAlert();
         }
 
-       
+
     }
 }
 
 
-function checkIfUserExists(){
+function checkIfUserExists() {
     db.collection('users').get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
-                if(doc.data().email == userRoleSearch.value){
-                    
-                    //Store UID of user
-                    UIDofSearchedUser = doc.id;
-                    
-                   findProjectsAssociatedSubmitter(UIDofSearchedUser) //Should be correct execution order
+            if (doc.data().email == userRoleSearch.value) {
 
-                    emailOfSearchedUser = userRoleSearch.value;
-                    userExists = true;
-                    console.log(emailOfSearchedUser)
+                //Store UID of user
+                UIDofSearchedUser = doc.id;
 
-                    updateCard(doc);
-                    snackbar.innerText = "User Found!";
-                    showAlert();
-                }
+                findProjectsAssociatedSubmitter(UIDofSearchedUser) //Should be correct execution order
+
+                emailOfSearchedUser = userRoleSearch.value;
+                userExists = true;
+                console.log(emailOfSearchedUser)
+
+                updateCard(doc);
+                snackbar.innerText = "User Found!";
+                showAlert();
+            }
         });
     });
 }
@@ -92,17 +125,17 @@ function checkIfUserExists(){
 
 //Given the input of a user's UID.
 //Give OUTPUT of all project names where user has submitted or recieved a ticket
-function findProjectsAssociatedSubmitter(userUID){
+function findProjectsAssociatedSubmitter(userUID) {
     db.collection('projects').doc().collection('projectTickets').doc().get().then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
-                if(doc.data().SubmitterUID == userUID){
-                    
-                   
-                }
+            if (doc.data().SubmitterUID == userUID) {
+
+
+            }
         });
     });
 }
-    
+
 
 
 let nameCard = document.querySelector("#nameCard");
@@ -113,12 +146,12 @@ let projectCard = document.querySelector("#projectCard");;
 
 
 
-function updateCard(doc){
+function updateCard(doc) {
     nameCard.textContent = doc.data().name;
     emailCard.textContent = doc.data().email;
 
-    roleCard.textContent += doc.data().role1;
-    projectCard.textContent += doc.data().projects;
+    roleCard.textContent = doc.data().role1;
+    projectCard.textContent = doc.data().projects;
 }
 
 
@@ -235,7 +268,7 @@ let gropuDiv = document.querySelector('#groupDiv');
 //         clearUsers();
 //     }
 
-//     //Add call to function to get group number 
+//     //Add call to function to get group number
 //     // let groupNuum01 = getGroupNumber(e);
 //     //    console.log(localStorage.getItem('groupNum') + "hey hey")
 //     //&& e.target.classList.contains('colorred')

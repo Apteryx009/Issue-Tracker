@@ -13,6 +13,12 @@
  }
 
 
+#nameCard:hover, #emailCard:hover, #roleCard:hover, #projectCard:hover {
+  background-color: powderblue;
+  transition: background-color .7s;
+}
+
+
  .colorred {
   background-color: red;
 }
