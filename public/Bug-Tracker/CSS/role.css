@@ -6,7 +6,24 @@
 
  .main, p, h5 {
    color: #E76F51;
+   
  }
+
+ /* Fix footer css problems */
+#footerText{
+  color: white;
+}
+
+#linksh5{
+  color: white;
+}
+
+#overviewh5{
+  color: white;
+  text-align: center;
+}
+
+ 
 
  .card{
   background-color: #264653;

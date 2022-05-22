@@ -8,7 +8,7 @@ class MyHeader extends HTMLElement {
       
        
         <div class="container-fluid px-0">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black py-0 px-0"> <a class="navbar-brand" ><strong><i>Ticket-Tracker</i></strong></a> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black py-0 px-0"> <a class="navbar-brand" ><strong><i id="ticket-tracker">Ticket-Tracker</i></strong></a> 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"> <a class="nav-link" href="#">Home</a> </li>
@@ -40,9 +40,9 @@ class myFooter extends HTMLElement {
           <div class="row">
             <!--Grid column-->
             <div id="subfooter" class="col-lg-6 col-md-12 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Overview</h5>
+              <h5 id="overviewh5" class="text-uppercase">Overview</h5>
       
-              <p>       
+              <p id="footerText">       
                 Issue-Tracker is an IT service management solution with a user-friendly interface. Some key-features are: create and assign tickets, organizational structure filtered by group, project, or individual user, ability to edit user's tickets or user data, and a host of other features!
               </p>
             </div>
@@ -50,7 +50,7 @@ class myFooter extends HTMLElement {
       
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
+              <h5 id="linksh5" class="text-uppercase">Links</h5>
       
               <ul class="list-unstyled mb-0">
                 <li>

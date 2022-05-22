@@ -171,6 +171,10 @@ function showAlert() {
 }
 
 
+//Update navbar to show admin access:
+let adminNav = document.getElementById("ticket-tracker");
+adminNav.innerText = "Ticket-Tracker: Admin"
+
 
 
 
