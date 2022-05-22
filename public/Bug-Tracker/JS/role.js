@@ -28,6 +28,7 @@ const snackbar = document.getElementById('snackbar')
 
 let emailOfSearchedUser;
 let userExists = false;
+let UIDofSearchedUser;
 
 const searchBtn = document.getElementById('searchBtn');
 const userRoleSearch = document.getElementById('userRoleSearch');
@@ -52,8 +53,8 @@ function searchUser() {
         console.log(userRoleSearch.value)
         checkIfUserExists()
         if(userExists){
-        snackbar.innerText = 'User Found!';
-        showAlert();    
+        // snackbar.innerText = 'User Found!';
+        // showAlert();    
     }
 
         else{
@@ -71,6 +72,36 @@ function checkIfUserExists(){
         querySnapshot.docs.forEach(function (doc) {
                 if(doc.data().email == userRoleSearch.value){
                     
+                    //Store UID of user
+                    UIDofSearchedUser = doc.id;
+                    
+                   findProjectsAssociatedSubmitter(UIDofSearchedUser) //Should be correct execution order
+
+                    emailOfSearchedUser = userRoleSearch.value;
+                    userExists = true;
+                    console.log(emailOfSearchedUser)
+
+                    updateCard(doc);
+                    snackbar.innerText = "User Found!";
+                    showAlert();
+                }
+        });
+    });
+}
+
+
+//Given the input of a user's UID.
+//Give OUTPUT of all project names where user has submitted or recieved a ticket
+function findProjectsAssociatedSubmitter(userUID){
+    db.collection('projects').doc().collection('projectTickets').get().then(function (querySnapshot) {
+        querySnapshot.docs.forEach(function (doc) {
+                if(doc.data().SubmitterUID == userUID){
+                    
+                    //Store UID of user
+                    UIDofSearchedUser = doc.id;
+                    
+                   findProjectsAssociatedSubmitter(UIDofSearchedUser) //Should be correct execution order
+
                     emailOfSearchedUser = userRoleSearch.value;
                     userExists = true;
                     console.log(emailOfSearchedUser)
@@ -96,6 +127,7 @@ function updateCard(doc){
     emailCard.textContent = doc.data().email;
 
     roleCard.textContent = doc.data().role1;
+
 }
 
 

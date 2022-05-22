@@ -106,7 +106,7 @@ async function fillChart() {
         //   console.log("doc.data().priority", " => ", doc.data().priority);
         //   console.log("doc.data().priority", " => ", doc.data().Category);
         //   console.log(doc.data().ticketStatus)
-        resolve('resolved');
+        // resolve('resolved');
       });
     })
     .catch(function (error) {

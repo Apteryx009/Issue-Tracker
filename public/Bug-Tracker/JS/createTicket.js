@@ -85,15 +85,64 @@ function renderDoc2(doc) {
     dropDownList.appendChild(option);
 }
 
-
+var projectName02;
 
 //Update UI and store data of 'Priority' of ticket
 function showData() {
     // var theSelect = demoForm.demoSelect;
     var priority = document.getElementById("userFormNames");
     var priorityUser = priority.value;
+
+    projectName02 = document.getElementById("projectNames");
     console.log(priorityUser + "test")
+    console.log(projectName02.value + "test")
 }
+
+function appendProjectToUser() {
+    let _assigneeUID = localStorage.getItem("assigneeUID");
+    var refForUser = db.collection("users").doc(_assigneeUID);
+
+    //This will get the document of the assignee
+    db.collection('users').doc(_assigneeUID).get().then(function (doc) {
+      let _role1 = doc.data().role1;
+      let _name = doc.data().name;
+      let _email = doc.data().email;
+
+      overWriteDoc(doc, _role1, _name, _email)
+
+      //This updates the document, the firebase update() function is not working
+      //And thus I have to go throught his more painful way of updating
+        // doc.ref().set({
+        //     name: _name,
+        //     email: _email,
+        //     role1: _role1,
+        //     projects: {
+        //         0: projectName02
+        //     }
+        // })
+            // console.log(doc.data().name + " hi") 
+    });
+}
+
+//Might be broken
+function overWriteDoc(doc ,_role1, _name, _email){
+    db.collection('users').doc(doc.id).update({
+            //   name: _name,
+            // email: _email,
+            // role1: _role1,
+            // projects: {
+            //     0: projectName02.value,
+                
+            //   }
+            projects: firebase.firestore.FieldValue.arrayUnion(projectName02.value)
+
+
+
+    });
+}
+
+
+
 
 
 //Popup
@@ -149,6 +198,7 @@ function collectDataTicket() {
             snackbar.innerText = 'Ticket successfully added!';
             showAlert();
             saveToDb();
+            appendProjectToUser() //HERE
             setTimeout(function () { location.reload(); }, 3000);
 
         }
@@ -198,14 +248,14 @@ function saveToDb() {
 
     //Get UID of assignee
     let assigneeUID01 = localStorage.getItem('assigneeUID');
-   
+
     getSubmitterName(Submitter);
 
     let SubmitterName01 = localStorage.getItem('SubmitterName');
     //  console.log(SubmitterName01 + "Submitter name")
 
 
-  
+
 
 
 
@@ -229,7 +279,7 @@ function saveToDb() {
         subject: subject.value,
         ProjectName: ProjectName.value,
         NumTickets: numOfTickets,
-         SubmitterName: SubmitterName01,
+        SubmitterName: SubmitterName01,
         SubmitterUID: Submitter,
         CreatedAt: date,
         ticketStatus: 'open'
@@ -285,13 +335,13 @@ function showAlert() {
 }
 
 //Get name of Submitter
-function getSubmitterName(Submitter){
-        //Get name of Submitter
-        db.collection('users').get().then(function (querySnapshot) {
-            querySnapshot.docs.forEach(function (doc) {
-                if(doc.id == Submitter){
-                    localStorage.setItem('SubmitterName', doc.data().name)
-                }
-            });
+function getSubmitterName(Submitter) {
+    //Get name of Submitter
+    db.collection('users').get().then(function (querySnapshot) {
+        querySnapshot.docs.forEach(function (doc) {
+            if (doc.id == Submitter) {
+                localStorage.setItem('SubmitterName', doc.data().name)
+            }
         });
+    });
 }
