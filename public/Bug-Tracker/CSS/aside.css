@@ -56,6 +56,10 @@
     .aside_close-icon {
       display: none;
     }
+
+    .menu-icon{
+      display: none;
+    }
   }
 
   @media only screen and (max-width: 750px) {

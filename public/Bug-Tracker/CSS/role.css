@@ -9,6 +9,10 @@
    
  }
 
+ .menu-icon{
+   color: white;
+ }
+
  /* Fix footer css problems */
 #footerText{
   color: white;

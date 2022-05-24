@@ -18,22 +18,45 @@ let typeFrontEnd = 0, typeBackEnd = 0, typeDesign = 0;
 //End of Counters
 
 
-function toggle(el, className) {
-  //Basically just do the oppsite.
-  if (el.classList.contains(className)) {
-    el.classList.remove(className);
-  } else {
-    el.classList.add(className);
-  }
-}
+// function toggle(el, className) {
+//   //Basically just do the oppsite.
+//   if (el.classList.contains(className)) {
+//     el.classList.remove(className);
+//   } else {
+//     el.classList.add(className);
+//   }
+// }
 
 // menuIcon.addEventListener('click', function () {
 //   toggle(aside, 'active');
 // });
 
-asideClose.addEventListener('click', function () {
-  toggle(aside, 'active');
-});
+// asideClose.addEventListener('click', function () {
+//   toggle(aside, 'active');
+// });
+
+
+//Mobile menu dashboard
+  //DashBoard
+  const menuIcon22 = document.querySelector('.menu-icon');
+  
+
+  function toggle(el, className) {
+    //Basically just do the oppsite.
+    if (el.classList.contains(className)) {
+      el.classList.remove(className);
+    } else {
+      el.classList.add(className);
+    }
+  }
+
+  menuIcon22.addEventListener('click', function() {
+    toggle(aside, 'active');
+  });
+
+  asideClose.addEventListener('click', function() {
+    toggle(aside, 'active');
+  });
 
 
 
