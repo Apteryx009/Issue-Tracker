@@ -165,13 +165,13 @@ i {
   position: fixed;
   display: flex;
   top: 2px;
-  left: 8px;
+  left: 90%;
   align-items: center;
   justify-content: center;
   z-index: 1;
   cursor: pointer;
   padding: 12px;
-  color: black;
+  /* color: black; */
 }
 
 .header_search {

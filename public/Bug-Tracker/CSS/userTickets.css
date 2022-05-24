@@ -152,7 +152,7 @@ body {
   
   
   
-  .menu-icon {
+  /* .menu-icon {
     position: fixed;
     display: flex;
     top: 2px;
@@ -163,7 +163,7 @@ body {
     cursor: pointer;
     padding: 12px;
     color: black;
-  }
+  } */
   
   .header_search {
     margin-left: 24px;
