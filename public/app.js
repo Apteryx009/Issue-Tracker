@@ -123,12 +123,10 @@ signInBtn.addEventListener('click', e => {
     auth.onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
             // signed in
-            console.log(firebaseUser.Metadata);
-            console.log("Above is firebase user")
+            console.log(firebaseUser);
             whenSignedIn.hidden = false;
             whenSignedOut.hidden = true;
             whenSignedIn2.hidden = false; whenSignedIn2.innerHTML = "Sucess!";
-           
             setTimeout(function () { loadPage(); }, 2000);
             // userDetails.innerHTML = `<h3>Hello ${user.displayName}!</h3> <p>User ID: ${user.uid}</p>`;
         } else {
@@ -139,13 +137,6 @@ signInBtn.addEventListener('click', e => {
             whenSignedOut.hidden = false;
             userDetails.innerHTML = '';
         }
-
-        promise.catch( e =>{
-           console.log(e.message);
-           
-           
-        });
-
     });
 
     

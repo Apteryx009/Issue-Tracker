@@ -7,8 +7,8 @@
   <title>Firebase Basics 0005</title>
 
 
-  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js" ></script>
-  <script src="../JS/alert.js" ></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
+  <script src="../JS/alert.js"></script>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <!-- <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
@@ -19,7 +19,7 @@
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-     <script src="../JS/firebase.js"></script>
+  <script src="../JS/firebase.js"></script>
 
   <script src="../JS/signUp.js" defer></script>
 
@@ -29,9 +29,9 @@
     integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
     crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../CSS/snackBar.css">
-    <link rel="stylesheet" href="../CSS/signUp.css">
-    <link rel="stylesheet" href="../CSS/index.css">
+  <link rel="stylesheet" href="../CSS/snackBar.css">
+  <link rel="stylesheet" href="../CSS/signUp.css">
+  <link rel="stylesheet" href="../CSS/index.css">
 </head>
 
 <body>
@@ -40,115 +40,115 @@
     <h1>Issue Tracker</h1>
   </div>
 
-  
+
 
 
   <button id="home" class="btn btn-success">home</button>
-<section id="whenSignedOut">
-
-  
-  
-</section>
-
-<section id="whenSignedIn" hidden="true">
-
-  <div id="userDetails"></div>
-
-  <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
-
-</section>
+  <section id="whenSignedOut">
 
 
-<section id="whenSignedIn2" hidden="true">
 
-<h2></h2>
+  </section>
 
-</section>
+  <section id="whenSignedIn" hidden="true">
 
-<hr>
+    <div id="userDetails"></div>
 
-<div class="mb-3">
+    <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
+
+  </section>
+
+
+  <section id="whenSignedIn2" hidden="true">
+
+    <h2></h2>
+
+  </section>
+
+  <hr>
+
+  <div class="mb-3">
     <label for="nameInput" class="form-label">Name</label>
     <input type="name" class="form-control" id="name" placeholder="name" required id="userName">
   </div>
 
   <hr>
-  
-
-<div class="mb-3">
-  <label for="emailInput" class="form-label">Email address</label>
-  <input type="email" class="form-control" id="email" placeholder="name@example.com">
-</div>
-
-<hr>
 
 
-<div class="mb-3">
-  <label for="passwordInput" class="form-label">Password</label>
-  <input type="password" class="form-control" id="password" placeholder="password">
-</div>
+  <div class="mb-3">
+    <label for="emailInput" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+  </div>
 
-<hr>
+  <hr>
 
-<div id="askUserIfCreateGroup">
-  <p id="question" style="background-color: white;">Please create a new group</p>
-  <div class="dropdown" onclick="createGroup()">
-    <form name="userForm">
-      <!-- <select name="userForm" id="userCreateGroup">
+
+  <div class="mb-3">
+    <label for="passwordInput" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="password">
+  </div>
+
+  <hr>
+
+  <!-- <div id="askUserIfCreateGroup">
+    <p id="question" style="background-color: white;">Please create a new group</p>
+    <div class="dropdown" onclick="createGroup()">
+      <form name="userForm">
+         <select name="userForm" id="userCreateGroup">
         <option onclick="createGroup()" value="zilch">Select:</option>
         <option onclick="createGroup()" value="Yes">Yes</option>
         <option onclick="createGroup()" value="No">No</option>
       </select> -->
-    </form>
-  </div>
-
-  <div class="mb-3" id="yesCreateGroup">
-    <label for="passwordInput" class="form-label"></label>
-    <input type="text" class="form-control" id="groupName" placeholder="Group Name">
-  </div>
-
-
-  <hr>
-
-<div class="mb-3">
-
-  
- 
-
-  <div class="dropdown">
-    <button class="dropbtn">--Select General Role--</button>
-    <div class="dropdown-content">
-      <a onclick="roleValueChange('Full-Stack Dev')" href="#">Full-Stack Dev</a>
-      <a onclick="roleValueChange('Front-End Dev')" href="#">Front-End Dev</a>
-      <a onclick="roleValueChange('Back-End Dev')" href="#">Back-End Dev</a> 
-      <a onclick="roleValueChange('Designer')" href="#">Designer</a>
+      <!-- </form>
     </div>
+
+    <div class="mb-3" id="yesCreateGroup">
+      <label for="passwordInput" class="form-label"></label>
+      <input type="text" class="form-control" id="groupName" placeholder="Group Name">
+    </div> --> 
+
 
     <hr>
 
-    <p  id="roleValue"></p>
-  </div>
-
-
-</div>
-
-<button id="signUpBtn" class="btn btn-danger">Sign Up</button>
+    <div class="mb-3">
 
 
 
 
+      <div class="dropdown">
+        <button class="dropbtn">--Select General Role--</button>
+        <div class="dropdown-content">
+          <a onclick="roleValueChange('Full-Stack Dev')" href="#">Full-Stack Dev</a>
+          <a onclick="roleValueChange('Front-End Dev')" href="#">Front-End Dev</a>
+          <a onclick="roleValueChange('Back-End Dev')" href="#">Back-End Dev</a>
+          <a onclick="roleValueChange('Designer')" href="#">Designer</a>
+        </div>
 
-<hr>
+        <hr>
+
+        <p id="roleValue"></p>
+      </div>
 
 
- 
+    </div>
 
- <!-- The actual snackbar -->
- <!-- If user sumbitted all details correctly, say logged in
+    <button id="signUpBtn" class="btn btn-danger">Sign Up</button>
+
+
+
+
+
+    <hr>
+
+
+
+
+    <!-- The actual snackbar -->
+    <!-- If user sumbitted all details correctly, say logged in
       If user didn't submit say the nanme, prmot them for name. -->
- <div id="snackbar"></div> 
+    <div id="snackbar"></div>
 
- 
+
 </body>
 
 </html>
