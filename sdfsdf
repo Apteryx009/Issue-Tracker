@@ -1,0 +1,24 @@
+[33m5ec41b1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: commit: Gutted and replaced old welcome page with a new one
+[33me7d28c5[m HEAD@{1}: commit: Changed Mobile Button JS
+[33m952e020[m HEAD@{2}: commit: Changed Mobile SideBar and Nav Bar button
+[33m0d64715[m HEAD@{3}: commit: Restored User Welcoming Pages to fix JS Errors
+[33mf2d0c76[m HEAD@{4}: commit: Transitioning CSS from production to end product
+[33mceacac9[m HEAD@{5}: commit: Role.html was given large-scale features of being able to edit a user's profile and save to db
+[33mbe3e70b[m HEAD@{6}: commit: Updated User Card to show user's associated projects and updated dependencies
+[33mbfc1ab3[m HEAD@{7}: commit: Added Ability to associate user with projects directly
+[33ma743236[m HEAD@{8}: commit: Transformed role.html with search user functionality
+[33mc942e79[m HEAD@{9}: commit: Improved Many CSS Features
+[33m63ca8c6[m HEAD@{10}: commit: Gutted Role.html
+[33m0ddcf52[m HEAD@{11}: commit: Fixed Ticket Width Display Problem
+[33m49edb1c[m HEAD@{12}: commit: Updated Scrollbar
+[33mc03be00[m HEAD@{13}: commit: Minor CSS improvements
+[33m9f072c4[m HEAD@{14}: commit: Fixed CreateTicket.html Page not working
+[33me190690[m HEAD@{15}: commit: CSS Improvements
+[33mc68a52f[m HEAD@{16}: commit: Fixed bug relating to import
+[33m2047f41[m HEAD@{17}: commit: Updated npm packages
+[33m0dd1b47[m HEAD@{18}: commit: Incrementer bug fixed
+[33mb25e70f[m HEAD@{19}: commit: CSS Updates for viewing tickets
+[33m256e339[m HEAD@{20}: commit: Improved responsive cards
+[33me4f0eb5[m HEAD@{21}: commit: More HTML improvements
+[33ma638a46[m HEAD@{22}: commit: Cleaned up pages using HTML templates
+[33m2c777c0[m HEAD@{23}: clone: from https://github.com/Apteryx009/Issue-Tracker

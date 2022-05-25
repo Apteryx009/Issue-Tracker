@@ -9,13 +9,39 @@ const db = firebase.firestore();
 //Vars to hold chart data collected from firebase
 
 //Counters
-let priorityAmtLow = 0, priorityAmtMed = 0, priorityAmtLowHigh = 0;
+let priorityAmtLow = 0, priorityAmtMed = 0, priorityAmtHigh = 0;
 
-let statusOpen = 0, statusInProg = 0, statusResolved = 0, statusNeedMoreInfo = 0;
+let statusOpen = 0, statusClosed =0,  statusInProg = 0, statusResolved = 0, statusNeedMoreInfo = 0;
 
 let typeFrontEnd = 0, typeBackEnd = 0, typeDesign = 0;
 
 //End of Counters
+
+
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  console.log("DOM fully loaded and parsed");
+});
+
+//The below two are async and await functions to load charts after the data has been collected
+const loadCharts = () => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve('I did something'), 1000)
+  })
+}
+
+const callLoadCharts = async () => {
+  console.log(await loadCharts())
+  chart1()
+  chart3()
+  chart4()
+}
+
+console.log('Before')
+callLoadCharts()
+console.log('After')
+
+
 
 
 // function toggle(el, className) {
@@ -64,6 +90,7 @@ let typeFrontEnd = 0, typeBackEnd = 0, typeDesign = 0;
 //Instead of splitting into like 10 different functions to ping the db 10 different times for each stat,
 //Creates 3 functions organizing by prioty, then branch off from there to see subsequent info
 
+//Medium prioity tickets
 async function fillChart() {
   let promise = new Promise((resolve, reject) => {
 
@@ -82,15 +109,15 @@ async function fillChart() {
         switch (Cag) {
           case "Back End":
             typeBackEnd++
-            console.log("Back end!")
+            // console.log("Back end!")
             break;
           case "Front End":
             typeFrontEnd++
-            console.log("Front end!")
+            // console.log("Front end!")
             break;
           case "Design":
             typeDesign++
-            console.log("Design!")
+            // console.log("Design!")
             break;
 
         }
@@ -102,11 +129,16 @@ async function fillChart() {
             statusOpen++
 
             break;
-          case "In Progress":
+          case "in-progress":
             console.log(doc.data().ticketStatus)
             statusInProg++
 
             break;
+            case "closed":
+              console.log(doc.data().ticketStatus)
+              statusClosed++
+  
+              break;
           case "Need More Info":
             console.log(doc.data().ticketStatus)
             statusNeedMoreInfo++
@@ -122,14 +154,6 @@ async function fillChart() {
             break;
 
         }
-
-
-        // chart4()
-        // console.log("hi");
-        //   console.log("doc.data().priority", " => ", doc.data().priority);
-        //   console.log("doc.data().priority", " => ", doc.data().Category);
-        //   console.log(doc.data().ticketStatus)
-        // resolve('resolved');
       });
     })
     .catch(function (error) {
@@ -138,12 +162,164 @@ async function fillChart() {
    
    });
 
-   let result = await promise; // wait until the promise resolves (*)
-   alert(result); // "done!"
+  //  let result = await promise; // wait until the promise resolves (*)
+  //  alert(result); // "done!"
 
 }
 
+//Low priority tickets
+async function fillChart2() {
+  let promise = new Promise((resolve, reject) => {
 
+
+  db.collectionGroup("projectTickets").where("priority", "==", "Low") //Returns every priotity where it exists basically
+    //This comparsion operator not might do what I want to
+    .get()
+    .then(function (querySnapshot) {
+
+      querySnapshot.forEach(function (doc) {
+        //Prioity counter
+        priorityAmtLow++
+
+        let Cag = doc.data().Category;
+        let status = doc.data().ticketStatus;
+        switch (Cag) {
+          case "Back End":
+            typeBackEnd++
+            // console.log("Back end!")
+            break;
+          case "Front End":
+            typeFrontEnd++
+            // console.log("Front end!")
+            break;
+          case "Design":
+            typeDesign++
+            // console.log("Design!")
+            break;
+
+        }
+
+        //TODO: THESE EXACT DETAILS WILL NEED TO BE REDONE in switch statement!
+        switch (status) {
+
+          case "open":
+            statusOpen++
+
+            break;
+          case "in-progress":
+            console.log(doc.data().ticketStatus)
+            statusInProg++
+
+            break;
+            case "closed":
+              console.log(doc.data().ticketStatus)
+              statusClosed++
+  
+              break;
+          case "Need More Info":
+            console.log(doc.data().ticketStatus)
+            statusNeedMoreInfo++
+            break;
+          case "Resolved":
+            console.log(doc.data().ticketStatus)
+            statusResolved++
+            break;
+
+
+          default:
+            console.log(doc.data().ticketStatus)
+            break;
+
+        }
+      });
+    })
+    .catch(function (error) {
+      console.log("Error getting documents: ", error);
+    });
+   
+   });
+
+  //  let result = await promise; // wait until the promise resolves (*)
+  //  alert(result); // "done!"
+
+}
+
+//High priority tickets
+async function fillChart3() {
+  let promise = new Promise((resolve, reject) => {
+
+
+  db.collectionGroup("projectTickets").where("priority", "==", "High") //Returns every priotity where it exists basically
+    //This comparsion operator not might do what I want to
+    .get()
+    .then(function (querySnapshot) {
+
+      querySnapshot.forEach(function (doc) {
+        //Prioity counter
+        priorityAmtHigh++
+
+        let Cag = doc.data().Category;
+        let status = doc.data().ticketStatus;
+        switch (Cag) {
+          case "Back End":
+            typeBackEnd++
+            // console.log("Back end!")
+            break;
+          case "Front End":
+            typeFrontEnd++
+            // console.log("Front end!")
+            break;
+          case "Design":
+            typeDesign++
+            // console.log("Design!")
+            break;
+
+        }
+
+        //TODO: THESE EXACT DETAILS WILL NEED TO BE REDONE in switch statement!
+        switch (status) {
+
+          case "open":
+            statusOpen++
+
+            break;
+          case "in-progress":
+            console.log(doc.data().ticketStatus)
+            statusInProg++
+
+            break;
+            case "closed":
+              console.log(doc.data().ticketStatus)
+              statusClosed++
+  
+              break;
+          case "Need More Info":
+            console.log(doc.data().ticketStatus)
+            statusNeedMoreInfo++
+            break;
+          case "Resolved":
+            console.log(doc.data().ticketStatus)
+            statusResolved++
+            break;
+
+
+          default:
+            console.log(doc.data().ticketStatus)
+            break;
+
+        }
+      });
+    })
+    .catch(function (error) {
+      console.log("Error getting documents: ", error);
+    });
+   
+   });
+
+  //  let result = await promise; // wait until the promise resolves (*)
+  //  alert(result); // "done!"
+
+}
 
 
 
@@ -156,7 +332,7 @@ function chart1() {
       labels: ['Low', 'Medium', 'High'],
       datasets: [{
         label: 'Tickets by Priority',
-        data: [12, 19, 3],
+        data: [priorityAmtLow, priorityAmtMed, priorityAmtHigh],
         backgroundColor: [
 
           'rgba(54, 162, 235, 0.2)',
@@ -216,10 +392,10 @@ function chart3() {
   const myChart3 = new Chart(ctx3, {
     type: 'bar',
     data: {
-      labels: ['Open', 'In Progress', 'Resolved', "More Info Required"],
+      labels: ["Open", "In-Progress", "Closed"],
       datasets: [{
         label: 'Tickets Status',
-        data: [12, 19, 3, 5],
+        data: [statusOpen, statusInProg, statusClosed],
         backgroundColor: [
 
           'rgba(54, 162, 235, 0.2)',
@@ -282,9 +458,9 @@ function chart4() {
 
 
 
-chart1()
 // chart2()
-chart3()
+
 
 fillChart()
-
+fillChart2()
+fillChart3()
