@@ -7,7 +7,7 @@ class MyHeader extends HTMLElement {
     this.innerHTML = `
       
        
-        <div class="container-fluid px-0">
+        <div id="headerDiv" class="container-fluid px-0" style="position: fixed; z-index: 99;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black py-0 px-0"> <a class="navbar-brand" ><strong><i id="ticket-tracker">Ticket-Tracker</i></strong></a> 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
