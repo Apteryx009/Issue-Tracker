@@ -34,7 +34,7 @@ function getSubmitterName(){
               console.log('huh')
               if(doc.data()){
                 console.log('it worked')
-                setHTMLFields(doc.data().name,doc.data().role1, doc.data().email)
+                setHTMLFields(doc.data().name,doc.data().role1, doc.data().email, doc.data().projects)
                 userEmail = doc.data().email;
                 nameOfGivenUser = doc.data().name;
                 userRoleGeneral = doc.data().role1;
@@ -48,16 +48,18 @@ function getSubmitterName(){
     
 }
 
-function setHTMLFields(name, role, email){
+function setHTMLFields(name, role, email, projects){
   let nameTag = document.getElementById("nameTag");
   let roleTag = document.getElementById("roleTag");
   let emailTag = document.getElementById("emailTag");
   let groupsTag = document.getElementById("groupsTag");
+  let projectsTag = document.getElementById("projectsTag");
 
   console.log(nameOfGivenUser + "sdf")
   nameTag.innerText = name;
   roleTag.innerText = role
   emailTag.innerText = email
+  projectsTag.innerText = projects
 
 }
 

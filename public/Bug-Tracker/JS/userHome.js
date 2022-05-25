@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 //The below two are async and await functions to load charts after the data has been collected
 const loadCharts = () => {
   return new Promise(resolve => {
-    setTimeout(() => resolve('I did something'), 1000)
+    setTimeout(() => resolve('I did something'), 1300)
   })
 }
 
