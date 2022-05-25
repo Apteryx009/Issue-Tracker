@@ -121,6 +121,9 @@ body {
         'aside footer';
       height: 100vh;
     }
+
+    
+
   
     /* The sidebar */
     .aside {
@@ -142,7 +145,15 @@ body {
     }
   }
   
-  
+  @media only screen and (min-width: 750px) {
+    .aside_close-icon {
+      display: none;
+    }
+
+    .menu-icon{
+      display: none;
+    }
+  }
   
   /* .menu-icon {
     position: fixed;

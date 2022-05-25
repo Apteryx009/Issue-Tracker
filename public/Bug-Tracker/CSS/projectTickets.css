@@ -210,6 +210,7 @@ h4{
     position: relative;
      min-height: 450px;
     overflow: auto;
+    width: 20em;
    
   }
   textarea {
