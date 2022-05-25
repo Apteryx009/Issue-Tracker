@@ -23,6 +23,15 @@ body {
   }
 
 
+  #createNewTicket{
+    margin: 7px;
+    margin-left: 2.2em;
+    box-shadow: 6px 4px 7px rgb(2, 8, 5);
+    
+    width: 20%;
+
+  }
+
 
   
   .header {

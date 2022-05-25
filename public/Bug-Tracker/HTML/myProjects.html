@@ -30,13 +30,13 @@ it look like planned layout from prevoius idea -->
   <link rel="stylesheet" href="../CSS/snackBar.css">
   <link rel="stylesheet" href="../CSS/template.css">
 
-  
-  
+
+
 </head>
 
 <body>
   <script type=module src="../JS/websiteTemplate.js"></script>
-  
+
   <my-header></my-header>
   <!-- So the general idea is that we can have 
     how many many projects: 1,2, 20, whatever
@@ -62,7 +62,7 @@ it look like planned layout from prevoius idea -->
         <li class="aside_list-item">Dashboard Home</li>
         <li class="aside_list-item">User Management System</li>
         <li class="aside_list-item">Projects</li>
-        
+
         <li class="aside_list-item">My Tickets</li>
         <li class="aside_list-item">User Profile</li>
       </ul>
@@ -76,7 +76,7 @@ it look like planned layout from prevoius idea -->
       <!-- <button class="btn btn-success btn-sm" id="viewAllTickets">Specific ticket details</button> -->
 
       <div class="main_cards">
-        <div class="card">
+        <div class="card" id="card01">
 
 
           <!-- Section where user may create a new project -->
@@ -108,6 +108,7 @@ it look like planned layout from prevoius idea -->
                     <option onclick="userDueDate()" value="No">No</option>
                   </select>
                 </form>
+
               </div>
 
 
@@ -118,11 +119,11 @@ it look like planned layout from prevoius idea -->
                 </div>
               </div>
 
+              <!-- <button onclick="submitNewProject()" class="btn btn-success btn-sm" id="addProject">Add Project</button> -->
               <button onclick="submitNewProject()" class="btn btn-success btn-sm" id="addProject">Add Project</button>
-
               <hr>
               <h2>Your Projects:</h2>
-           
+
 
               <div class="UserProjectsContainer">
 
@@ -160,7 +161,7 @@ it look like planned layout from prevoius idea -->
                     <div class="version__prop"><span>Description</span></div>
 
                   </div>
-        
+
 
                 </div>
               </div><!-- End result section-->
@@ -170,7 +171,7 @@ it look like planned layout from prevoius idea -->
 
             </div>
 
-
+         
         </div>
       </div>
 
@@ -183,7 +184,7 @@ it look like planned layout from prevoius idea -->
     <div class="footer_copyright">&copy;2021</div>
     <div class="footer_byline">Made with &hearts;</div>
   </footer> -->
- 
+
   </div>
 
   <div id="snackbar"></div>
@@ -212,7 +213,7 @@ it look like planned layout from prevoius idea -->
     $('#datepicker').datepicker("setDate", new Date());
   </script>
 
-<my-footer></my-footer>
+  <my-footer></my-footer>
 
   <!-- <script defer src="../JS/userHome.js"></script> -->
   <script defer src="../JS/aside.js"></script>

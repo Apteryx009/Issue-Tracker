@@ -2,8 +2,10 @@
 
 .overview_card-info {
    
-    margin-left: 25%;
-     font-size: larger;
+    margin-left: 42%;
+     font-size: 25px;
+     color: #E76F51;
+    
  } 
 
 
@@ -139,6 +141,12 @@
   .dropdown-content{
     grid-row-end: 1;
    }
+
+#add {
+  box-shadow: 6px 4px 7px rgb(2, 8, 5);
+  /* margin-bottom: 20px; */
+}
+
 
   .dropdown-content a:hover {background-color: #ddd;}
   

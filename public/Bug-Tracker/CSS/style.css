@@ -105,6 +105,8 @@ body {
   grid-area: card3;
 }
 
+
+
 /* responsive layout for desktop*/
 /* I am considering moving this to aside.css but 
 am afraid if that is done, we will have duplicate code */
@@ -127,6 +129,8 @@ am afraid if that is done, we will have duplicate code */
     position: relative;
     transform: translateX(0);
   }
+
+ 
 
   .main_cards {
     width: 95%;
@@ -178,6 +182,27 @@ i {
   margin-left: 24px;
 }
 
+
+
+
+/* Inputs */
+input[type=search], select {
+  width: 100%;
+ 
+  display: inline-block;
+  
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  border-radius: 5px;
+  /* background-color: #E76F51; */
+ 
+}
+
+button {
+  box-shadow: 6px 4px 7px rgb(2, 8, 5);
+
+}
 
 /* For scrollbar */
 body::-webkit-scrollbar {

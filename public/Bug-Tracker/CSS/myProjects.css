@@ -144,6 +144,10 @@ img{
   width: 50%;
 }
 
+/* TODO create section here for add project button  */
+  #card01 {
+    padding: 3px;
+  }
 
 .listSub1, .list-sub2, .list-sub3, .list-sub4{
   padding: 2rem;

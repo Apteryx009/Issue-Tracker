@@ -172,8 +172,14 @@ body {
     margin-left: 24px;
   }
   
+  #displayProjectName{
+    padding-top: 1em;
+    color: #E76F51;
+  }
   
-  
+  #createNewTicket{
+    box-shadow: 6px 4px 7px rgb(2, 8, 5);
+  }
 
 
 /*Result Section CSS*/
