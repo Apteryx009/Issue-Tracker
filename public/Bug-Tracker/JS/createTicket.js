@@ -1,3 +1,8 @@
+//To hold graph data
+const map1 = new Map();
+
+
+
 var date = (new Date()).toISOString().split('T')[0];
 document.getElementById('date').innerHTML = date;
 
@@ -94,7 +99,8 @@ function showData() {
     var priorityUser = priority.value;
 
     projectName02 = document.getElementById("projectNames");
-    console.log(priorityUser + "test")
+    console.log(priorityUser + "tes2St")
+    localStorage.setItem("AsigneeFromTicket", priorityUser)
     console.log(projectName02.value + "test")
 }
 
@@ -196,6 +202,13 @@ function collectDataTicket() {
             && Category.value != "zilch" && userDate.value != ""
             && description.value != "" && description.value != null && subject.value != "") {
             snackbar.innerText = 'Ticket successfully added!';
+
+            localStorage.setItem("TicketAsignee", nameUserSubmitted.value)
+
+            map1.set(localStorage.getItem('SubmitterName'), nameUserSubmitted.value)
+            createDataForGrapgh()
+            console.log(map1)
+
             showAlert();
             saveToDb();
             appendProjectToUser() //HERE
@@ -344,4 +357,21 @@ function getSubmitterName(Submitter) {
             }
         });
     });
+}
+
+
+
+//Function to create data for db that gives direction of who assigns and submits tickets
+
+function createDataForGrapgh(){
+   let x; let y = localStorage.getItem("SubmitterName")
+   x = map1.get(localStorage.getItem("SubmitterName"))
+   console.log(x);
+
+   db.collection("GraphData").doc().set({
+    Submitter: localStorage.getItem("SubmitterName"), 
+    Asignee: localStorage.getItem("AsigneeFromTicket")
+                     
+            
+  })
 }

@@ -457,6 +457,31 @@ function chart4() {
 //for sidebar
 
 
+const map1 = new Map();
+let index = 0;
+
+//IK this might be an odd location for this, but I think it will reduce load times. Anyhow.
+function createDataForGrapgh(){
+  db.collection("projects").doc().collection("projectTickets").doc().get().then(function (querySnapshot) { //Returns every priotity where it exists basically
+    //This comparsion operator not might do what I want to
+   
+
+      
+        console.log(doc.data().SubmitterName)
+        map1.set(doc.data().SubmitterName, doc.data().assignee) //So the array is from the Summer TO to the asignee
+        index++
+       
+    
+    
+    // .catch(function (error) {
+    //   console.log("Error getting documents: ", error);
+    // });
+  
+   });
+  
+}
+
+
 
 // chart2()
 
