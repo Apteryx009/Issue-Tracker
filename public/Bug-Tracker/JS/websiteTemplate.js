@@ -11,9 +11,9 @@ class MyHeader extends HTMLElement {
     <nav class="navbar navbar-expand-lg navbar-dark bg-black py-0 px-0"> <a class="navbar-brand" ><strong><i id="ticket-tracker">Ticket-Tracker</i></strong></a> 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item"> <a class="nav-link" href="#">Home</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Linkedin</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Github</a> </li>
+                
+                <li class="nav-item"> <a target="_blank" rel="noopener noreferrer" class="nav-link" href="https://www.linkedin.com/in/jmccalip51/">Linkedin</a> </li>
+                <li class="nav-item"> <a target="_blank" rel="noopener noreferrer" class="nav-link" href="https://github.com/Apteryx009/Issue-Tracker">Github</a> </li>
                 
                
             </ul>
@@ -43,9 +43,7 @@ class myFooter extends HTMLElement {
               <h5 id="overviewh5" class="text-uppercase">Overview</h5>
       
               <p id="footerText">       
-                Issue-Tracker is an IT service management solution with a user-friendly interface. Some key-features are: create and assign tickets, organizational structure filtered by group, project, or individual user, ability to edit user's tickets or user data, and a host of other features!
-              </p>
-            </div>
+              Issue-Tracker is an open-source IT service management solution with a user-friendly interface. Issue-Tracker helps teams manage workflow by the assigning, revising, and resolving of tickets. Furthermore, functionality for aggregation, querying, and other types of data manipulation is baked into the project.             </div>
             <!--Grid column-->
       
             <!--Grid column-->
@@ -54,10 +52,10 @@ class myFooter extends HTMLElement {
       
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="#!" class="text-white">Linkedin</a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jmccalip51/"" class="text-white">Linkedin</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-white">Github</a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Apteryx009/Issue-Tracker" class="text-white">Github</a>
                 </li>
                 <li>
            
