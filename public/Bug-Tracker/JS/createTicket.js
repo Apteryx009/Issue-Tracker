@@ -326,7 +326,7 @@ const auth = firebase.auth();
 function addUserInputToDatabase() {
     let theProjectName = ProjectName.value;
     console.log(theProjectName);
-    return db.collection('projects').doc(ProjectName.value).set({
+    return db.collection('projects').doc(ProjectName.value).update({
         value: 'b value'
 
     }).then(() => {
